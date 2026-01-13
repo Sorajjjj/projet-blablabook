@@ -4,7 +4,7 @@ const app = express();
 const port = 3000;
 
 // Absolute path to your HTML file
-const htmlFilePath = path.join(__dirname, 'Integration');
+const htmlFilePath = path.join(__dirname, 'Integration', 'Bibliotheque.html');
 
 app.get('/', (req, res) => {
   res.sendFile(htmlFilePath, err => {

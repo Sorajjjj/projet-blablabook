@@ -1,0 +1,17 @@
+# bilan journalier - sprint 1
+
+## Amélia
+
+**Jour 1** - Gestion des tâches du sprint 1 et installation des dépendances nécessaires.
+
+## Anasse
+
+**Jour 1** - Gestion des tâches du sprint 1 et installation des dépendances nécessaires.
+
+## Inès
+
+**Jour 1** - Gestion des tâches du sprint 1 et installation des dépendances nécessaires.
+
+## Mathias
+
+**Jour 1** - Gestion des tâches du sprint 1 et installation des dépendances nécessaires.

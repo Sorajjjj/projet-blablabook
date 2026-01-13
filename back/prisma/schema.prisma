@@ -1,0 +1,89 @@
+generator client {
+  provider = "prisma-client-js"
+  
+}
+
+datasource db {
+  provider = "postgresql"
+ 
+}
+
+model User {
+  userId       String        @id @default(uuid()) @map("user_id") @db.Uuid
+  username     String        @unique @db.VarChar(50)
+  email        String        @unique @db.VarChar(255)
+  passwordHash String        @map("password_hash") @db.VarChar(255)
+  createdAt    DateTime      @default(now()) @map("created_at")
+  updatedAt    DateTime      @updatedAt @map("updated_at")
+
+  library      UserLibrary[]
+
+  @@map("user")
+}
+
+model Author {
+  authorId  String   @id @default(uuid()) @map("author_id") @db.Uuid
+  fullName  String   @map("full_name") @db.VarChar(150)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  books     Book[]
+
+  @@map("author")
+}
+
+model Book {
+  bookId      String    @id @default(uuid()) @map("book_id") @db.Uuid
+  title       String    @db.VarChar(255)
+  releaseDate DateTime? @map("release_date") @db.Date
+  isbn        String?   @unique @db.VarChar(13)
+  summary     String?   @db.Text
+
+  authorId    String    @map("author_id") @db.Uuid
+  author      Author    @relation(fields: [authorId], references: [authorId], onDelete: Cascade)
+
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  genres      BookGenre[]
+  libraries   UserLibrary[]
+
+  @@map("book")
+}
+
+model Genre {
+  genreId   String   @id @default(uuid()) @map("genre_id") @db.Uuid
+  name      String   @unique @db.VarChar(50)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  books     BookGenre[]
+
+  @@map("genre")
+}
+
+model BookGenre {
+  bookId  String @map("book_id") @db.Uuid
+  genreId String @map("genre_id") @db.Uuid
+
+  book    Book  @relation(fields: [bookId], references: [bookId], onDelete: Cascade)
+  genre   Genre @relation(fields: [genreId], references: [genreId], onDelete: Cascade)
+
+  @@id([bookId, genreId])
+  @@map("book_genre")
+}
+
+model UserLibrary {
+  userId    String   @map("user_id") @db.Uuid
+  bookId    String   @map("book_id") @db.Uuid
+  status    String   @default("want_to_read") @db.VarChar(20)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  user      User     @relation(fields: [userId], references: [userId], onDelete: Cascade)
+  book      Book     @relation(fields: [bookId], references: [bookId], onDelete: Cascade)
+
+  @@id([userId, bookId])
+  @@map("user_library")
+}
+

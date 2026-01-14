@@ -2,6 +2,7 @@ import "dotenv/config";
 import type { Request, Response } from "express";
 import { prisma } from "../config/prisma.js";
 
+
 // Retrieve all books from the database
 export const getAllBooks = async (req: Request, res: Response) => {
 

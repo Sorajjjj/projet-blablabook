@@ -18,7 +18,11 @@ const config: Config = {
           'cream': '#F2F1E8',
         },
       },
+      boxShadow: {
+        'inner-custom': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.1)',
+      },
       fontFamily: {
+        'sans': ['Basic', 'sans-serif'],
         'basic': ['Basic', 'sans-serif'],
         'bayon': ['Bayon', 'sans-serif'],
       },

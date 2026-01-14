@@ -1,36 +1,90 @@
 // Importation of the different types of buttons according to the graphic charter
 import {
-  OrangeOutlineButton,
-  LightBlueOutlineButton,
-  OrangeSolidButton,
-  TealSolidButton,
-  OrangeRoundedButton,
-  TealRoundedButton,
-  SimpleButton,
-} from "@/components/blabla/buttons";
+	OrangeOutlineButton,
+	LightBlueOutlineButton,
+	OrangeSolidButton,
+	TealSolidButton,
+	OrangeRoundedButton,
+	TealRoundedButton,
+	SimpleButton,
+} from "@/components/blablabook/buttons";
+
+// Importation of the react hook form
+import LoginForm from "@/components/blablabook/login-form";
+import RegisterForm from "@/components/blablabook/register-from";
+import BookCard from "@/components/blablabook/book-card";
+
+// ---------------Testing some components below ---------------------
 
 export default function Home() {
-  return (
-    <div className="min-h-screen bg-blabla-cream flex flex-col items-center justify-center gap-8 p-8">
-      <h1 className="text-5xl font-bold text-blabla-dark font-bayon">BlaBlaBook</h1>
-      <p className="text-blabla-teal text-lg font-basic">Exemples de boutons selon la charte graphique</p>
-      
-      <div className="grid grid-cols-2 gap-6 mt-8">
-        {/* Ligne 1 - Boutons outline */}
-        <OrangeOutlineButton>Button</OrangeOutlineButton>
-        <LightBlueOutlineButton>Button</LightBlueOutlineButton>
-        
-        {/* Ligne 2 - Boutons pleins */}
-        <OrangeSolidButton>Button</OrangeSolidButton>
-        <TealSolidButton>Button</TealSolidButton>
-        
-        {/* Ligne 3 - Boutons outline arrondis */}
-        <OrangeRoundedButton>Button</OrangeRoundedButton>
-        <TealRoundedButton>Button</TealRoundedButton>
-        
-        {/* Ligne 4 - Bouton simple */}
-        <SimpleButton className="col-span-2">Button</SimpleButton>
-      </div>
-    </div>
-  );
+	return (
+		// Buttons components
+		<>
+			<div className="bg-blabla-cream flex flex-col items-center justify-center py-10 ">
+				<h1 className="text-5xl font-bold text-blabla-dark font-bayon">
+					BlaBlaBook
+				</h1>
+				<p className="text-blabla-teal text-lg font-basic">
+					Exemples de boutons selon la charte graphique
+				</p>
+
+				<div className="grid grid-cols-2 gap-6 mt-8">
+					{/* Ligne 1 - Boutons outline */}
+					<OrangeOutlineButton>Button</OrangeOutlineButton>
+					<LightBlueOutlineButton>Button</LightBlueOutlineButton>
+
+					{/* Ligne 2 - Boutons pleins */}
+					<OrangeSolidButton>Button</OrangeSolidButton>
+					<TealSolidButton>Button</TealSolidButton>
+
+					{/* Ligne 3 - Boutons outline arrondis */}
+					<OrangeRoundedButton>Button</OrangeRoundedButton>
+					<TealRoundedButton>Button</TealRoundedButton>
+
+					{/* Ligne 4 - Bouton simple */}
+					<SimpleButton className="col-span-2">Button</SimpleButton>
+				</div>
+
+				{/* Form components*/}
+
+				{/* Login form*/}
+
+				<div className="bg-blabla-cream w-full max-w-md ">
+					<h2 className="text-2xl font-bold text-blabla-dark  text-center">
+						Test du formulaire de connexion
+					</h2>
+					<LoginForm />
+				</div>
+
+				{/*Register form*/}
+				<div className="bg-blabla-cream w-full max-w-md ">
+					<h2 className="text-2xl font-bold text-blabla-dark  text-center">
+						Test du formulaire d&apos;inscription
+					</h2>
+					<RegisterForm />
+				</div>
+
+
+        {/* Book cards */}
+        <h2 className="text-2xl font-bold text-blabla-dark text-center">
+          Test des cartes de livres
+        </h2>
+
+					<BookCard
+						title="Le Petit Prince"
+						author="A. de Saint-Exupéry"
+						imagePath="https://covers.openlibrary.org/b/id/14516773-L.jpg"
+						bgColor="bg-blabla-light-blue"
+					/>
+					<BookCard
+						title="1984"
+						author="George Orwell"
+						imagePath="https://covers.openlibrary.org/b/id/12642231-L.jpg"
+						bgColor="bg-blabla-orange"
+					/>
+					{/* Et ainsi de suite... */}
+
+			</div>
+		</>
+	);
 }

@@ -100,3 +100,50 @@ export const addBooktoLibrary = async (req:Request, res:Response) =>{
     return res.status(201).json({message: "Book added to library", data: newBook})
 
 }
+
+export const deleteBookLibrary = async (req: Request, res: Response) => {
+
+  // Get user id from params (later from token)
+  const { id } = paramsSchema.parse(req.params);
+
+  // Get book id from params
+  const { bookId } = req.params;
+
+  // Check if user exists
+  const existingUser = await prisma.user.findUnique({
+    where: { userId: id },
+  });
+
+  if (!existingUser) {
+    return res.status(404).json({ message: "User not found" });
+  }
+
+  // Check if the book is in the user's library
+  const existingEntry = await prisma.userLibrary.findFirst({
+    where: {
+      userId: id,
+      bookId: bookId,
+    },
+  });
+
+  if (!existingEntry) {
+    return res.status(404).json({ message: "Book not found in library" });
+  }
+
+  // Delete the entry
+  await prisma.userLibrary.delete({
+    where: {
+      // if you have a composite key
+      userId_bookId: {
+        userId: id,
+        bookId: bookId,
+      },
+    },
+  });
+
+  // Send response
+  return res.status(200).json({
+    message: "Book removed from library"
+  });
+};
+

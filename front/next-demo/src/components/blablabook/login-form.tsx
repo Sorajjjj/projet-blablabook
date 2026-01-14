@@ -4,14 +4,12 @@ import Link from 'next/link'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import { toast } from 'sonner'
 
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
-  FormMessage,
 } from '@/components/ui/form'
 
 import { LightBlueOutlineButton, OrangeSolidButton } from "./buttons";
@@ -26,6 +24,8 @@ const formSchema = loginFormSchema
 export default function LoginPreview() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    mode: "onSubmit",
+    reValidateMode: "onSubmit",
     defaultValues: {
       email: '',
       password: '',
@@ -34,16 +34,10 @@ export default function LoginPreview() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      // Assuming an async login function
+      // TODO: Appel API pour la connexion
       console.log(values)
-      toast(
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(values, null, 2)}</code>
-        </pre>,
-      )
     } catch (error) {
       console.error('Form submission error', error)
-      toast.error('Failed to submit the form. Please try again.')
     }
   }
 
@@ -69,7 +63,11 @@ export default function LoginPreview() {
                           {...field}
                         />
                       </FormControl>
-                      <FormMessage />
+                      {form.formState.errors.email && (
+                        <p className="text-sm font-medium text-red-500">
+                          {form.formState.errors.email.message}
+                        </p>
+                      )}
                     </FormItem>
                   )}
                 />
@@ -87,12 +85,16 @@ export default function LoginPreview() {
                           {...field}
                         />
                       </FormControl>
-                        <div className="flex justify-between items-center">
+                      <div className="flex justify-between items-center">
                         <Link href="#" className="ml-auto inline-block text-sm underline">
                           Mot de passe oublié ?
                         </Link>
                       </div>
-                      <FormMessage />
+                      {form.formState.errors.password && (
+                        <p className="text-sm font-medium text-red-500">
+                          {form.formState.errors.password.message}
+                        </p>
+                      )}
                     </FormItem>
                   )}
                 />

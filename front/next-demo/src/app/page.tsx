@@ -11,7 +11,7 @@ import {
 
 // Importation of the react hook form
 import LoginForm from "@/components/blablabook/login-form";
-import RegisterForm from "@/components/blablabook/register-from";
+import RegisterForm from "@/components/blablabook/register-form";
 import BookCard from "@/components/blablabook/book-card";
 
 // ---------------Testing some components below ---------------------

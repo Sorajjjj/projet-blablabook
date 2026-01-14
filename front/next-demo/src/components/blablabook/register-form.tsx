@@ -4,14 +4,12 @@ import Link from 'next/link'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import { toast } from 'sonner'
 
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
-  FormMessage,
 } from '@/components/ui/form'
 import { OrangeSolidButton } from "./buttons";
 import { Card,CardContent } from '@/components/ui/card'
@@ -24,6 +22,8 @@ const formSchema = registerFormSchema
 export default function RegisterPreview() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    mode: "onSubmit",
+    reValidateMode: "onSubmit",
     defaultValues: {
       name: '',
       email: '',
@@ -35,16 +35,10 @@ export default function RegisterPreview() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      // Assuming an async registration function
+      // TODO: Appel API pour l'inscription
       console.log(values)
-      toast(
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(values, null, 2)}</code>
-        </pre>,
-      )
     } catch (error) {
       console.error('Form submission error', error)
-      toast.error('Failed to submit the form. Please try again.')
     }
   }
 
@@ -71,7 +65,11 @@ export default function RegisterPreview() {
                           {...field}
                         />
                       </FormControl>
-                      <FormMessage />
+                      {form.formState.errors.email && (
+                        <p className="text-sm font-medium text-red-500">
+                          {form.formState.errors.email.message}
+                        </p>
+                      )}
                     </FormItem>
                   )}
                 />
@@ -90,7 +88,11 @@ export default function RegisterPreview() {
                           {...field}
                         />
                       </FormControl>
-                      <FormMessage />
+                      {form.formState.errors.password && (
+                        <p className="text-sm font-medium text-red-500">
+                          {form.formState.errors.password.message}
+                        </p>
+                      )}
                     </FormItem>
                   )}
                 />
@@ -109,7 +111,11 @@ export default function RegisterPreview() {
                           {...field}
                         />
                       </FormControl>
-                      <FormMessage />
+                      {form.formState.errors.confirmPassword && (
+                        <p className="text-sm font-medium text-red-500">
+                          {form.formState.errors.confirmPassword.message}
+                        </p>
+                      )}
                     </FormItem>
                   )}
                 />

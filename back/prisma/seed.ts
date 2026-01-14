@@ -101,6 +101,11 @@ async function main() {
 
   console.log("✅ Seeding terminé !");
 }
-
-await prisma.$disconnect();
-
+main()
+  .catch((e) => {
+    console.error("❌ Erreur seed:", e);
+    process.exit(1);
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  });

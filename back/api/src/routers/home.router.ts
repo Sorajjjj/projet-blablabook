@@ -1,7 +1,7 @@
 // Import express modules
 import express from "express";
 // Import function from controller
-import { getRandomBooks } from "../controllers/books.controller.ts";
+import { getRandomBooks } from "../controllers/books.controller.js";
 
 // Create router instance
 const router = express.Router();

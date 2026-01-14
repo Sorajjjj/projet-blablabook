@@ -1,5 +1,5 @@
 import "dotenv/config";
-import type { Request, Response } from "express";
+import type { Request, Response, NextFunction } from "express";
 import { prisma } from "../config/prisma.js";
 // Import zod
 import z from "zod";
@@ -39,26 +39,33 @@ export const getRandomBooks = async (req: Request, res: Response) => {
 };
 
 // Get a book by id
-export async function getById(req: Request, res: Response) {
-  // get id and verify data
-  const bookId = z.coerce.number().min(1).parse(req.params.id);
+export async function getById(req: Request, res: Response, next: NextFunction) {
+  try {
+    // Get id from request params
+    const { bookId } = req.params;
 
-  // If id does not exists, send 404
-  if (!bookId) {
-    throw new NotFoundError("Cet id n'existe pas");
+    // Validate UUID
+    const uuidValidation = z.string().uuid().safeParse(bookId);
+
+    // If it is not valid
+    if (!uuidValidation.success) {
+      throw new NotFoundError("Id invalide");
+    }
+
+    // Use id to get book
+    const book = await prisma.book.findUnique({
+      where: {
+        bookId,
+      },
+    });
+
+    // If book does not exists, send 404
+    if (!book) {
+      throw new NotFoundError("Ce livre n'existe pas");
+    }
+
+    res.status(200).json(book);
+  } catch (error) {
+    next(error);
   }
-
-  // Get book by this verified id
-  const book = await prisma.book.findUnique({
-    where: {
-      id: bookId,
-    },
-  });
-
-  // If book does not exists, send 404
-  if (!book) {
-    throw new NotFoundError("Ce livre n'existe pas");
-  }
-
-  res.status(200).json(book);
 }

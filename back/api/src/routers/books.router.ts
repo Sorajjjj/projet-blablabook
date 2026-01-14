@@ -14,6 +14,6 @@ router.get("/", getAllBooks);
 router.get("/random", getRandomBooks);
 
 // Endpoint to get a book by id
-router.get("/:id", getById);
+router.get("/:bookId", getById);
 
 export default router;

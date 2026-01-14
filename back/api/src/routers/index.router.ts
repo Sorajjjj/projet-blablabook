@@ -1,5 +1,6 @@
 import { Router } from "express";
-import { healthCheck } from "../controllers/main.controller.js"
+import { healthCheck } from "../controllers/main.controller.js";
+import  librariesRouter  from "./library.router.js";
 import booksRouter from "./books.router.js";
 // Import home router
 import homeRouter from "./home.router.js";
@@ -12,3 +13,5 @@ router.get("/health", healthCheck);
 router.use("/", homeRouter);
 
 router.use('/books', booksRouter);
+
+router.use("/libraries", librariesRouter)

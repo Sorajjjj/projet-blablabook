@@ -1,0 +1,17 @@
+
+### Get my library
+get http://localhost:4000/api/libraries/user/98c4f331-5434-49a4-8159-7036079bfbb3
+
+### Add to my library
+POST http://localhost:4000/api/libraries/user/98c4f331-5434-49a4-8159-7036079bfbb3
+Content-Type: application/json
+
+{
+  "bookId": "6f9ccea3-8b0e-4631-8b3d-8b6670256854",
+  "title": "Murder on the Orient Express",
+  "releaseDate": null,
+  "isbn": null,
+  "summary": "A young wizard discovers his magical heritage.",
+  "authorId": "d7a4f3c1-2222-4b1d-9c10-bbbbbbbbbbbb",
+  "status": "want_to_read"
+}

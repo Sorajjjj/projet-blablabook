@@ -1,12 +1,19 @@
 import { Router } from "express";
-import { getAllBooks, getRandomBooks } from "../controllers/books.controller.js";
+import {
+  getAllBooks,
+  getRandomBooks,
+  getById,
+} from "../controllers/books.controller.js";
 
 const router = Router();
 
 // Endpoint to get all books
-router.get('/', getAllBooks);
+router.get("/", getAllBooks);
 
 // Endpoint to get 5 random books
-router.get('/random', getRandomBooks);
+router.get("/random", getRandomBooks);
+
+// Endpoint to get a book by id
+router.get("/:bookId", getById);
 
 export default router;

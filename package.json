@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/O-clock-Dublin/projet-blablabook/issues"
   },
-  "homepage": "https://github.com/O-clock-Dublin/projet-blablabook#readme"
+  "homepage": "https://github.com/O-clock-Dublin/projet-blablabook#readme",
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.10"
+  }
 }

@@ -5,9 +5,10 @@ const port = 3000;
 
 // Absolute path to your HTML file
 const htmlFilePath = path.join(__dirname, 'Integration', 'Bibliotheque.html');
+const accueilFilePath = path.join(__dirname, 'Integration', 'Accueil.html');
 
-app.get('/', (req, res) => {
-  res.sendFile(htmlFilePath, err => {
+app.get('/Accueil', (req, res) => {
+  res.sendFile(accueilFilePath, err => {
     if (err) {
       console.error(err);
       res.status(500).send('Erreur serveur');

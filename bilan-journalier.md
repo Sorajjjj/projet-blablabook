@@ -4,7 +4,7 @@
 
 **Jour 1** - Gestion des tâches du sprint 1 et installation des dépendances nécessaires.
 
-## Anasse
+## Anas
 
 **Jour 1** - Gestion des tâches du sprint 1 et installation des dépendances nécessaires.
 

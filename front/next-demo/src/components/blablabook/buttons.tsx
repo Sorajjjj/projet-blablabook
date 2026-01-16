@@ -11,7 +11,7 @@ export const OrangeOutlineButton = forwardRef<HTMLButtonElement, BlaBlaButtonPro
     <Button
       ref={ref}
       variant="outline"
-      className={`border-2 border-blabla-orange text-blabla-orange hover:bg-blabla-orange/10 bg-transparent px-12 py-6 text-base font-basic ${className}`}
+      className={`border-2 border-blabla-orange text-blabla-orange hover:bg-blabla-orange/10 bg-transparent px-10 py-2 text-base font-basic ${className}`}
       {...props}
     >
       {children}
@@ -22,44 +22,44 @@ OrangeOutlineButton.displayName = "OrangeOutlineButton";
 
 // Bouton bleu clair outline
 export const LightBlueOutlineButton = forwardRef<HTMLButtonElement, BlaBlaButtonProps>(
-  ({ children, className = "", ...props }, ref) => (
-    <Button
-      ref={ref}
-      variant="outline"
-      className={`border-2 border-blabla-light-blue text-blabla-teal hover:bg-blabla-light-blue/20 bg-blabla-light-blue/30 px-12 py-6 text-base font-basic ${className}`}
-      {...props}
-    >
-      {children}
-    </Button>
-  )
+	({ children, className = "", ...props }, ref) => (
+		<Button
+			ref={ref}
+			variant="outline"
+			className={`border-2 border-blabla-light-blue text-blabla-teal hover:bg-blabla-light-blue/20 bg-blabla-light-blue/30 px-10 py-2 text-base font-basic ${className}`}
+			{...props}
+		>
+			{children}
+		</Button>
+	)
 );
 LightBlueOutlineButton.displayName = "LightBlueOutlineButton";
 
 // Bouton orange plein
 export const OrangeSolidButton = forwardRef<HTMLButtonElement, BlaBlaButtonProps>(
-  ({ children, className = "", ...props }, ref) => (
-    <Button
-      ref={ref}
-      className={`bg-blabla-orange hover:bg-blabla-orange/90 text-white px-12 py-6 text-base font-basic shadow-none ${className}`}
-      {...props}
-    >
-      {children}
-    </Button>
-  )
+	({ children, className = "", ...props }, ref) => (
+		<Button
+			ref={ref}
+			className={`bg-blabla-orange hover:bg-blabla-orange/90 text-white px-10 py-1 text-base font-basic shadow-none ${className}`}
+			{...props}
+		>
+			{children}
+		</Button>
+	)
 );
 OrangeSolidButton.displayName = "OrangeSolidButton";
 
 // Bouton teal plein
 export const TealSolidButton = forwardRef<HTMLButtonElement, BlaBlaButtonProps>(
-  ({ children, className = "", ...props }, ref) => (
-    <Button
-      ref={ref}
-      className={`bg-blabla-teal hover:bg-blabla-teal/90 text-white px-12 py-6 text-base font-basic shadow-none ${className}`}
-      {...props}
-    >
-      {children}
-    </Button>
-  )
+	({ children, className = "", ...props }, ref) => (
+		<Button
+			ref={ref}
+			className={`bg-blabla-teal hover:bg-blabla-teal/90 text-white px-10 py-1 text-base font-basic shadow-none ${className}`}
+			{...props}
+		>
+			{children}
+		</Button>
+	)
 );
 TealSolidButton.displayName = "TealSolidButton";
 
@@ -69,7 +69,7 @@ export const OrangeRoundedButton = forwardRef<HTMLButtonElement, BlaBlaButtonPro
     <Button
       ref={ref}
       variant="outline"
-      className={`border-2 border-blabla-orange text-blabla-orange hover:bg-blabla-orange/10 bg-transparent rounded-full px-12 py-6 text-base font-basic ${className}`}
+      className={`border-2 border-blabla-orange text-blabla-orange hover:bg-blabla-orange/10 bg-transparent rounded-full px-10 py-2 text-base font-basic ${className}`}
       {...props}
     >
       {children}
@@ -84,7 +84,7 @@ export const TealRoundedButton = forwardRef<HTMLButtonElement, BlaBlaButtonProps
     <Button
       ref={ref}
       variant="outline"
-      className={`border-2 border-blabla-teal text-blabla-teal hover:bg-blabla-teal/10 bg-transparent rounded-full px-12 py-6 text-base font-basic ${className}`}
+      className={`border-2 border-blabla-teal text-blabla-teal hover:bg-blabla-teal/10 bg-transparent rounded-full px-10 py-2 text-base font-basic ${className}`}
       {...props}
     >
       {children}
@@ -99,7 +99,7 @@ export const SimpleButton = forwardRef<HTMLButtonElement, BlaBlaButtonProps>(
     <Button
       ref={ref}
       variant="ghost"
-      className={`text-blabla-dark hover:bg-transparent hover:underline px-12 py-6 text-base font-basic ${className}`}
+      className={`text-blabla-dark hover:bg-transparent hover:underline px-10 py-2 text-base font-basic ${className}`}
       {...props}
     >
       {children}

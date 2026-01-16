@@ -1,9 +1,15 @@
 import Link from "next/link";
 import styles from "./footer.module.css";
+import Image from "next/image";
 
-export default function Footer() {
+interface FooterProps {
+	className?: string;
+	style?: React.CSSProperties;
+}
+
+export default function Footer({ className, style }: FooterProps) {
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} ${className}`} style={style}>
       <div className={styles.container}>
 
         <div className={styles.grid}>
@@ -11,8 +17,7 @@ export default function Footer() {
           <div>
             <div className={styles.logo}>
               <span className={styles.star}>✦</span>
-              <span>BlaBla</span>
-              <span className={styles.orange}>Book</span>
+            <Image src="/logo/logo02.PNG" alt="Logo BlaBlaBook" width={150} height={30} />
             </div>
             <p className={styles.description}>
               Notre mission est de connecter les lecteurs du monde entier,

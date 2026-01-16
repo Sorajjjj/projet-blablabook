@@ -4,7 +4,7 @@
 }
 
 .container {
-  max-width: 1200px;
+  /* max-width: 1200px; <-------- Réduit trop la taille du conteneur */
   margin: 0 auto;
   padding: 16px;
   display: flex;
@@ -37,6 +37,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  align-items: center;
 }
 
 .navList li {
@@ -64,4 +65,10 @@
 
 .loginButton:hover {
   background-color: #d95f0e;
+}
+
+.searchBarContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }

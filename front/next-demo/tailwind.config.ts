@@ -16,6 +16,7 @@ const config: Config = {
           'orange': '#E67141',
           'taupe': '#978B7B',
           'cream': '#F2F1E8',
+          'light-cream': '#FDFBF7',
         },
       },
       boxShadow: {

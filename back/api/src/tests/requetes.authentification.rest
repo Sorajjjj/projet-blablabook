@@ -8,7 +8,7 @@ Content-Type: application/json
   "password": "Password123!"
 }
 
-### Login user (cookie is set by server)
+### Login user (cookie is set)
 POST http://localhost:4000/api/auth/login
 Content-Type: application/json
 
@@ -16,3 +16,6 @@ Content-Type: application/json
   "email": "testuser@mail.com",
   "password": "Password123!"
 }
+
+### Logout user (cookie is cleared)
+POST http://localhost:4000/api/auth/logout

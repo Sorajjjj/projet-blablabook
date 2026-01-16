@@ -86,7 +86,17 @@ export const login = async (req:Request, res:Response) =>{
         data: existingUser
     });
 
-    
+}
 
+export const logout = async (req:Request, res:Response) =>{
+    
+    // Clear the authentication cookie from the browser
+    // This removes the JWT stored in the cookie
+    res.clearCookie("accessToken", {
+        httpOnly: true,
+        sameSite: "lax"
+    });
+    
+    return res.status(200).json({ message: "Déconnexion réussie" });
     
 }

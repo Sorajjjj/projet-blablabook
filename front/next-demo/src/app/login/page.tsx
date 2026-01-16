@@ -17,7 +17,7 @@ export default function ConnexionPage() {
 							height={400}
 						/>
 						<p className="text-blabla-dark text-base">
-							<strong>BlaBlaBook</strong> est une plateforme qui connecte lesrrgddfgdfghtrfthrthrtrth
+							<strong>BlaBlaBook</strong> est une plateforme qui connecte les
 							passions de lecture du monde entier. Elle permet de partager ses
 							avis, de découvrir de nouveaux livres et d’échanger autour de ses
 							lectures favorites, le tout au sein d’une communauté conviviale et

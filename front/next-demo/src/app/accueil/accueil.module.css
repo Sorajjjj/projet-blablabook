@@ -1,12 +1,11 @@
 /* Réinitialisation et styles de base */
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     color: #333;
 }
 
-header {
+/* header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -20,23 +19,23 @@ header {
     width: 300px;
     border: 1px solid #ccc;
     border-radius: 4px;
-}
+} */
 
-nav ul {
+/* nav ul {
     display: flex;
     list-style: none;
     gap: 20px;
-}
+} */
 
-nav a {
+/* nav a {
     text-decoration: none;
     color: #333;
-}
+} */
 
 .hero {
     text-align: center;
     padding: 40px 0;
-    background-color: #d4f1f4;
+    background-color: #A6C4C7;
     margin: 20px 5%;
     border-radius: 10px;
 }
@@ -87,7 +86,7 @@ nav a {
     cursor: pointer;
 }
 
-footer {
+/* footer {
     background-color: #fbfcfd;
     padding: 40px 5% 20px;
     margin-top: 450px;
@@ -97,9 +96,9 @@ footer {
     display: flex;
     justify-content: space-between;
     gap: 40px;
-}
+} */
 
-.mission {
+/* .mission {
     flex: 1;
 }
 
@@ -125,4 +124,4 @@ footer {
     text-align: center;
     margin-top: 20px;
     color: #666;
-}
+} */

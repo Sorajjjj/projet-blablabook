@@ -1,17 +1,7 @@
+// Import of page components
 import Footer from "@/components/footer";
-import Header from "../components/Header";
-import Search from "../components/SearchBar";
+import Header from "@/components/Header";
 
-export default function Home() {
-
-
-  return (
-    <>
-      <Header />
-      
-      <Footer />
-    </>
-  );
 // Importation of the different types of buttons according to the graphic charter
 import {
 	OrangeOutlineButton,
@@ -34,6 +24,7 @@ export default function Home() {
 	return (
 		// Buttons components
 		<>
+    <Header showSearchBar={true} />
 			<div className="bg-blabla-cream flex flex-col items-center justify-center py-10 ">
 				<h1 className="text-5xl font-bold text-blabla-dark font-bayon">
 					BlaBlaBook
@@ -99,6 +90,7 @@ export default function Home() {
 					{/* Et ainsi de suite... */}
 
 			</div>
+      <Footer />
 		</>
 	);
 }

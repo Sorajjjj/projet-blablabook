@@ -98,11 +98,11 @@ export default function LoginPreview() {
                     </FormItem>
                   )}
                 />
-                <OrangeSolidButton type="submit" className="w-full text-xl">
+                <OrangeSolidButton type="submit" className="w-full text-xl py-6">
                   Se connecter
                 </OrangeSolidButton>
                 <p className="text-center">Ou</p>
-                <LightBlueOutlineButton className="w-full text-xl">
+                <LightBlueOutlineButton className="w-full text-xl py-6">
                   Créer un compte
                 </LightBlueOutlineButton>
               </div>

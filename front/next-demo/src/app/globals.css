@@ -24,6 +24,7 @@
   --color-blabla-orange: #E67141;
   --color-blabla-taupe: #978B7B;
   --color-blabla-cream: #F2F1E8;
+  --color-blabla-light-cream: #FDFBF7;
   
   /* ShadCN Variables (minimum requis) */
   --radius-lg: var(--radius);
@@ -64,5 +65,9 @@
     padding: 0;
     margin: 0;
   }
-  
 }
+
+body {
+    font-family: 'Basic', sans-serif;
+    font-weight: 100;
+  }

@@ -1,91 +1,64 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <link rel="stylesheet" href="../Integration/style.css" />
-  <title>BlaBlaBook – Accueil</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenue sur BlaBlaBook</title>
+    <link rel="stylesheet" href="accueil.css">
 </head>
-
 <body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Logo BlaBlaBook">
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Chercher vos livres préférés...">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Bibliothèque</a></li>
+                <li><a href="#">Tom Olivier</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <!-- 🧭 En-tête principal -->
-  <header class="header">
-    <nav aria-label="Navigation principale">
-      <a href="/" class="logo">BlaBlaBook</a>
+    <main>
+        <section class="hero">
+            <h1>Bienvenue sur BlaBlaBook</h1>
+            <p>Découvrir et gérer votre bibliothèque</p>
+        </section>
 
-      <form role="search">
-        <input
-          type="search"
-          placeholder="Chercher vos livres préférés..."
-          aria-label="Rechercher un livre"
-        />
-      </form>
+        <section class="recommendations">
+            <h2>POUR VOUS</h2>
+            
+        </section>
+    </main>
 
-      <ul class="nav-links">
-        <li><a href="/">Accueil</a></li>
-        <li><a href="/bibliotheque">Bibliothèque</a></li>
-        <li><a href="/profil">Tom Olivier</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- 🎯 Contenu principal -->
-  <main id="content">
-
-    <!-- 🌊 Section de bienvenue -->
-    <section class="hero" aria-labelledby="hero-title">
-      <h1 id="hero-title">Bienvenue sur BlaBlaBook</h1>
-      <p>Découvrir et gérer votre bibliothèque</p>
-    </section>
-
-    <!-- 📚 Recommandations -->
-    <section class="books" aria-labelledby="books-title">
-      <h2 id="books-title">Pour vous</h2>
-
-      <ul class="book-list">
-        <li class="book-card">
-          <article>
-            <img src="book1.jpg" alt="Couverture du livre Secrets des fleurs" />
-            <h3>Secrets des fleurs</h3>
-            <p>Élise H. Martin</p>
-            <a href="#" class="btn">Voir plus</a>
-          </article>
-        </li>
-
-        <!-- autres livres -->
-      </ul>
-    </section>
-
-  </main>
-
-  <!-- 🦶 Pied de page -->
-  <footer class="footer">
-    <nav aria-label="Liens de pied de page">
-      <section>
-        <h2 class="visually-hidden">À propos</h2>
-        <p>
-          Notre mission est de connecter les lecteurs du monde entier.
-        </p>
-      </section>
-
-      <section>
-        <h3>Lien</h3>
-        <ul>
-          <li><a href="/">Accueil</a></li>
-          <li><a href="/catalogue">Catalogue</a></li>
-          <li><a href="/bibliotheque">Bibliothèque</a></li>
-        </ul>
-      </section>
-
-      <section>
-        <h3>Support</h3>
-        <ul>
-          <li><a href="/help">Centre d’aide</a></li>
-          <li><a href="/contact">Contact</a></li>
-        </ul>
-      </section>
-    </nav>
-  </footer>
-
+    <footer>
+        <div class="footer-section">
+            <div class="mission">
+                <img src="logo.png" alt="Logo BlaBlaBook">
+                <p>Notre mission est de connecter les lecteurs du monde entier, s'échanger et rapprocher les passionnés de lecture.</p>
+            </div>
+            <div class="links">
+                <h3>Lien</h3>
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">Catalogue</a></li>
+                    <li><a href="#">Bibliothèque</a></li>
+                </ul>
+            </div>
+            <div class="support">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Centre d'aide</a></li>
+                    <li><a href="#">Politique de confidentialité</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="copyright">2026 BlaBlaBook All rights reserved</p>
+    </footer>
 </body>
 </html>

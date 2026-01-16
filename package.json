@@ -17,5 +17,12 @@
   "bugs": {
     "url": "https://github.com/O-clock-Dublin/projet-blablabook/issues"
   },
-  "homepage": "https://github.com/O-clock-Dublin/projet-blablabook#readme"
+  "homepage": "https://github.com/O-clock-Dublin/projet-blablabook#readme",
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.10",
+    "@types/jsonwebtoken": "^9.0.10"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.7"
+  }
 }

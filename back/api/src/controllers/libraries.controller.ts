@@ -6,8 +6,8 @@ import { newBookToLibrarySchema } from "../schemas/newbookschema.js";
 
 export const getMyLibrary = async (req:Request, res:Response) =>{
 
-    // Validate request params with Zod
-    const { id } = paramsSchema.parse(req.params);
+    // Get the user id from the auth middleware
+    const id = req.userId;
 
     // all books linked to this user
     const library = await prisma.userLibrary.findMany({
@@ -31,20 +31,20 @@ export const getMyLibrary = async (req:Request, res:Response) =>{
     if(library.length === 0){
     return res
     .status(200)
-    .json({message:"The user’s library is empty", data:{}})
+    .json({message:"La bibliothèque de l’utilisateur est vide.", data:[]})
     }
 
     // Return the user's library with status 200
     return res
     .status(200)
-    .json({message:"User library data", data: library})
+    .json({message:"Données de la bibliothèque de l’utilisateur", data: library})
 
 }
 
 export const addBooktoLibrary = async (req:Request, res:Response) =>{
 
-    // Get the user id from the request (later from token)
-    const { id } = paramsSchema.parse(req.params);
+    // Get the user id from the auth middleware
+    const id = req.userId;
     
     // Get book data from the request body
     const { 
@@ -62,7 +62,7 @@ export const addBooktoLibrary = async (req:Request, res:Response) =>{
     })
 
     if(!existingBook) {
-        return res.status(404).json({ message: "Book not found" });
+        return res.status(404).json({ message: "Livre non trouvé" });
     }
    
 
@@ -72,7 +72,7 @@ export const addBooktoLibrary = async (req:Request, res:Response) =>{
     })
 
     if(!existingUser) {
-        return res.status(404).json({ message: "user not found" });
+        return res.status(404).json({ message: "Utilisateur non trouvé" });
     }
 
     // Check if the book is already in the user's library
@@ -84,7 +84,7 @@ export const addBooktoLibrary = async (req:Request, res:Response) =>{
     })
 
     if (library) {
-        return res.status(409).json({ message: "Book already in library" });
+        return res.status(409).json({ message: "Le livre est déjà dans la bibliothèque." });
     }
 
     // Add the book to the user's library
@@ -97,14 +97,14 @@ export const addBooktoLibrary = async (req:Request, res:Response) =>{
     })
 
     // Send success response
-    return res.status(201).json({message: "Book added to library", data: newBook})
+    return res.status(201).json({message: "Livre ajouté a la bibliothèque", data: newBook})
 
 }
 
 export const deleteBookLibrary = async (req: Request, res: Response) => {
 
-  // Get user id from params (later from token)
-  const { id } = paramsSchema.parse(req.params);
+    // Get the user id from the auth middleware
+    const id = req.userId;
 
   // Get book id from params
   const { bookId } = req.params;
@@ -115,7 +115,7 @@ export const deleteBookLibrary = async (req: Request, res: Response) => {
   });
 
   if (!existingUser) {
-    return res.status(404).json({ message: "User not found" });
+    return res.status(404).json({ message: "Utilisateur non trouvé" });
   }
 
   // Check if the book is in the user's library
@@ -127,7 +127,7 @@ export const deleteBookLibrary = async (req: Request, res: Response) => {
   });
 
   if (!existingEntry) {
-    return res.status(404).json({ message: "Book not found in library" });
+    return res.status(404).json({ message: "Livre non trouvé dans la bibliothèque" });
   }
 
   // Delete the entry
@@ -143,7 +143,7 @@ export const deleteBookLibrary = async (req: Request, res: Response) => {
 
   // Send response
   return res.status(200).json({
-    message: "Book removed from library"
+    message: "Livre retiré de la bibliothèque"
   });
 };
 

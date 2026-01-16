@@ -1,9 +1,11 @@
 
-### Get my library
-get http://localhost:4000/api/libraries/user/98c4f331-5434-49a4-8159-7036079bfbb3
+### Get my library (authenticated)
+GET http://localhost:4000/api/libraries/
+Cookie: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4OWRjOTlhOC1mMDUyLTQzYWYtOGJjMi00MWExNGMxMzU2YjAiLCJpYXQiOjE3Njg1MjQwMjksImV4cCI6MTc2ODUyNzYyOX0.xBnbcoDEbST45E577TaWoCfPL_C7o_gpdfr8yBblmFE
 
 ### Add to my library
-POST http://localhost:4000/api/libraries/user/98c4f331-5434-49a4-8159-7036079bfbb3
+POST http://localhost:4000/api/libraries/
+Cookie: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4OWRjOTlhOC1mMDUyLTQzYWYtOGJjMi00MWExNGMxMzU2YjAiLCJpYXQiOjE3Njg1MjQwMjksImV4cCI6MTc2ODUyNzYyOX0.xBnbcoDEbST45E577TaWoCfPL_C7o_gpdfr8yBblmFE
 Content-Type: application/json
 
 {
@@ -17,4 +19,6 @@ Content-Type: application/json
 }
 
 ### Delete book on my library
-DELETE http://localhost:4000/api/libraries/user/98c4f331-5434-49a4-8159-7036079bfbb3/book/6f9ccea3-8b0e-4631-8b3d-8b6670256854
+
+DELETE http://localhost:4000/api/libraries/6f9ccea3-8b0e-4631-8b3d-8b6670256854
+Cookie: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4OWRjOTlhOC1mMDUyLTQzYWYtOGJjMi00MWExNGMxMzU2YjAiLCJpYXQiOjE3Njg1MjQwMjksImV4cCI6MTc2ODUyNzYyOX0.xBnbcoDEbST45E577TaWoCfPL_C7o_gpdfr8yBblmFE

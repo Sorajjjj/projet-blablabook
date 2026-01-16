@@ -27,8 +27,8 @@ export const getRandomBooks = async (req: Request, res: Response) => {
     // Shuffle the array randomly
     const shuffled = allBooks.sort(() => Math.random() - 0.5);
 
-    // Take the first 5
-    const books = shuffled.slice(0, 5);
+    // Take the first 4
+    const books = shuffled.slice(0, 4);
 
     res.json(books);
   } catch (error) {

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import header from "./Header.module.css"
 import SearchBar from "./SearchBar";
+import Image from "next/image";
 import { OrangeOutlineButton, OrangeSolidButton } from "./blablabook/buttons";
 
 
@@ -9,9 +10,7 @@ export default function Header({ showSearchBar = false } : { showSearchBar?: boo
     <header className={header.header}>
       <div className={header.container}>
         <div className={header.logo}>
-          <span className={header.star}>✦</span>
-          <span>BlaBla</span>
-          <span className={header.orange}>Book</span>
+          <Image src="/logo/logo01.PNG" alt="Logo BlaBlaBook" width={70} height={30} />
         </div>
         <div className={header.searchBarContainer}>
           {showSearchBar && <SearchBar />}

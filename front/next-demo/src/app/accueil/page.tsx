@@ -42,7 +42,7 @@ export default function AccueilPage() {
 
 				<section className={Styles.recommendations}>
 					<h2>POUR VOUS</h2>
-					<div className="flex flex-wrap justify-center gap-4">
+					<div className="flex flex-wrap justify-center gap-4 ">
 
               {randomBook.length > 0 ? (randomBook.map((book: iBook) => { 
                 return (

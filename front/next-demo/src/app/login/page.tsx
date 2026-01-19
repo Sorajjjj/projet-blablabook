@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function ConnexionPage() {
 	return (
 		<div className="min-h-screen flex flex-col bg-blabla-light-cream">
-			<div className="flex-grow flex items-center justify-center">
+			<div className="grow flex items-center justify-center">
 				<div className="w-full max-w-6xl grid md:grid-cols-2 gap-8 items-center p-10 rounded-lg border-2 border-blabla-taupe/10">
 					{/* Description on the left */}
 					<div className="space-y-6">

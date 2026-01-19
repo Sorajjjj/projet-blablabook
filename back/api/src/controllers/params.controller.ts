@@ -1,7 +1,6 @@
 import "dotenv/config";
 import type { Request, Response, NextFunction } from "express";
 import { prisma } from "../config/prisma.js";
-import { paramsSchema } from "../schemas/uuidSchema.js";
 import { NotFoundError, UnauthorizedError } from "../lib/errors.js";
 
 export async function getParams(
@@ -18,6 +17,7 @@ export async function getParams(
       throw new UnauthorizedError("Non Autorisé");
     }
 
+    // Get the user with matching id
     const user = await prisma.user.findUnique({
       where: { userId },
       select: {
@@ -32,7 +32,7 @@ export async function getParams(
       },
     });
 
-    // If user id does not exists, send 404 error
+    // If user does not exists, send 404 error
     if (!user) {
       throw new NotFoundError("Utilisateur inexistant");
     }

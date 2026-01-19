@@ -2,14 +2,18 @@ import "dotenv/config";
 import type { Request, Response, NextFunction } from "express";
 import { prisma } from "../config/prisma.js";
 // Import zod
-import z from "zod";
+import z, { includes } from "zod";
 // Import http errors handler
 import { NotFoundError } from "../lib/errors.js";
 
 // Retrieve all books from the database
 export const getAllBooks = async (req: Request, res: Response) => {
   try {
-    const books = await prisma.book.findMany();
+    const books = await prisma.book.findMany({
+      include: {
+        author: true
+      }
+    });
     res.json(books);
   } catch (error) {
     res
@@ -22,7 +26,11 @@ export const getAllBooks = async (req: Request, res: Response) => {
 export const getRandomBooks = async (req: Request, res: Response) => {
   try {
     // Retrieve all books
-    const allBooks = await prisma.book.findMany();
+    const allBooks = await prisma.book.findMany({
+      include: {
+        author: true
+      }
+    });
 
     // Shuffle the array randomly
     const shuffled = allBooks.sort(() => Math.random() - 0.5);
@@ -57,6 +65,9 @@ export async function getById(req: Request, res: Response, next: NextFunction) {
       where: {
         bookId,
       },
+      include: {
+        author: true
+      }
     });
 
     // If book does not exists, send 404

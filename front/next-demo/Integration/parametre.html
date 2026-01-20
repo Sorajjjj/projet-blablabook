@@ -3,62 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlaBlaBook - Mes Paramètres</title>
+    <title>Mes Paramètres</title>
     <link rel="stylesheet" href="parametre.module.css">
 </head>
 <body>
-
-<header class="navbar">
-    <div class="navbar-container">
-        <div class="logo">
-            <img src="votre-logo.png" alt="BlaBlaBook Logo">
-            <span class="logo-text">BlaBla<span class="orange">Book</span></span>
-        </div>
-
-        <nav class="nav-links">
-            <a href="#" class="nav-item">
-                <span class="icon">🏠</span> Accueil
-            </a>
-            <a href="#" class="nav-item">
-                <span class="icon">📖</span> Bibliothèque
-            </a>
-            <div class="nav-item user-profile">
-                <div class="user-icon">👤</div>
-                <span>Tom Olivier</span>
-            </div>
-        </nav>
-    </div>
-</header>
-
-    <main class="container">
-        <p class="breadcrumb">Comptes / Paramètres</p>
-        <h1>MES PARAMETRES</h1>
+    <div class="container">
+        <header>
+            <p class="breadcrumb">Comptes / Paramètres</p>
+            <h1>MES PARAMETRES</h1>
+        </header>
 
         <section class="settings-card">
             <h2>Bibliothèque Personnelle</h2>
-            <div class="setting-row">
-                <div class="setting-info">
+            <div class="row">
+                <div class="label-col">
                     <strong>Profil</strong>
                     <p>Modifiez votre identifiant</p>
                 </div>
-                <div class="setting-action">
+                <div class="input-col">
                     <label>Nouvel Identifiant</label>
                     <div class="input-group">
                         <input type="text">
-                        <button class="btn-primary">Valider</button>
+                        <button class="btn-orange">Valider</button>
                     </div>
                 </div>
             </div>
-            <hr>
-            <div class="setting-row">
-                <div class="setting-info">
+            <div class="row">
+                <div class="label-col">
                     <strong>Thème</strong>
                     <p>Personnalisez votre interface</p>
                 </div>
-                <div class="setting-action">
+                <div class="input-col">
                     <div class="toggle-group">
-                        <button class="toggle">Clair</button>
-                        <button class="toggle active">Sombre</button>
+                        <button class="toggle-btn">Clair</button>
+                        <button class="toggle-btn active">Sombre</button>
                     </div>
                 </div>
             </div>
@@ -66,84 +44,54 @@
 
         <section class="settings-card">
             <h2>Sécurité et Confidentialité</h2>
-            <div class="setting-row">
-                <div class="setting-info">
+            <div class="row">
+                <div class="label-col">
                     <strong>Contact</strong>
                     <p>Modifiez votre adresse e-mail</p>
                 </div>
-                <div class="setting-action">
+                <div class="input-col">
                     <label>Nouvelle adresse e-mail</label>
                     <input type="email">
                     <label>Confirmez votre nouvelle adresse e-mail</label>
                     <input type="email">
-                    <button class="btn-primary align-right">Valider</button>
+                    <button class="btn-orange right-align">Valider</button>
                 </div>
             </div>
-            <hr>
-            <div class="setting-row">
-                <div class="setting-info">
+            <div class="row">
+                <div class="label-col">
                     <strong>Sécurité</strong>
                     <p>Modifiez votre mot de passe</p>
                 </div>
-                <div class="setting-action">
+                <div class="input-col">
                     <label>Nouveau mot de passe</label>
                     <input type="password">
                     <label>Confirmez votre nouveau mot de passe</label>
                     <input type="password">
-                    <button class="btn-primary align-right">Valider</button>
+                    <button class="btn-orange right-align">Valider</button>
                 </div>
             </div>
         </section>
 
         <section class="settings-card">
             <h2>Gestion de compte</h2>
-            <div class="setting-row">
-                <div class="setting-info">
+            <div class="row">
+                <div class="label-col">
                     <strong>Paramètres du compte</strong>
                     <p>Supprimez votre compte</p>
                 </div>
-                <div class="setting-action">
-                    <button class="btn-danger">Supprimer définitivement</button>
+                <div class="input-col">
+                    <button class="btn-large-orange">Supprimer définitivement</button>
                 </div>
             </div>
-            <div class="setting-row">
-                <div class="setting-info">
+            <div class="row">
+                <div class="label-col">
                     <p>Désactivez votre compte</p>
                 </div>
-                <div class="setting-action">
-                    <button class="btn-danger">Désactiver temporairement</button>
+                <div class="input-col">
+                    <button class="btn-large-orange">Désactiver temporairement</button>
                 </div>
             </div>
         </section>
-    </main>
-    <footer class="footer">
-    <div class="footer-col">
-        ✨ <strong>BlaBlaBook</strong>
-        <p>
-            Notre mission est de connecter les lecteurs du monde entier,
-            s’échanger et rapprocher les passionnés de lecture.
-        </p>
     </div>
-
-    <div class="footer-col">
-        <h4>Lien</h4>
-        <a href="#">Accueil</a>
-        <a href="#">Catalogue</a>
-        <a href="#">Bibliothèque</a>
-    </div>
-
-    <div class="footer-col">
-        <h4>Support</h4>
-        <a href="#">Centre d’aide</a>
-        <a href="#">Politique de confidentialité</a>
-        <a href="#">Contact</a>
-    </div>
-</footer>
-
-<p class="copyright">
-    © 2026 BlaBlaBook All rights reserved
-</p>
-
-
 </body>
 </html>

@@ -1,0 +1,130 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.breadcrumb {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-bottom: 5px;
+}
+
+.pageTitle {
+  font-size: 2rem;
+  letter-spacing: 1px;
+  margin-top: 0;
+}
+
+/* Card Styles */
+.settingsCard {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
+  overflow: hidden;
+  border: 1px solid #eee;
+}
+
+.settingsCard h2 {
+  font-size: 1.2rem;
+  padding: 20px 30px;
+  border-bottom: 1px solid #f0f0f0;
+  margin: 0;
+}
+
+.row {
+  display: flex;
+  padding: 30px;
+  border-bottom: 1px solid #f9f9f9;
+}
+
+.labelCol {
+  flex: 1;
+}
+
+.labelCol p {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin: 5px 0 0 0;
+}
+
+.inputCol {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels & Inputs */
+.label {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-bottom: 5px;
+}
+
+.input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  background: #fafafa;
+}
+
+.inputGroup {
+  display: flex;
+  gap: 15px;
+}
+
+.inputGroup .input {
+  flex-grow: 1;
+}
+
+/* Buttons */
+.btnOrange {
+  background-color: #E67141;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  height: fit-content;
+}
+
+.btnLargeOrange {
+  background-color: #E67141;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  width: 250px;
+  cursor: pointer;
+}
+
+.rightAlign {
+  align-self: flex-end;
+}
+
+/* Toggle Buttons */
+.toggleGroup {
+  display: flex;
+  gap: 10px;
+}
+
+.toggleBtn {
+  padding: 8px 20px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background: white;
+  cursor: pointer;
+}
+
+.toggleBtn.active {
+  background: rgb(1, 11, 43);   
+
+  color: white;
+  border-color: rgb(1, 11, 43);
+}

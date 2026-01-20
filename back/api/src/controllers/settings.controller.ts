@@ -2,7 +2,10 @@ import "dotenv/config";
 import type { Request, Response, NextFunction } from "express";
 import { prisma } from "../config/prisma.js";
 import { NotFoundError } from "../lib/errors.js";
-import { updateUsernameSchema } from "../schemas/settingsSchema.js";
+import {
+  updateEmailSchema,
+  updateUsernameSchema,
+} from "../schemas/settingsSchema.js";
 
 export async function getSettingsPage(
   req: Request,
@@ -69,6 +72,32 @@ export async function updateUsername(
 
     return res.status(200).json({
       username: user.username,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function updateEmailAddress(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) {
+  try {
+    const userId = req.userId!;
+
+    const { email } = updateEmailSchema.parse(req.body);
+
+    const user = await prisma.user.update({
+      where: { userId },
+      data: { email },
+      select: {
+        email: true,
+      },
+    });
+
+    return res.status(200).json({
+      email: user.email,
     });
   } catch (error) {
     next(error);

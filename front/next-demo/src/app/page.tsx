@@ -16,7 +16,6 @@ import {
 // Importation of the react hook form
 import LoginForm from "@/components/blablabook/login-form";
 import RegisterForm from "@/components/blablabook/register-form";
-import BookCard from "@/components/blablabook/book-card";
 
 // ---------------Testing some components below ---------------------
 
@@ -69,25 +68,6 @@ export default function Home() {
 					<RegisterForm />
 				</div>
 
-
-        {/* Book cards */}
-        <h2 className="text-2xl font-bold text-blabla-dark text-center">
-          Test des cartes de livres
-        </h2>
-
-					<BookCard
-						title="Le Petit Prince"
-						author="A. de Saint-Exupéry"
-						imagePath="https://covers.openlibrary.org/b/id/14516773-L.jpg"
-						bgColor="bg-blabla-light-blue"
-					/>
-					<BookCard
-						title="1984"
-						author="George Orwell"
-						imagePath="https://covers.openlibrary.org/b/id/12642231-L.jpg"
-						bgColor="bg-blabla-orange"
-					/>
-					{/* Et ainsi de suite... */}
 
 			</div>
       <Footer />

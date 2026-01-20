@@ -2,6 +2,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import Image from "next/image"
 import Link from "next/link"
 
+
 // Definition of what de card component can receive as props
 interface BookCardProps {
   title: string
@@ -29,7 +30,7 @@ export default function BookCard({ title }: BookCardProps) {
 
       {/* 2. Bottom zone : Book information */}
       <CardContent className="p-4">
-        <h3 className="font-bold text-black text-sm uppercase tracking-tight">
+        <h3 className="font-bold text-black text-sm uppercase tracking-tight line-clamp-1">
           {title}
         </h3>
         <p className="text-xs text-gray-500 mt-1">

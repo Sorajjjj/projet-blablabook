@@ -1,21 +1,19 @@
 import "dotenv/config";
 import type { Request, Response, NextFunction } from "express";
 import { prisma } from "../config/prisma.js";
-import { NotFoundError, UnauthorizedError } from "../lib/errors.js";
+import { NotFoundError } from "../lib/errors.js";
 
-export async function getParams(
+export async function getSettingsPage(
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) {
   try {
+    // No UUID validation needed because no route params
     // Get the user id from the auth middleware
-    const userId = req.userId;
-
-    // If user id is not accepted, send 401 error
-    if (!userId) {
-      throw new UnauthorizedError("Non Autorisé");
-    }
+    // To make the guarantee that userId exists (because of the middleware), use "!"
+    // To avoid "undefined"
+    const userId = req.userId!;
 
     // Get the user with matching id
     const user = await prisma.user.findUnique({

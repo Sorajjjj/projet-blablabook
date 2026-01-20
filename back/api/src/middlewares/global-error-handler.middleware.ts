@@ -1,17 +1,12 @@
 // Import types from express
-import type { NextFunction, Request, Response } from "express";
+import type { Request, Response } from "express";
 // Import zod
 import z from "zod";
 // Import http errors
-import { httpError } from "../lib/errors.js";
+import { HttpError } from "../lib/errors.js";
 
 // Create function to handle error
-export function globalErrorHandler(
-  error: Error,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
+export function globalErrorHandler(error: Error, req: Request, res: Response) {
   // If error from zod,
   if (error instanceof z.ZodError) {
     // Send 422 error
@@ -21,7 +16,7 @@ export function globalErrorHandler(
   }
 
   //   If http error
-  if (error instanceof httpError) {
+  if (error instanceof HttpError) {
     // Send status code and message
     res.status(error.statusCode).json({ error: error.message });
     // Stop function

@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { getParams } from "../controllers/params.controller.js";
+import { getSettingsPage } from "../controllers/settings.controller.js";
 import { requireAuth } from "../middlewares/autentification.middleware.js";
 
 const router = Router();
 
-router.get("/params", requireAuth, getParams);
+router.get("/", requireAuth, getSettingsPage);
 
 export default router;

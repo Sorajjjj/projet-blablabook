@@ -1,5 +1,5 @@
 // Create http error class extends Error interface
-export class httpError extends Error {
+export class HttpError extends Error {
   statusCode: number;
 
   //   Constructor called when new http error created
@@ -12,35 +12,35 @@ export class httpError extends Error {
 }
 
 // Malformed, invalid, deptive request error handler
-export class BadRequestError extends httpError {
+export class BadRequestError extends HttpError {
   constructor(message: string) {
     super(message, 400);
   }
 }
 // JWT error handler
 // (missing or invalid)
-export class UnauthorizedError extends httpError {
+export class UnauthorizedError extends HttpError {
   constructor(message: string) {
     super(message, 401);
   }
 }
 
 // (insufficient rights)
-export class ForbiddenError extends httpError {
+export class ForbiddenError extends HttpError {
   constructor(message: string) {
     super(message, 403);
   }
 }
 
 // Broken or dead links error handler
-export class NotFoundError extends httpError {
+export class NotFoundError extends HttpError {
   constructor(message: string) {
     super(message, 404);
   }
 }
 
 // Conflic with current state error handler
-export class ConflictError extends httpError {
+export class ConflictError extends HttpError {
   constructor(message: string) {
     super(message, 409);
   }

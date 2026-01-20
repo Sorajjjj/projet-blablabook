@@ -1,0 +1,185 @@
+/* [project]/next-demo/src/components/blablabook/footer.module.css [app-client] (css) */
+.footer-module__hJ6aMG__footer {
+  background-color: #fff;
+  border-top: 1px solid #e5e5e5;
+}
+
+.footer-module__hJ6aMG__container {
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.footer-module__hJ6aMG__grid {
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  margin-left: 60px;
+  display: grid;
+}
+
+.footer-module__hJ6aMG__logo {
+  align-items: center;
+  gap: 4px;
+  font-size: 22px;
+  font-weight: bold;
+  display: flex;
+}
+
+.footer-module__hJ6aMG__star, .footer-module__hJ6aMG__orange {
+  color: #f97316;
+}
+
+.footer-module__hJ6aMG__description {
+  color: #6b7280;
+  max-width: 380px;
+  margin-top: 16px;
+  margin-left: 25px;
+  line-height: 1.6;
+}
+
+.footer-module__hJ6aMG__title {
+  color: #111827;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.footer-module__hJ6aMG__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-module__hJ6aMG__list li {
+  margin-bottom: 10px;
+}
+
+.footer-module__hJ6aMG__list a {
+  color: #6b7280;
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.footer-module__hJ6aMG__list a:hover {
+  color: #111827;
+}
+
+.footer-module__hJ6aMG__bottom {
+  text-align: center;
+  color: #9ca3af;
+  border-top: 1px solid #e5e5e5;
+  padding: 16px;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .footer-module__hJ6aMG__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+/* [project]/next-demo/src/components/blablabook/Header.module.css [app-client] (css) */
+.Header-module__hIQExW__header {
+  background-color: #fff;
+  box-shadow: 0 2px 4px #0000001a;
+}
+
+.Header-module__hIQExW__container {
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 16px;
+  display: flex;
+}
+
+.Header-module__hIQExW__logo {
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+}
+
+.Header-module__hIQExW__star, .Header-module__hIQExW__orange {
+  color: #f97316;
+}
+
+.Header-module__hIQExW__nav {
+  align-items: center;
+  display: flex;
+}
+
+.Header-module__hIQExW__navList {
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+.Header-module__hIQExW__navList li {
+  margin-right: 24px;
+}
+
+.Header-module__hIQExW__navList a {
+  color: #111827;
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.Header-module__hIQExW__navList a:hover {
+  color: #f97316;
+}
+
+.Header-module__hIQExW__loginButton {
+  color: #fff;
+  background-color: #f97316;
+  border-radius: 4px;
+  padding: 8px 12px;
+  text-decoration: none;
+  transition: background-color .2s;
+}
+
+.Header-module__hIQExW__loginButton:hover {
+  background-color: #d95f0e;
+}
+
+.Header-module__hIQExW__searchBarContainer {
+  flex: 1;
+  justify-content: center;
+  display: flex;
+}
+
+/* [project]/next-demo/src/components/blablabook/SearchBar.module.css [app-client] (css) */
+.SearchBar-module__m_mG4a__searchForm {
+  align-items: center;
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+}
+
+.SearchBar-module__m_mG4a__input {
+  border: 1px solid #d1d5db;
+  border-radius: 6px 0 0 6px;
+  flex: 1;
+  padding: 12px 14px;
+  font-size: 14px;
+}
+
+.SearchBar-module__m_mG4a__input:focus {
+  border-color: #f97316;
+  outline: none;
+}
+
+.SearchBar-module__m_mG4a__button {
+  color: #fff;
+  cursor: pointer;
+  background-color: #f97316;
+  border-radius: 0 6px 6px 0;
+  padding: 12px 16px;
+  font-size: 15px;
+}
+
+.SearchBar-module__m_mG4a__button:hover {
+  background-color: #ea580c;
+}
+
+/*# sourceMappingURL=next-demo_src_components_blablabook_13845e24._.css.map*/

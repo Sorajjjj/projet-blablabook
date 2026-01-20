@@ -3,6 +3,7 @@ import type { Request, Response } from "express";
 import { prisma } from "../config/prisma.js";
 import { paramsSchema } from "../schemas/uuidSchema.js"
 import { newBookToLibrarySchema } from "../schemas/newbookschema.js";
+import { newStatusSchema } from "../schemas/statusSchema.js";
 
 export const getMyLibrary = async (req:Request, res:Response) =>{
 
@@ -147,3 +148,47 @@ export const deleteBookLibrary = async (req: Request, res: Response) => {
   });
 };
 
+export const updateBookLibraryStatus = async (req: Request, res: Response) => {
+
+    const userId = req.userId;
+
+    const { bookId } = req.params;
+
+    const { status } = newStatusSchema.parse(req.body);
+
+    // check user exists
+    const existingUser = await prisma.user.findUnique({
+      where: { userId },
+    });
+    if (!existingUser) {
+      return res.status(404).json({ message: "Utilisateur non trouvé" });
+    }
+
+    // check entry exists
+    const existingEntry = await prisma.userLibrary.findFirst({
+      where: { userId, bookId },
+    });
+    if (!existingEntry) {
+      return res.status(404).json({ message: "Livre non trouvé dans la bibliothèque" });
+    }
+
+    // update entry
+    const updated = await prisma.userLibrary.update({
+      where: {
+        userId_bookId: {
+          userId,
+          bookId,
+        },
+      },
+      data: {
+        status,
+      },
+    });
+
+    
+    return res.status(200).json({
+      message: "Status mis à jour",
+      data: updated,
+    });
+  
+};

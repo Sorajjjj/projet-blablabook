@@ -17,7 +17,7 @@ export default function BookCard({ title, author, bookId, imageUrl }: BookCardPr
 
 	const imageSource = imageUrl || "/couverture-livre-test.png";
 	return (
-		<Card className="w-70 mt-8 overflow-hidden border-none shadow-sm bg-white rounded-xl group cursor-pointer">
+		<Card className="w-70 overflow-hidden border-none shadow-sm bg-white rounded-xl group cursor-pointer">
 			{/* 1. Top zone : The colored background + the book */}
 			{/* We don't use CardHeader here because we want the color to touch the edges */}
 			<div

@@ -21,7 +21,7 @@ export default function Footer({ className, style }: FooterProps) {
             </div>
             <p className={styles.description}>
               Notre mission est de connecter les lecteurs du monde entier,
-              s’échanger et rapprocher les passionnés de lecture.
+              échanger et rapprocher les passionnés de lecture.
             </p>
           </div>
           {/* Liens */}

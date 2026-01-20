@@ -5,33 +5,6 @@ body {
     color: #333;
 }
 
-/* header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 5%;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.search-bar input {
-    padding: 8px;
-    width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-} */
-
-/* nav ul {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-} */
-
-/* nav a {
-    text-decoration: none;
-    color: #333;
-} */
-
 .hero {
     text-align: center;
     padding: 40px 0;
@@ -52,6 +25,7 @@ body {
 
 .discovery {
     padding: 20px 5%;
+    position: relative; /* Needed to place the arrow button correctly */
 }
 
 .discovery h2 {
@@ -59,69 +33,29 @@ body {
     margin-bottom: 20px;
 }
 
-/* .books {
+/* The horizontal scroll container */
+.carouselContainer {
     display: flex;
-    gap: 20px;
+    gap: 16px; 
     overflow-x: auto;
     padding-bottom: 20px;
+    scroll-behavior: smooth;
+    justify-content: flex-start; 
 }
 
-.book {
-    min-width: 200px;
-    text-align: center;
+/* Hide scrollbar for Chrome, Safari and Opera */
+.carouselContainer::-webkit-scrollbar {
+    display: none;
 }
 
-/* .book img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
+/* Hide scrollbar for IE, Edge and Firefox */
+.carouselContainer {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
 }
 
-.book button {
-    background-color: #ff6b6b;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-} */
-
-/* footer {
-    background-color: #fbfcfd;
-    padding: 40px 5% 20px;
-    margin-top: 450px;
+/* Ensure each book card doesn't shrink */
+.bookWrapper {
+    min-width: 280px;  /* Fixed width for each card */
+    flex-shrink: 0;            /* Prevent cards from being crushed */
 }
-
-.footer-section {
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
-} */
-
-/* .mission {
-    flex: 1;
-}
-
-.links, .support {
-    flex: 1;
-}
-
-.links ul, .support ul {
-    list-style: none;
-    padding: 0;
-}
-
-.links li, .support li {
-    margin-bottom: 10px;
-}
-
-.links a, .support a {
-    text-decoration: none;
-    color: #333;
-}
-
-.copyright {
-    text-align: center;
-    margin-top: 20px;
-    color: #666;
-} */

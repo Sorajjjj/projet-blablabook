@@ -1,8 +1,8 @@
 'use client';
 
 // Import of page components
-import Footer from "@/components/footer";
-import Header from "@/components/Header";
+import Footer from "@/components/blablabook/footer";
+import Header from "@/components/blablabook/Header";
 import Styles from "./accueil.module.css";
 import BookCard from "@/components/blablabook/book-card";
 import { useEffect, useState } from "react";
@@ -10,12 +10,10 @@ import { useEffect, useState } from "react";
 interface iBook {
 	title: string;
 	bookId: string;
-	releaseDate: null;
-	isbn: null;
-	summary: null;
-	authorId: string;
-	createdAt: string;
-	updatedAt: string;
+	author: {
+		fullName: string;
+	}
+	imageUrl: string | null;
 }
 
 export default function AccueilPage() {
@@ -23,10 +21,16 @@ export default function AccueilPage() {
 
 	useEffect(() => {
 		(async () => {
-			const response = await fetch("http://localhost:4000/api/books/random");
-			const data = await response.json();
-			setRandomBook(data);
-			console.log(data);
+			try {
+				const response = await fetch("http://localhost:4000/api/books/random");
+				
+				if (!response.ok) throw new Error("Erreur API");
+				const data = await response.json();
+				setRandomBook(data);
+			} 
+			catch (err) {
+				console.error("Erreur lors du fetch:", err);
+			}
 		})();
 	}, []);
 
@@ -47,7 +51,7 @@ export default function AccueilPage() {
 						{randomBook.length > 0 ? (
 							randomBook.map((book: iBook) => (
 								<article key={book.bookId}>
-									<BookCard title={book.title} />
+									<BookCard title={book.title} author={book.author.fullName} bookId={book.bookId} imageUrl={book.imageUrl} />
 								</article>
 							))
 						) : (

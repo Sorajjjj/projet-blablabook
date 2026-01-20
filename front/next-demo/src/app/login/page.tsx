@@ -1,4 +1,4 @@
-import Footer from "@/components/footer";
+import Footer from "@/components/blablabook/footer";
 import LoginForm from "@/components/blablabook/login-form";
 import Image from "next/image";
 

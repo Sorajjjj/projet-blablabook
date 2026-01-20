@@ -8,33 +8,31 @@ interface FooterProps {
 }
 
 export default function Footer({ className, style }: FooterProps) {
+  const currentYear = new Date().getFullYear();
   return (
     <footer className={`${styles.footer} ${className}`} style={style}>
       <div className={styles.container}>
-
         <div className={styles.grid}>
           {/* Logo + description */}
           <div>
             <div className={styles.logo}>
               <span className={styles.star}>✦</span>
-            <Image src="/logo/logo02.PNG" alt="Logo BlaBlaBook" width={150} height={30} />
+              <Image src="/logo/logo02.PNG" alt="Logo BlaBlaBook" width={150} height={30} />
             </div>
             <p className={styles.description}>
               Notre mission est de connecter les lecteurs du monde entier,
               s’échanger et rapprocher les passionnés de lecture.
             </p>
           </div>
-
           {/* Liens */}
           <div>
             <h3 className={styles.title}>Lien</h3>
             <ul className={styles.list}>
-              <li><Link href="/">Accueil</Link></li>
+              <li><Link href="/accueil">Accueil</Link></li>
               <li><Link href="/catalogue">Catalogue</Link></li>
               <li><Link href="/bibliotheque">Bibliothèque</Link></li>
             </ul>
           </div>
-
           {/* Support */}
           <div>
             <h3 className={styles.title}>Support</h3>
@@ -46,9 +44,8 @@ export default function Footer({ className, style }: FooterProps) {
           </div>
         </div>
       </div>
-
       <div className={styles.bottom}>
-        © 2026 BlaBlaBook. All rights reserved
+        © {currentYear} BlaBlaBook. All rights reserved
       </div>
     </footer>
   );

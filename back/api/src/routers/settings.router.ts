@@ -4,6 +4,7 @@ import {
   getSettingsPage,
   updateUsername,
   updateEmailAddress,
+  updatePassword,
 } from "../controllers/settings.controller.js";
 
 const router = Router();
@@ -14,5 +15,7 @@ router.get("/", requireAuth, getSettingsPage);
 router.put("/username", requireAuth, updateUsername);
 // Router to put new e-mail address
 router.put("/email", requireAuth, updateEmailAddress);
+// Router to put new password
+router.put("/password", requireAuth, updatePassword);
 
 export default router;

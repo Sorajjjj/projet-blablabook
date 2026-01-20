@@ -4,8 +4,10 @@ import { prisma } from "../config/prisma.js";
 import { NotFoundError } from "../lib/errors.js";
 import {
   updateEmailSchema,
+  updatePasswordSchema,
   updateUsernameSchema,
 } from "../schemas/settingsSchema.js";
+import argon2 from "argon2";
 
 export async function getSettingsPage(
   req: Request,
@@ -99,6 +101,31 @@ export async function updateEmailAddress(
     return res.status(200).json({
       email: user.email,
     });
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function updatePassword(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) {
+  try {
+    const userId = req.userId!;
+
+    const { password } = updatePasswordSchema.parse(req.body);
+
+    const hashPassword = await argon2.hash(password);
+
+    const user = await prisma.user.update({
+      where: { userId },
+      data: { passwordHash: hashPassword },
+    });
+
+    return res
+      .status(200)
+      .json({ message: "Nouveau mot de passe enregistré avec succès !" });
   } catch (error) {
     next(error);
   }

@@ -1,7 +1,6 @@
 import "dotenv/config";
 import { PrismaClient } from "@prisma/client";
 
-
 const prisma = new PrismaClient();
 
 async function main() {
@@ -38,6 +37,15 @@ async function main() {
       username: "demo_user",
       email: "demo@test.com",
       passwordHash: "fake_hashed_password",
+      isActive: true,
+    },
+  });
+
+  // 4bis. Créer les paramètres d'utilisateur
+  const userSettings = await prisma.userSettings.create({
+    data: {
+      userId: user.userId,
+      theme: "light",
     },
   });
 

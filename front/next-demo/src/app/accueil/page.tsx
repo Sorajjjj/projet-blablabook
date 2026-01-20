@@ -31,32 +31,33 @@ export default function AccueilPage() {
 	}, []);
 
 	return (
-		<div className="w-full bg-blabla-light-cream">
+		<div className="flex flex-col min-h-screen w-full bg-blabla-light-cream">
 			<Header showSearchBar={true} />
-
-			<main className="min-h-screen w-full">
-				<section className={Styles.hero}>
+			<main className="flex-1 w-full">
+				<section className={Styles.hero} aria-label="Section de bienvenue">
 					<h1>Bienvenue sur BlaBlaBook</h1>
 					<p>Découvrir et gérer votre bibliothèque</p>
 				</section>
-
-				<section className={Styles.recommendations}>
-					<h2>POUR VOUS</h2>
-					<div className="flex flex-wrap justify-center gap-4 ">
-
-              {randomBook.length > 0 ? (randomBook.map((book: iBook) => { 
-                return (
-									<article key={book.bookId}>
-										<BookCard title={book.title} />
-									</article>
-								); 
-              })) 
-                : (<p>Pas de de livres aléatoires...</p>)}
-
+				<section
+					className={Styles.discovery}
+					aria-label="Section de découverte de livres"
+				>
+					<h2>DÉCOUVREZ</h2>
+					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 w-full max-w-7xl mx-auto px-4">
+						{randomBook.length > 0 ? (
+							randomBook.map((book: iBook) => (
+								<article key={book.bookId}>
+									<BookCard title={book.title} />
+								</article>
+							))
+						) : (
+							<p className="text-center col-span-full">
+								Aucun livre disponible pour le moment.
+							</p>
+						)}
 					</div>
 				</section>
 			</main>
-
 			<Footer />
 		</div>
 	);

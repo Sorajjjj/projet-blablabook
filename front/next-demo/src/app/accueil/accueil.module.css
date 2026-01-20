@@ -50,16 +50,16 @@ body {
     color: #666;
 }
 
-.recommendations {
+.discovery {
     padding: 20px 5%;
 }
 
-.recommendations h2 {
+.discovery h2 {
     font-size: 1.5em;
     margin-bottom: 20px;
 }
 
-.books {
+/* .books {
     display: flex;
     gap: 20px;
     overflow-x: auto;
@@ -71,7 +71,7 @@ body {
     text-align: center;
 }
 
-.book img {
+/* .book img {
     width: 100%;
     height: auto;
     border-radius: 5px;
@@ -84,7 +84,7 @@ body {
     padding: 8px 16px;
     border-radius: 4px;
     cursor: pointer;
-}
+} */
 
 /* footer {
     background-color: #fbfcfd;

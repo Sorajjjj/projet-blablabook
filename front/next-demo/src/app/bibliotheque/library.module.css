@@ -1,16 +1,10 @@
-* {
+body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: Inter, sans-serif;
+  /* box-sizing: border-box; */
 }
 
-body {
-  background: #faf7f2;
-  color: #222;
-}
-
-/* HEADER */
+/* HEADER 
 .header {
   display: flex;
   justify-content: space-between;
@@ -25,34 +19,39 @@ body {
   color: #333;
   font-weight: 600;
 }
+*/
 
 /* LAYOUT */
-.container {
+
+/* .container {
   display: flex;
   padding: 40px;
   gap: 40px;
-}
+} */
 
 /* SIDEBAR */
 .sidebar {
-  width: 240px;
+  width: 300px;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-.sidebar-title {
-  font-size: 14px;
+.sidebarTitle {
+  font-size: 18px;
+  font-weight: 600;
   color: #999;
-  margin-bottom: 16px;
+  margin: 20px 0;
 }
 
-.sidebar-menu li {
+.sidebar-menu-ul {
   list-style: none;
-  padding: 12px;
   border-radius: 8px;
   margin-bottom: 8px;
   cursor: pointer;
 }
 
-.sidebar-menu .active {
+.sidebar-menu-active {
   background: #ffe4d6;
   color: #ff6b35;
   font-weight: 600;
@@ -69,29 +68,44 @@ body {
   margin-bottom: 8px;
 }
 
-h1 {
+.title {
   margin-bottom: 24px;
 }
 
 /* FILTER */
 .filter {
   display: flex;
-  gap: 8px;
+  /* gap: 8px; */
   margin-bottom: 24px;
+  /* padding: 6px 14px; */
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  background: #fff;
+
+  width: fit-content;
+}
+.filterButton {
+  margin: 3px 7px;
+  cursor: pointer;
+  padding: 3px 14px;
+
 }
 
-.filter button {
+/* .filterButton {
   padding: 6px 14px;
   border-radius: 20px;
   border: 1px solid #ddd;
   background: #fff;
   cursor: pointer;
-}
+} */
 
-.filter .active {
+.filterActive {
   background: #ff6b35;
   color: white;
   border-color: #ff6b35;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 5px;
+
 }
 
 /* BOOK CARD */
@@ -155,7 +169,7 @@ h1 {
   font-weight: 500;
 }
 
-/* FOOTER */
+/* FOOTER 
 .footer {
   display: flex;
   justify-content: space-between;
@@ -172,3 +186,4 @@ h1 {
   margin-bottom: 8px;
   font-size: 16px;  
 }
+*/

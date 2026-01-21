@@ -1,7 +1,7 @@
 'use client';
 import styles from './parametre.module.css';
-import Header from '@/components/Header';
-import Footer from '@/components/footer';
+import Header from '@/components/blablabook/Header';
+import Footer from '@/components/blablabook/footer';
 
 export default function ParametrePage() {
     return (

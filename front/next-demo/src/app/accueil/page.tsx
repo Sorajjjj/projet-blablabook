@@ -17,10 +17,20 @@ interface iBook {
 	imageUrl: string | null;
 }
 
+interface User {
+  name: string;
+  email: string;
+}
+
 export default function AccueilPage() {
 	const [randomBook, setRandomBook] = useState<iBook[]>([]);
 	const [showLeftArrow, setShowLeftArrow] = useState(false);
 	const [showRightArrow, setShowRightArrow] = useState(true); // Visible by default
+	// Storing user state (null if not logged in)
+const [user, setUser] = useState<User | null>({
+    name: "Tom Olivier",
+    email: "tom.olivier@email.com"
+});
 
 	// 1. Create a reference (the "laser pointer") to target the scrollable div
 	const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -77,9 +87,13 @@ export default function AccueilPage() {
 		}
 	};
 
+	const handleLogout = () => {
+		setUser(null); // Clear user state on logout
+	};
+
 	return (
 		<div className="flex flex-col min-h-screen w-full bg-blabla-light-cream">
-			<Header showSearchBar={true} />
+			<Header showSearchBar={true} user={user} onLogout={handleLogout}/>
 
 			<main className="flex-1 w-full">
 				{/* HERO SECTION */}

@@ -5,6 +5,7 @@ import { prisma } from "../config/prisma.js";
 import z, { includes } from "zod";
 // Import http errors handler
 import { NotFoundError } from "../lib/errors.js";
+import { bookSearchSchema } from "../schemas/seachSchema.js";
 
 // Retrieve all books from the database
 export const getAllBooks = async (req: Request, res: Response) => {
@@ -80,3 +81,35 @@ export async function getById(req: Request, res: Response, next: NextFunction) {
     next(error);
   }
 }
+
+export async function searchBook(req: Request, res: Response) {
+
+    const search = req.query.q
+    
+    const q = typeof search === "string" ? search : "";
+
+    const searchValid = bookSearchSchema.safeParse({q})
+
+    if (!searchValid.success) {
+      return res.status(200).json([])
+    }
+
+    const qValidated = searchValid.data.q
+
+    const booksSearched = await prisma.book.findMany({
+      where: {
+        title: {
+          contains: qValidated,
+          mode: "insensitive",
+        },
+      },
+      take: 5,
+      select: {
+        bookId: true,
+        title: true
+      },
+    });
+
+   return res.status(200).json(booksSearched);
+}
+

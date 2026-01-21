@@ -1407,8 +1407,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$next$2d$demo$2f$node_modules
 ;
 const registerFormSchema = __TURBOPACK__imported__module__$5b$project$5d2f$next$2d$demo$2f$node_modules$2f$zod$2f$v4$2f$classic$2f$schemas$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["object"]({
     email: __TURBOPACK__imported__module__$5b$project$5d2f$next$2d$demo$2f$node_modules$2f$zod$2f$v4$2f$classic$2f$schemas$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["string"]().min(1, "Email is required").email("Invalid email address"),
-    password: __TURBOPACK__imported__module__$5b$project$5d2f$next$2d$demo$2f$node_modules$2f$zod$2f$v4$2f$classic$2f$schemas$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["string"]().min(6, "Password must be at least 6 characters"),
-    confirmPassword: __TURBOPACK__imported__module__$5b$project$5d2f$next$2d$demo$2f$node_modules$2f$zod$2f$v4$2f$classic$2f$schemas$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["string"]().min(6, "Please confirm your password")
+    password: __TURBOPACK__imported__module__$5b$project$5d2f$next$2d$demo$2f$node_modules$2f$zod$2f$v4$2f$classic$2f$schemas$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["string"]().min(8, "Password must be at least 8 characters"),
+    confirmPassword: __TURBOPACK__imported__module__$5b$project$5d2f$next$2d$demo$2f$node_modules$2f$zod$2f$v4$2f$classic$2f$schemas$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["string"]().min(8, "Please confirm your password")
 }).refine((data)=>data.password === data.confirmPassword, {
     message: "Passwords do not match",
     path: [
@@ -1417,7 +1417,7 @@ const registerFormSchema = __TURBOPACK__imported__module__$5b$project$5d2f$next$
 });
 const loginFormSchema = __TURBOPACK__imported__module__$5b$project$5d2f$next$2d$demo$2f$node_modules$2f$zod$2f$v4$2f$classic$2f$schemas$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["object"]({
     email: __TURBOPACK__imported__module__$5b$project$5d2f$next$2d$demo$2f$node_modules$2f$zod$2f$v4$2f$classic$2f$schemas$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["string"]().min(1, "Email is required").email("Invalid email address"),
-    password: __TURBOPACK__imported__module__$5b$project$5d2f$next$2d$demo$2f$node_modules$2f$zod$2f$v4$2f$classic$2f$schemas$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["string"]().min(6, "Password must be at least 6 characters")
+    password: __TURBOPACK__imported__module__$5b$project$5d2f$next$2d$demo$2f$node_modules$2f$zod$2f$v4$2f$classic$2f$schemas$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["string"]().min(8, "Password must be at least 8 characters")
 });
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);

@@ -5,41 +5,6 @@ body {
     background-color: #FDFBF7;
 }
 
-/* HEADER 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 40px;
-    border-bottom: 1px solid #eee;
-}
-
-.logo {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.logo span {
-    margin-left: 6px;
-}
-
-.nav {
-    display: flex;
-    gap: 25px;
-    align-items: center;
-}
-
-.nav a {
-    text-decoration: none;
-    color: #333;
-}
-
-.user {
-    font-weight: bold;
-}
-    
-*/
-
 /* MAIN */
 .container {
     /* max-width: 1100px; */
@@ -95,6 +60,7 @@ body {
 }
 
 .rating {
+    display: none; /* feature hors MVP, en display none pour l'instant*/
     margin: 10px 0 20px;
     color: #f39c12;
 }
@@ -143,46 +109,3 @@ body {
     line-height: 1.6;
     color: #444;
 }
-
-/* FOOTER
-.footer {
-    display: flex;
-    justify-content: space-between;
-    padding: 40px;
-    margin-top: 50px;
-    background: #fff;
-    border-top: 1px solid #eee;
-}
-
-.footer-col {
-    max-width: 300px;
-}
-
-.footer-col h4 {
-    margin-bottom: 10px;
-}
-
-.footer-col a {
-    display: block;
-    text-decoration: none;
-    color: #444;
-    margin-bottom: 6px;
-    font-size: 14px;
-}
-
-.footer-col p {
-    font-size: 14px;
-    color: #666;
-}
-
-copyright {
-    text-align: center;
-}
-
-/* COPYRIGHT 
-.copyright {
-    text-align: center;
-    font-size: 13px;
-    color: #777;
-    margin: 20px 0;
-} */

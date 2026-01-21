@@ -1,6 +1,6 @@
 // Import of page components
-import Footer from "@/components/footer";
-import Header from "@/components/Header";
+import Footer from "@/components/blablabook/footer";
+import Header from "@/components/blablabook/Header";
 
 // Importation of the different types of buttons according to the graphic charter
 import {

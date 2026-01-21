@@ -1,0 +1,72 @@
+/* [project]/next-demo/src/components/blablabook/Header.module.css [app-client] (css) */
+.Header-module__hIQExW__header {
+  background-color: #fff;
+  box-shadow: 0 2px 4px #0000001a;
+}
+
+.Header-module__hIQExW__container {
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 16px;
+  display: flex;
+}
+
+.Header-module__hIQExW__logo {
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+}
+
+.Header-module__hIQExW__star, .Header-module__hIQExW__orange {
+  color: #f97316;
+}
+
+.Header-module__hIQExW__nav {
+  align-items: center;
+  display: flex;
+}
+
+.Header-module__hIQExW__navList {
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+.Header-module__hIQExW__navList li {
+  margin-right: 24px;
+}
+
+.Header-module__hIQExW__navList a {
+  color: #111827;
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.Header-module__hIQExW__navList a:hover {
+  color: #f97316;
+}
+
+.Header-module__hIQExW__loginButton {
+  color: #fff;
+  background-color: #f97316;
+  border-radius: 4px;
+  padding: 8px 12px;
+  text-decoration: none;
+  transition: background-color .2s;
+}
+
+.Header-module__hIQExW__loginButton:hover {
+  background-color: #d95f0e;
+}
+
+.Header-module__hIQExW__searchBarContainer {
+  flex: 1;
+  justify-content: center;
+  display: flex;
+}
+
+/*# sourceMappingURL=next-demo_src_components_blablabook_Header_module_css_bad6b30c._.single.css.map*/

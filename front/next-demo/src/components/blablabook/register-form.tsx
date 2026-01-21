@@ -1,10 +1,10 @@
 "use client";
+import { useRouter } from "next/navigation";
 
 import Link from "next/link";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { OrangeSolidButton } from "./buttons";
 import { Card, CardContent } from "@/components/ui/card";
@@ -15,27 +15,53 @@ import { registerFormSchema } from "@/lib/validation-schemas";
 const formSchema = registerFormSchema;
 
 export default function RegisterPreview() {
+	const router = useRouter();
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		mode: "onSubmit",
 		reValidateMode: "onSubmit",
 		defaultValues: {
-			pseudo: "",
+			username: "",
 			email: "",
 			password: "",
 			confirmPassword: "",
 		},
 	});
 
-	async function onSubmit(values: z.infer<typeof formSchema>) {
-		try {
-			// TODO: Appel API pour l'inscription
-			console.log(values);
-		} catch (error) {
-			console.error("Form submission error", error);
-		}
+async function onSubmit(values: z.infer<typeof formSchema>) {
+  try {
+    // On transforme les données du formulaire
+    const payload = {
+      username: values.username,
+      email: values.email,
+      password: values.password,
+	  confirmPassword: values.confirmPassword
+    };
+
+    // Appel API vers ton backend Express
+    const res = await fetch("http://localhost:4000/api/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    // On lit la réponse du backend
+    const data = await res.json();
+
+    // On affiche la réponse dans la console
+    console.log("OK Réponse backend :", data);
+
+	if (res.ok) {
+		router.push("/login");
 	}
 
+
+  } catch (error) {
+    console.error("Erreur lors de l'inscription", error);
+  }
+}
 	return (
 		<div className="flex min-h-[45vh] h-full w-full items-center justify-center px-4">
 			<Card className="mx-auto max-w-md w-full p-8 pb-4 px-6">
@@ -43,24 +69,24 @@ export default function RegisterPreview() {
 					<Form {...form}>
 						<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
 							<div className="grid gap-4">
-								{/* Pseudo Field */}
+								{/* username Field */}
 								<FormField
 									control={form.control}
-									name="pseudo"
+									name="username"
 									render={({ field }) => (
 										<FormItem className="grid gap-2">
 											<FormControl>
 												<Input
-													id="pseudo"
-													placeholder="Pseudo"
+													id="username"
+													placeholder="username"
 													type="text"
 													autoComplete="username"
 													{...field}
 												/>
 											</FormControl>
-											{form.formState.errors.pseudo && (
+											{form.formState.errors.username && (
 												<p className="text-sm font-medium text-red-500">
-													{form.formState.errors.pseudo.message}
+													{form.formState.errors.username.message}
 												</p>
 											)}
 										</FormItem>

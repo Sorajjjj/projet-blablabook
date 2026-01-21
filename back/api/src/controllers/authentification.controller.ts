@@ -4,10 +4,12 @@ import { prisma } from "../config/prisma.js";
 import { loginSchema, registerSchema } from "../schemas/authschema.js";
 import argon2 from "argon2";
 import jwt from "jsonwebtoken";
+import { ZodError } from "zod/v3";
 
 
 export const register = async (req:Request, res:Response) =>{
 
+    try {
     // Validate body
     const { username, email, password, } = registerSchema.parse(req.body);
 
@@ -38,10 +40,25 @@ export const register = async (req:Request, res:Response) =>{
     .status(201)
     .json({message: "Enregistrement réussi", data: CreateUser})
 
+} catch (error) {
+        console.error("Erreur Backend Register:", error);
+
+        // Gestion spécifique des erreurs Zod (validation)
+        if (error instanceof ZodError) {
+            return res.status(400).json({ 
+                message: "Données invalides", 
+                errors: error.errors 
+            });
+        }
+
+        // Erreur générique serveur
+        return res.status(500).json({ message: "Erreur interne du serveur" });
+    }
 }
 
 export const login = async (req:Request, res:Response) =>{
 
+    
     // Validate body
     const { email, password} = loginSchema.parse(req.body)
     

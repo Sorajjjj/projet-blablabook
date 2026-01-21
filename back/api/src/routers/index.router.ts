@@ -5,7 +5,7 @@ import booksRouter from "./books.router.js";
 import authRouter from "./auth.router.js";
 // Import home router
 import homeRouter from "./home.router.js";
-import paramsRouter from "./params.router.js";
+import settingsRouter from "./settings.router.js";
 
 export const router = Router();
 
@@ -20,5 +20,5 @@ router.use("/libraries", librariesRouter);
 
 router.use("/auth", authRouter);
 
-// Use params router to get params page
-router.use("/params", paramsRouter);
+// Use settings router to get settings page
+router.use("/settings", settingsRouter);

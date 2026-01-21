@@ -1,0 +1,26 @@
+### GET my settings page
+GET http://localhost:3000/api/settings
+
+### PUT a new username
+PUT http://localhost:3000/api/settings/username
+Content-Type: application/json
+
+{
+    "username": "chaton"
+}
+
+### PUT a new email address
+PUT http://localhost:3000/api/settings/email
+Content-Type: application/json
+
+{
+    "email": "potichat@croquettes.com"
+}
+
+### PUT a new password
+PUT http://localhost:3000/api/settings/password
+Content-Type: application/json
+
+{
+    "password": "MeowPassword"
+}

@@ -41,6 +41,7 @@ export default function LoginPreview() {
     // Call the Express backend login endpoint
     const res = await fetch("http://localhost:4000/api/auth/login", {
       method: "POST",
+	  credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
@@ -54,9 +55,9 @@ export default function LoginPreview() {
     console.log("OK Réponse backend :", data);
 
 	// If login is successful, redirect user
-	if (res.ok) {
-		router.push("/accueil");
-	}
+	// if (res.ok) {
+	// 	router.push("/accueil");
+	// }
 
 
   	} catch (error) {

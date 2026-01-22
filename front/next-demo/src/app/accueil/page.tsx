@@ -17,20 +17,12 @@ interface iBook {
 	imageUrl: string | null;
 }
 
-interface User {
-  name: string;
-  email: string;
-}
-
 export default function AccueilPage() {
 	const [randomBook, setRandomBook] = useState<iBook[]>([]);
 	const [showLeftArrow, setShowLeftArrow] = useState(false);
 	const [showRightArrow, setShowRightArrow] = useState(true); // Visible by default
-	// Storing user state (null if not logged in)
-const [user, setUser] = useState<User | null>({
-    name: "Tom Olivier",
-    email: "tom.olivier@email.com"
-});
+
+
 
 	// 1. Create a reference (the "laser pointer") to target the scrollable div
 	const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -87,13 +79,9 @@ const [user, setUser] = useState<User | null>({
 		}
 	};
 
-	const handleLogout = () => {
-		setUser(null); // Clear user state on logout
-	};
-
 	return (
 		<div className="flex flex-col min-h-screen w-full bg-blabla-light-cream">
-			<Header showSearchBar={true} user={user} onLogout={handleLogout}/>
+			<Header showSearchBar={true} />
 
 			<main className="flex-1 w-full">
 				{/* HERO SECTION */}
@@ -164,7 +152,7 @@ const [user, setUser] = useState<User | null>({
 									href="/catalogue"
 									/* The 'group' class MUST be here, on the Link itself. 
        This way, it only affects what is INSIDE this specific link. */
-									className="flex flex-col items-center justify-center w-70 h-[332px] bg-white rounded-xl border-2 border-dashed border-gray-300 hover:border-teal-500 hover:bg-teal-50 transition-all shadow-sm group"
+									className="flex flex-col items-center justify-center w-70 h-83 bg-white rounded-xl border-2 border-dashed border-gray-300 hover:border-teal-500 hover:bg-teal-50 transition-all shadow-sm group"
 								>
 									{/* Only this icon will scale when THIS link is hovered */}
 									<div className="w-12 h-12 rounded-full bg-teal-50 flex items-center justify-center mb-4 text-teal-600 shadow-inner transform group-hover:scale-110 transition-transform duration-300">

@@ -1,5 +1,5 @@
 "use client";
-
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -17,6 +17,9 @@ import { loginFormSchema } from "@/lib/validation-schemas";
 const formSchema = loginFormSchema;
 
 export default function LoginPreview() {
+
+	const router = useRouter();
+
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		mode: "onSubmit",
@@ -28,12 +31,37 @@ export default function LoginPreview() {
 	});
 
 	async function onSubmit(values: z.infer<typeof formSchema>) {
-		try {
-			// TODO: Appel API pour la connexion
-			console.log(values);
-		} catch (error) {
-			console.error("Form submission error", error);
-		}
+ 	try {
+    // Build payload expected by the backend
+    const payload = {
+      email: values.email,
+      password: values.password
+    };
+
+    // Call the Express backend login endpoint
+    const res = await fetch("http://localhost:4000/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+	// Read backend response
+    const data = await res.json();
+
+    
+    console.log("OK Réponse backend :", data);
+
+	// If login is successful, redirect user
+	if (res.ok) {
+		router.push("/accueil");
+	}
+
+
+  	} catch (error) {
+		console.error("Erreur lors de l'inscription", error);
+	}
 	}
 
 	return (

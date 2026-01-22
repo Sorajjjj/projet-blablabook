@@ -15,7 +15,8 @@ export default function ParametrePage() {
   const [settings, setSettings] = useState<Settings | null>(null);
   //   For a better UX otherwise, user sees empty page
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [pageError, setPageError] = useState<string | null>(null);
+  const [formError, setFormError] = useState<string | null>(null);
 
   const [newUsername, setNewUsername] = useState("");
   // In case of delay
@@ -24,23 +25,23 @@ export default function ParametrePage() {
 
   async function handleClick() {
     // Clear previous messages if exists
-    setError(null);
+    setFormError(null);
     setSuccess(null);
 
     const trimmedUsername = newUsername.trim();
 
     if (!trimmedUsername) {
-      setError("Veuillez entrer un nouvel identifiant");
+      setFormError("Veuillez entrer un nouvel identifiant");
       return;
     }
 
     if (trimmedUsername.length < 2) {
-      setError("Identifiant trop court (min. 2 caractères)");
+      setFormError("Identifiant trop court (min. 2 caractères)");
       return;
     }
 
     if (trimmedUsername.length > 50) {
-      setError("Identifiant trop long (max. 50 caractères)");
+      setFormError("Identifiant trop long (max. 50 caractères)");
       return;
     }
 
@@ -76,7 +77,7 @@ export default function ParametrePage() {
       setSuccess("Nouvel identifiant enregistré avec succès !");
     } catch (err) {
       if (err instanceof Error) {
-        setError(err.message);
+        setFormError(err.message);
       }
     } finally {
       setSaving(false);
@@ -100,7 +101,7 @@ export default function ParametrePage() {
         setSettings(data);
       } catch (err) {
         if (err instanceof Error) {
-          setError(err.message);
+          setPageError(err.message);
         }
       } finally {
         setLoading(false);
@@ -113,8 +114,8 @@ export default function ParametrePage() {
     return <p>Chargement en cours...</p>;
   }
 
-  if (error) {
-    return <p>{error}</p>;
+  if (pageError) {
+    return <p>{pageError}</p>;
   }
 
   return (
@@ -144,12 +145,12 @@ export default function ParametrePage() {
                   value={newUsername}
                   onChange={(e) => {
                     setNewUsername(e.target.value);
-                    setError(null);
+                    setFormError(null);
                     setSuccess(null);
                   }}
                   placeholder={settings?.username}
                 />
-                {error && <p>{error}</p>}
+                {formError && <p>{formError}</p>}
                 {success && <p>{success}</p>}
                 <button
                   className={styles.btnOrange}

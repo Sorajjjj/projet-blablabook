@@ -110,7 +110,7 @@ export const logout = async (req:Request, res:Response) =>{
     // Clear the authentication cookie from the browser
     // This removes the JWT stored in the cookie
     res.clearCookie("accessToken", {
-        httpOnly: true,
+        httpOnly: false,
         sameSite: "lax"
     });
     

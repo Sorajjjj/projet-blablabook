@@ -15,7 +15,9 @@ import { registerFormSchema } from "@/lib/validation-schemas";
 const formSchema = registerFormSchema;
 
 export default function RegisterPreview() {
+
 	const router = useRouter();
+
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		mode: "onSubmit",
@@ -30,7 +32,7 @@ export default function RegisterPreview() {
 
 async function onSubmit(values: z.infer<typeof formSchema>) {
   try {
-    // On transforme les données du formulaire
+    // Prepare the data to be sent to the backend
     const payload = {
       username: values.username,
       email: values.email,
@@ -38,7 +40,7 @@ async function onSubmit(values: z.infer<typeof formSchema>) {
 	  confirmPassword: values.confirmPassword
     };
 
-    // Appel API vers ton backend Express
+    // Send a POST request to the registration endpoint
     const res = await fetch("http://localhost:4000/api/auth/register", {
       method: "POST",
       headers: {
@@ -47,10 +49,10 @@ async function onSubmit(values: z.infer<typeof formSchema>) {
       body: JSON.stringify(payload),
     });
 
-    // On lit la réponse du backend
+    
     const data = await res.json();
 
-    // On affiche la réponse dans la console
+    
     console.log("OK Réponse backend :", data);
 
 	if (res.ok) {

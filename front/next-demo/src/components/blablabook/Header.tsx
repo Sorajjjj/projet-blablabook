@@ -11,12 +11,12 @@ export default function Header({
   showSearchBar = false, 
   showLinks = false,
   user = null,
-  onLogout // Logout function passed as a prop
+  // onLogout // Logout function passed as a prop
 } : { 
   showSearchBar?: boolean, 
   showLinks?: boolean,
   user?: { name: string; email: string } | null,
-  onLogout: () => void // Function to handle logout
+  // onLogout: () => void // Function to handle logout
 }) {
 
   const router = useRouter();
@@ -25,13 +25,13 @@ export default function Header({
   const isAuthenticated = user !== null;
 
   // Handle logout action
-  const handleLogout = () => {
-    console.log("Deconnexion");
-    // Call the onLogout prop function if provided
-    if (onLogout) {
-      onLogout();
-    }
-  };
+  // const handleLogout = () => {
+  //   console.log("Deconnexion");
+  //   // Call the onLogout prop function if provided
+  //   if (onLogout) {
+  //     onLogout();
+  //   }
+  // };
 
   return (
     <header className={header.header}>
@@ -67,7 +67,7 @@ export default function Header({
             
             {isAuthenticated ? (
               <li>
-                <UserMenu user={user} onLogout={handleLogout} />
+                <UserMenu user={user}  />
               </li>
             ) : (
               <>

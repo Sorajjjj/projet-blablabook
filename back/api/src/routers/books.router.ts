@@ -3,9 +3,12 @@ import {
   getAllBooks,
   getRandomBooks,
   getById,
+  searchBook,
 } from "../controllers/books.controller.js";
 
 const router = Router();
+
+router.get("/search", searchBook);
 
 // Endpoint to get all books
 router.get("/", getAllBooks);

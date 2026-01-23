@@ -43,7 +43,6 @@ export default function LibraryPage() {
 			});
 			const result = await response.json();
 
-			// On vérifie que result.data contient bien nos livres
 			setLibrary(result.data || []);
 		} catch (error) {
 			console.error("Erreur lors du chargement de la bibliothèque:", error);
@@ -77,6 +76,14 @@ export default function LibraryPage() {
 		} catch (error) {
 			console.error("Erreur réseau suppression:", error);
 		}
+	};
+
+	const handleUpdateStatus = (bookId: string, newstatus: string) => {
+		setLibrary((prev) => {
+			return prev.map((item) =>
+				item.bookId === bookId ? { ...item, status: newstatus } : item
+			);
+		});
 	};
 
 	return (
@@ -150,7 +157,7 @@ export default function LibraryPage() {
 										book={item.book}
 										status={item.status}
 										addedAt={item.createdAt}
-
+										onUpdateStatus={(newStatus) => handleUpdateStatus(item.bookId, newStatus)}
 										onDelete={() => handleDeleteBook(item.bookId)}
 									/>
 								))

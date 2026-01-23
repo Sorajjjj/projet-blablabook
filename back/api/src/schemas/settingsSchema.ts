@@ -9,5 +9,6 @@ export const updateEmailSchema = z.object({
 });
 
 export const updatePasswordSchema = z.object({
-  password: z.string().min(8),
+  currentPassword: z.string(),
+  newPassword: z.string().min(8),
 });

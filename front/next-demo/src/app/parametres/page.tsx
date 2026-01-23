@@ -21,17 +21,24 @@ export default function ParametrePage() {
   // [UPDATE EMAIL]
   const [newEmail, setNewEmail] = useState("");
   const [confirmEmail, setConfirmEmail] = useState("");
+  // [UPDATE PASSWORD]
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   // [MANAGE ERRORS]
   const [pageError, setPageError] = useState<string | null>(null);
   const [formError, setFormError] = useState<string | null>(null);
   const [emailError, setEmailError] = useState<string | null>(null);
+  const [passwordError, setPasswordError] = useState<string | null>(null);
   // [MANAGE SAVING PROCESS]
   // In case of delay
   const [saving, setSaving] = useState(false);
   const [emailSaving, setEmailSaving] = useState(false);
+  const [passwordSaving, setPasswordSaving] = useState(false);
   // [MANAGE SUCCESS]
   const [success, setSuccess] = useState<string | null>(null);
   const [emailSuccess, setEmailSuccess] = useState<string | null>(null);
+  const [passwordSuccess, setPasswordSuccess] = useState<string | null>(null);
 
   async function handleUsernameUpdate() {
     // Clear previous messages if exists
@@ -115,7 +122,7 @@ export default function ParametrePage() {
       setEmailSaving(true);
 
       // simulate delay to show the loading button...
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // await new Promise((resolve) => setTimeout(resolve, 1000));
 
       const response = await fetch("http://localhost:4000/api/settings/email", {
         method: "PUT",
@@ -143,6 +150,75 @@ export default function ParametrePage() {
       }
     } finally {
       setEmailSaving(false);
+    }
+  }
+
+  async function handlePasswordUpdate() {
+    setPasswordError(null);
+    setPasswordSuccess(null);
+
+    const trimmedCurrentPassword = currentPassword.trim();
+    const trimmedNewPassword = newPassword.trim();
+    const trimmedConfirmPassword = confirmPassword.trim();
+
+    if (
+      !trimmedCurrentPassword ||
+      !trimmedNewPassword ||
+      !trimmedConfirmPassword
+    ) {
+      setPasswordError("Veuillez remplir tous les champs");
+      return;
+    }
+
+    if (trimmedNewPassword.length < 8) {
+      setPasswordError("Mot de passe trop court (min. 8 caractères)");
+      return;
+    }
+
+    if (trimmedNewPassword !== trimmedConfirmPassword) {
+      setPasswordError("Les mots de passe ne correspondent pas");
+      return;
+    }
+
+    try {
+      setPasswordSaving(true);
+
+      // simulate delay to show the loading button...
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      const response = await fetch(
+        "http://localhost:4000/api/settings/password",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({
+            currentPassword: trimmedCurrentPassword,
+            newPassword: trimmedNewPassword,
+          }),
+        },
+      );
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Une erreur est survenue");
+      }
+
+      const updatedSettings: Settings = await response.json();
+
+      setSettings(updatedSettings);
+      setCurrentPassword("");
+      setNewPassword("");
+      setConfirmPassword("");
+      setPasswordSuccess("Nouveau mot de passe enregistré avec succès !");
+    } catch (err) {
+      if (err instanceof Error) {
+        setPasswordError(err.message);
+      }
+    } finally {
+      setPasswordSaving(false);
     }
   }
 
@@ -272,6 +348,7 @@ export default function ParametrePage() {
                   setEmailError(null);
                   setEmailSuccess(null);
                 }}
+                placeholder={settings?.email}
               />
               {emailError && <p>{emailError}</p>}
               {emailSuccess && <p>{emailSuccess}</p>}
@@ -290,14 +367,53 @@ export default function ParametrePage() {
               <p>Modifiez votre mot de passe</p>
             </div>
             <div className={styles.inputCol}>
+              <label className={styles.label}>Mot de passe actuel</label>
+              <input
+                className={styles.input}
+                type="password"
+                value={currentPassword}
+                onChange={(e) => {
+                  setCurrentPassword(e.target.value);
+                  setPasswordError(null);
+                  setPasswordSuccess(null);
+                }}
+                placeholder="********"
+              />
+
               <label className={styles.label}>Nouveau mot de passe</label>
-              <input className={styles.input} type="password" />
+              <input
+                className={styles.input}
+                type="password"
+                value={newPassword}
+                onChange={(e) => {
+                  setNewPassword(e.target.value);
+                  setPasswordError(null);
+                  setPasswordSuccess(null);
+                }}
+                placeholder="********"
+              />
               <label className={styles.label}>
                 Confirmez votre nouveau mot de passe
               </label>
-              <input className={styles.input} type="password" />
-              <button className={`${styles.btnOrange} ${styles.rightAlign}`}>
-                Valider
+              <input
+                className={styles.input}
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => {
+                  setConfirmPassword(e.target.value);
+                  setPasswordError(null);
+                  setPasswordSuccess(null);
+                }}
+                placeholder="********"
+              />
+              {passwordError && <p>{passwordError}</p>}
+              {passwordSuccess && <p>{passwordSuccess}</p>}
+              <button
+                className={`${styles.btnOrange} ${styles.rightAlign}`}
+                onClick={handlePasswordUpdate}
+                disabled={passwordSaving}
+              >
+                {passwordSaving ? "Enregistrement..." : "Valider"}
               </button>
             </div>
           </div>

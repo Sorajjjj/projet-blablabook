@@ -1,7 +1,7 @@
 import "dotenv/config";
 import type { Request, Response, NextFunction } from "express";
 import { prisma } from "../config/prisma.js";
-import { NotFoundError } from "../lib/errors.js";
+import { NotFoundError, UnauthorizedError } from "../lib/errors.js";
 import {
   updateEmailSchema,
   updatePasswordSchema,
@@ -114,13 +114,31 @@ export async function updatePassword(
   try {
     const userId = req.userId!;
 
-    const { password } = updatePasswordSchema.parse(req.body);
+    const { currentPassword, newPassword } = updatePasswordSchema.parse(
+      req.body,
+    );
 
-    const hashPassword = await argon2.hash(password);
-
-    const user = await prisma.user.update({
+    const user = await prisma.user.findUnique({
       where: { userId },
-      data: { passwordHash: hashPassword },
+    });
+
+    if (!user) {
+      throw new NotFoundError("Utilisateur introuvable");
+    }
+
+    // argon2 hashes current password and compares it to the stored hashed password
+    const isValid = await argon2.verify(user.passwordHash, currentPassword);
+
+    if (!isValid) {
+      throw new UnauthorizedError("Mot de passe actuel incorrect");
+    }
+
+    // argon2 hashes new password
+    const hashedPassword = await argon2.hash(newPassword);
+
+    await prisma.user.update({
+      where: { userId },
+      data: { passwordHash: hashedPassword },
     });
 
     return res

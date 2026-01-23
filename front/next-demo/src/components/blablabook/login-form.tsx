@@ -55,9 +55,9 @@ export default function LoginPreview() {
     console.log("OK Réponse backend :", data);
 
 	// If login is successful, redirect user
-	// if (res.ok) {
-	// 	router.push("/accueil");
-	// }
+	if (res.ok) {
+		router.push("/accueil");
+	}
 
 
   	} catch (error) {

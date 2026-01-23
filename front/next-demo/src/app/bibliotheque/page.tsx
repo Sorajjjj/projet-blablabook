@@ -8,16 +8,16 @@ import { OrangeOutlineButton, SimpleButton } from "@/components/blablabook/butto
 import BookCardLibrary from "@/components/blablabook/book-card-library";
 
 export default function LibraryPage() {
-	// --- ÉTATS (STATES) ---
-	// library : stocke le tableau de livres reçus de l'API (initialement vide [])
+	
+	// stocke le tableau de livres reçus de l'API (initialement vide [])
 	const [library, setLibrary] = useState<any[]>([]);
-	// loading : affiche un message d'attente pendant que l'API répond (initialement vrai)
+	// affiche un message d'attente pendant que l'API répond (initialement vrai)
 	const [loading, setLoading] = useState(true);
 
-	// --- LOGIQUE DE RÉCUPÉRATION (GET) ---
+	
 const fetchLibrary = async () => {
     try {
-        // Changement de /library en /libraries pour correspondre au router
+        
         const response = await fetch("http://localhost:4000/api/libraries", {
             method: "GET",
             credentials: "include", 
@@ -36,24 +36,23 @@ const fetchLibrary = async () => {
     }
 };
 
-	// Lance l'appel API une seule fois au chargement de la page
+	
 	useEffect(() => {
 		fetchLibrary();
 	}, []);
 
-	// --- LOGIQUE DE SUPPRESSION (DELETE) ---
+	
 	const handleDeleteBook = async (bookId: string) => {
-		// Demande confirmation avant de supprimer
+		//TODO MODIFIER et rajouter un composant
 		if (!confirm("Voulez-vous vraiment retirer ce livre ?")) return;
 
 		try {
-			const response = await fetch(`http://localhost:4000/api/library/${bookId}`, {
+			const response = await fetch(`http://localhost:4000/api/libraries/${bookId}`, {
 				method: "DELETE",
 				credentials: "include",
 			});
 
 			if (response.ok) {
-				// MISE À JOUR OPTIMISTE : 
 				// On filtre le tableau localement pour retirer le livre supprimé sans recharger la page
 				setLibrary((prev) => prev.filter((item) => item.bookId !== bookId));
 			} else {
@@ -99,25 +98,23 @@ const fetchLibrary = async () => {
 
 					{/* ZONE DES CARTES DE LIVRES */}
 					<div className="flex flex-col gap-6">
-						{/* ÉTAPE A : Si on charge encore, on affiche un message */}
 						{loading ? (
 							<p className="text-gray-500 italic text-center">Chargement de vos livres...</p>
 						) : 
-						/* ÉTAPE B : Si le chargement est fini, on vérifie s'il y a des livres */
+						
 						library.length > 0 ? (
-							/* ÉTAPE C : On boucle sur chaque livre reçu de Prisma */
+							
 							library.map((item) => (
 								<BookCardLibrary 
-									key={item.bookId} // ID unique pour React
-									book={item.book} // L'objet Book contenant l'auteur
-									status={item.status} // Ex: "want_to_read"
-									addedAt={item.createdAt} // Date de création dans UserLibrary
-									// On passe la fonction de suppression au composant enfant
+									key={item.bookId}
+									book={item.book} 
+									status={item.status} 
+									addedAt={item.createdAt} 
+									
 									onDelete={() => handleDeleteBook(item.bookId)} 
 								/>
 							))
 						) : (
-							/* ÉTAPE D : Si le tableau est vide */
 							<p className="text-gray-500 italic text-center">Votre bibliothèque est vide.</p>
 						)}
 					</div>

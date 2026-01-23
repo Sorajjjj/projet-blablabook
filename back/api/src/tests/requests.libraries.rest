@@ -5,12 +5,12 @@ Cookie: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4OWRjOTl
 
 ### Add to my library
 POST http://localhost:4000/api/libraries/
-Cookie: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4OWRjOTlhOC1mMDUyLTQzYWYtOGJjMi00MWExNGMxMzU2YjAiLCJpYXQiOjE3Njg4MzcyNTQsImV4cCI6MTc2ODg0MDg1NH0.vPLHzQeIte0c2kJl0SPKYw5QipKHFznUajAO8b5Nwr4
+Cookie: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI0MDNjOGZlYS01ODgzLTQ2NTAtYjg1Yy1hZWQ3ZTc3Mjk5YjAiLCJpYXQiOjE3NjkwODYwODMsImV4cCI6MTc2OTA4OTY4M30.qIO2ai9c4weSZcCwIG2gNH6MNnuZzxTKyRIXvzAjl2E
 Content-Type: application/json
 
 {
-  "bookId": "6f9ccea3-8b0e-4631-8b3d-8b6670256854",
-  "title": "Murder on the Orient Express",
+  "bookId": "0b698a47-80e8-49d0-919c-25572e5d9bd0",
+  "title": "War and Peace",
   "releaseDate": null,
   "isbn": null,
   "summary": "A young wizard discovers his magical heritage.",

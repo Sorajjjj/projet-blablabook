@@ -187,3 +187,39 @@ body {
   font-size: 16px;  
 }
 */
+
+
+.sidebar-menu-ul li button {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding: 0rem 1rem;
+    gap: 10px;
+    width: 100%;
+    transition: all 0.1s ease-in-out;
+    border: 2px solid transparent; 
+    background: transparent;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* etat selectionne(Celui qui reste quand on a cliqué) */
+.sidebar-menu-ul li .active {
+    color: #D97706;          
+    border: 2px solid #D97706;     
+    border-radius: 8px;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+/* etat survol (Quand la souris passe dessus) */
+.sidebar-menu-ul li button:hover {
+    background-color: #FFF5F1; 
+    color: #D97706;  
+    border-radius: 8px;
+    text-decoration: none;
+    border: 2px solid #D97706;
+    
+    
+}
+

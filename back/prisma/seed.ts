@@ -288,7 +288,7 @@ async function main() {
     data: [
       { userId: user.userId, bookId: createdBooks[0].bookId, status: "A lire" },
       { userId: user.userId, bookId: createdBooks[1].bookId, status: "En cours" },
-      { userId: user.userId, bookId: createdBooks[5].bookId, status: "Lus" },
+      { userId: user.userId, bookId: createdBooks[5].bookId, status: "Lu" },
     ],
   });
 

@@ -28,5 +28,5 @@ Cookie: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4OWRjOTl
 Content-Type: application/json
 
 {
-  "status": "read"
+  "status": "Lu"
 }

@@ -25,7 +25,7 @@ export default function LibraryPage() {
 		// Ajuste les chaînes de caractères selon ce que ton Backend renvoie exactement
 		if (activeTab === "A lire") return item.status === "A lire";
 		if (activeTab === "En cours") return item.status === "En cours";
-		if (activeTab === "Lus") return item.status === "Lus";
+		if (activeTab === "Lu") return item.status === "Lu";
 
 		return true;
 	});
@@ -113,10 +113,10 @@ export default function LibraryPage() {
 						</li>
 						<li>
 							<SimpleButton
-								onClick={() => setActiveTab("Lus")}
-								className={`pl-0 py-5 ${activeTab === "Lus" ? Styles["active"] : ""}`}
+								onClick={() => setActiveTab("Lu")}
+								className={`pl-0 py-5 ${activeTab === "Lu" ? Styles["active"] : ""}`}
 							>
-								<CheckCheck /> Lus
+								<CheckCheck /> Lu
 							</SimpleButton>
 						</li>
 					</ul>
@@ -131,7 +131,7 @@ export default function LibraryPage() {
 						{/* FILTRES (Affichage uniquement pour l'instant) */}
 						{/* <div className={Styles.filter}>
 							<button className={`${Styles.filterActive} ${Styles.filterButton}`}>Tous</button>
-							<button className={Styles.filterButton}>Lus</button>
+							<button className={Styles.filterButton}>Lu</button>
 							<button className={Styles.filterButton}>À lire</button>
 						</div> */}
 					</div>

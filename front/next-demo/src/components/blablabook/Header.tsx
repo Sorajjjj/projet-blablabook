@@ -53,7 +53,7 @@ export default function Header({
                 <li><Link href="/bibliotheque">Bibliothèque</Link></li>
               </>
             )}
-            <li><Link href="#">Catalogue</Link></li>
+            <li><Link href="/catalogue">Catalogue</Link></li>
             
             {/* Conditional rendering based on global Auth State */}
             {isAuthenticated ? (

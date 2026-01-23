@@ -10,34 +10,32 @@ declare global {
   }
 }
 
+export const requireAuth = (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  // Get the JWT secret from environment variables
+  const token = req.cookies?.accessToken;
 
-export const requireAuth = (req:Request, res:Response, next:NextFunction) => {
+  if (!token) {
+    return res.status(401).json({ message: "non authentifié" });
+  }
 
-     // Get the JWT secret from environment variables
-    const token = req.cookies?.accessToken;
+  const secret = process.env.JWT_SECRET;
 
-    if (!token) {
-        return res.status(401).json({message: "non authentifié"})
-    }
-
-    const secret = process.env.JWT_SECRET;
-
-    try {
-
+  try {
     if (!secret) {
-        return res.status(500).json({message: "Erreur interne du serveur"})
+      return res.status(500).json({ message: "Erreur interne du serveur" });
     }
 
-    
     // Verify and decode the token
-    const validate = jwt.verify(token, secret) as {userId: string}
+    const validate = jwt.verify(token, secret) as { userId: string };
 
     req.userId = validate.userId;
 
     return next();
-
-    } catch {
+  } catch {
     return res.status(401).json({ message: "Session invalide ou expirée" });
   }
-
-}
+};

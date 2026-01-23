@@ -15,7 +15,74 @@ export default function ParametrePage() {
   const [settings, setSettings] = useState<Settings | null>(null);
   //   For a better UX otherwise, user sees empty page
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [pageError, setPageError] = useState<string | null>(null);
+  const [formError, setFormError] = useState<string | null>(null);
+
+  const [newUsername, setNewUsername] = useState("");
+  // In case of delay
+  const [saving, setSaving] = useState(false);
+  const [success, setSuccess] = useState<string | null>(null);
+
+  async function handleClick() {
+    // Clear previous messages if exists
+    setFormError(null);
+    setSuccess(null);
+
+    const trimmedUsername = newUsername.trim();
+
+    if (!trimmedUsername) {
+      setFormError("Veuillez entrer un nouvel identifiant");
+      return;
+    }
+
+    if (trimmedUsername.length < 2) {
+      setFormError("Identifiant trop court (min. 2 caractères)");
+      return;
+    }
+
+    if (trimmedUsername.length > 50) {
+      setFormError("Identifiant trop long (max. 50 caractères)");
+      return;
+    }
+
+    try {
+      setSaving(true);
+
+      // simulate delay to show the loading button...
+      // await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      const response = await fetch(
+        "http://localhost:4000/api/settings/username",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({
+            username: trimmedUsername,
+          }),
+        },
+      );
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.message);
+      }
+
+      const updatedSettings: Settings = await response.json();
+
+      setSettings(updatedSettings);
+      setNewUsername("");
+      setSuccess("Nouvel identifiant enregistré avec succès !");
+    } catch (err) {
+      if (err instanceof Error) {
+        setFormError(err.message);
+      }
+    } finally {
+      setSaving(false);
+    }
+  }
 
   // useEffect(() => {SETUP}, [DEPENDENCIES?]);
   useEffect(() => {
@@ -34,7 +101,7 @@ export default function ParametrePage() {
         setSettings(data);
       } catch (err) {
         if (err instanceof Error) {
-          setError(err.message);
+          setPageError(err.message);
         }
       } finally {
         setLoading(false);
@@ -42,14 +109,13 @@ export default function ParametrePage() {
     };
     fetchSettings();
   }, []);
-  console.log(settings);
 
   if (loading) {
     return <p>Chargement en cours...</p>;
   }
 
-  if (error) {
-    return <p>{error}</p>;
+  if (pageError) {
+    return <p>{pageError}</p>;
   }
 
   return (
@@ -73,8 +139,26 @@ export default function ParametrePage() {
             <div className={styles.inputCol}>
               <label className={styles.label}>Nouvel Identifiant</label>
               <div className={styles.inputGroup}>
-                <input className={styles.input} type="text" />
-                <button className={styles.btnOrange}>Valider</button>
+                <input
+                  className={styles.input}
+                  type="text"
+                  value={newUsername}
+                  onChange={(e) => {
+                    setNewUsername(e.target.value);
+                    setFormError(null);
+                    setSuccess(null);
+                  }}
+                  placeholder={settings?.username}
+                />
+                {formError && <p>{formError}</p>}
+                {success && <p>{success}</p>}
+                <button
+                  className={styles.btnOrange}
+                  onClick={handleClick}
+                  disabled={saving}
+                >
+                  {saving ? "Enregistrement..." : "Valider"}
+                </button>
               </div>
             </div>
           </div>

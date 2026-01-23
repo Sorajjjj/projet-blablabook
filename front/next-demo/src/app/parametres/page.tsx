@@ -12,35 +12,46 @@ interface Settings {
 }
 
 export default function ParametrePage() {
-  const [settings, setSettings] = useState<Settings | null>(null);
   //   For a better UX otherwise, user sees empty page
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
+  // [GET SETTINGS PAGE WITH UPDATED DATA]
+  const [settings, setSettings] = useState<Settings | null>(null);
+  // [UPDATE USERNAME]
   const [newUsername, setNewUsername] = useState("");
+  // [UPDATE EMAIL]
+  const [newEmail, setNewEmail] = useState("");
+  const [confirmEmail, setConfirmEmail] = useState("");
+  // [MANAGE ERRORS]
+  const [pageError, setPageError] = useState<string | null>(null);
+  const [formError, setFormError] = useState<string | null>(null);
+  const [emailError, setEmailError] = useState<string | null>(null);
+  // [MANAGE SAVING PROCESS]
   // In case of delay
   const [saving, setSaving] = useState(false);
+  const [emailSaving, setEmailSaving] = useState(false);
+  // [MANAGE SUCCESS]
   const [success, setSuccess] = useState<string | null>(null);
+  const [emailSuccess, setEmailSuccess] = useState<string | null>(null);
 
-  async function handleClick() {
+  async function handleUsernameUpdate() {
     // Clear previous messages if exists
-    setError(null);
+    setFormError(null);
     setSuccess(null);
 
     const trimmedUsername = newUsername.trim();
 
     if (!trimmedUsername) {
-      setError("Veuillez entrer un nouvel identifiant");
+      setFormError("Veuillez entrer un nouvel identifiant");
       return;
     }
 
     if (trimmedUsername.length < 2) {
-      setError("Identifiant trop court (min. 2 caractères)");
+      setFormError("Identifiant trop court (min. 2 caractères)");
       return;
     }
 
     if (trimmedUsername.length > 50) {
-      setError("Identifiant trop long (max. 50 caractères)");
+      setFormError("Identifiant trop long (max. 50 caractères)");
       return;
     }
 
@@ -76,10 +87,62 @@ export default function ParametrePage() {
       setSuccess("Nouvel identifiant enregistré avec succès !");
     } catch (err) {
       if (err instanceof Error) {
-        setError(err.message);
+        setFormError(err.message);
       }
     } finally {
       setSaving(false);
+    }
+  }
+
+  async function handleEmailUpdate() {
+    setEmailError(null);
+    setEmailSuccess(null);
+
+    const trimmedEmail = newEmail.trim();
+    const trimmedConfirmEmail = confirmEmail.trim();
+
+    if (!trimmedEmail || !trimmedConfirmEmail) {
+      setEmailError("Veuillez remplir les deux champs");
+      return;
+    }
+
+    if (trimmedEmail !== trimmedConfirmEmail) {
+      setEmailError("Les adresses e-mail ne correspondent pas");
+      return;
+    }
+
+    try {
+      setEmailSaving(true);
+
+      // simulate delay to show the loading button...
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      const response = await fetch("http://localhost:4000/api/settings/email", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({
+          email: trimmedEmail,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.message);
+      }
+
+      const updatedSettings: Settings = await response.json();
+
+      setSettings(updatedSettings);
+      setNewEmail("");
+      setConfirmEmail("");
+      setEmailSuccess("Nouvelle adresse e-mail enregistrée avec succès !");
+    } catch (err) {
+      if (err instanceof Error) {
+        setEmailError(err.message);
+      }
+    } finally {
+      setEmailSaving(false);
     }
   }
 
@@ -100,7 +163,7 @@ export default function ParametrePage() {
         setSettings(data);
       } catch (err) {
         if (err instanceof Error) {
-          setError(err.message);
+          setPageError(err.message);
         }
       } finally {
         setLoading(false);
@@ -113,8 +176,8 @@ export default function ParametrePage() {
     return <p>Chargement en cours...</p>;
   }
 
-  if (error) {
-    return <p>{error}</p>;
+  if (pageError) {
+    return <p>{pageError}</p>;
   }
 
   return (
@@ -144,16 +207,16 @@ export default function ParametrePage() {
                   value={newUsername}
                   onChange={(e) => {
                     setNewUsername(e.target.value);
-                    setError(null);
+                    setFormError(null);
                     setSuccess(null);
                   }}
                   placeholder={settings?.username}
                 />
-                {error && <p>{error}</p>}
+                {formError && <p>{formError}</p>}
                 {success && <p>{success}</p>}
                 <button
                   className={styles.btnOrange}
-                  onClick={handleClick}
+                  onClick={handleUsernameUpdate}
                   disabled={saving}
                 >
                   {saving ? "Enregistrement..." : "Valider"}
@@ -186,13 +249,38 @@ export default function ParametrePage() {
             </div>
             <div className={styles.inputCol}>
               <label className={styles.label}>Nouvelle adresse e-mail</label>
-              <input className={styles.input} type="email" />
+              <input
+                className={styles.input}
+                type="email"
+                value={newEmail}
+                onChange={(e) => {
+                  setNewEmail(e.target.value);
+                  setEmailError(null);
+                  setEmailSuccess(null);
+                }}
+                placeholder={settings?.email}
+              />
               <label className={styles.label}>
                 Confirmez votre nouvelle adresse e-mail
               </label>
-              <input className={styles.input} type="email" />
-              <button className={`${styles.btnOrange} ${styles.rightAlign}`}>
-                Valider
+              <input
+                className={styles.input}
+                type="email"
+                value={confirmEmail}
+                onChange={(e) => {
+                  setConfirmEmail(e.target.value);
+                  setEmailError(null);
+                  setEmailSuccess(null);
+                }}
+              />
+              {emailError && <p>{emailError}</p>}
+              {emailSuccess && <p>{emailSuccess}</p>}
+              <button
+                className={`${styles.btnOrange} ${styles.rightAlign}`}
+                onClick={handleEmailUpdate}
+                disabled={emailSaving}
+              >
+                {emailSaving ? "Enregistrement..." : "Valider"}
               </button>
             </div>
           </div>

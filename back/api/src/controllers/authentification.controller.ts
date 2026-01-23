@@ -91,11 +91,11 @@ export const login = async (req:Request, res:Response) =>{
     }
 
     const accessToken = jwt.sign(paydload, secret, { expiresIn: "1h"});
-    
+    //TODO HTTPONLY A CHANGER
     // send token in cookies
     res.cookie("accessToken", accessToken, {
         maxAge: 1*60*60*1000,
-        httpOnly: true
+        httpOnly: false
     });
 
     return res.status(200).json({
@@ -109,9 +109,11 @@ export const logout = async (req:Request, res:Response) =>{
     
     // Clear the authentication cookie from the browser
     // This removes the JWT stored in the cookie
+    //TODO HTTPONLY A CHANGER
     res.clearCookie("accessToken", {
-        httpOnly: true, // False to true for the same reason as login so the browser can delete it
-        sameSite: "lax"
+        httpOnly: false,
+        sameSite: "lax",
+        secure: false
     });
     
     return res.status(200).json({ message: "Déconnexion réussie" });

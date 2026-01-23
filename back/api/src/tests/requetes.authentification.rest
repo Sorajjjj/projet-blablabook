@@ -3,9 +3,9 @@ POST http://localhost:4000/api/auth/register
 Content-Type: application/json
 
 {
-  "username": "testuser",
-  "email": "testuser@mail.com",
-  "password": "Password123!"
+  "username": "testt",
+  "email": "test@testt.com",
+  "password": "testtest"
 }
 
 ### Login user (cookie is set)

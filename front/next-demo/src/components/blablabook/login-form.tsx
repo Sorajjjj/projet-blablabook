@@ -61,6 +61,11 @@ export default function LoginPreview() {
 
 	// If login is successful, redirect user
 	if (res.ok) {
+		login({
+			name: responseData.data.username,
+			email: responseData.data.email
+		});
+		
 		router.push("/accueil");
 	}
 

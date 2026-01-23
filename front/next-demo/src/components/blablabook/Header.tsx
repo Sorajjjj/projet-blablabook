@@ -30,6 +30,8 @@ export default function Header({
     router.push("/login"); // Redirect to login page
   };
 
+  console.log("Header User state", user);
+
   return (
     <header className={header.header}>
       <div className={header.container}>

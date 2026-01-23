@@ -24,6 +24,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const [user, setUser] = useState<User | null>(() => {
     // Check if window is defined to prevent errors during Next.js Server-Side Rendering
         if (typeof window !== "undefined") {
+          console.log("Reading user from LocalStorage");
             const savedUser = localStorage.getItem("blablabook_user");
             return savedUser ? JSON.parse(savedUser) : null;
         }

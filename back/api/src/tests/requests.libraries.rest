@@ -15,7 +15,7 @@ Content-Type: application/json
   "isbn": null,
   "summary": "A young wizard discovers his magical heritage.",
   "authorId": "d7a4f3c1-2222-4b1d-9c10-bbbbbbbbbbbb",
-  "status": "want_to_read"
+  "status": "A lire"
 }
 
 ### Delete book on my library
@@ -28,5 +28,5 @@ Cookie: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4OWRjOTl
 Content-Type: application/json
 
 {
-  "status": "read"
+  "status": "Lu"
 }

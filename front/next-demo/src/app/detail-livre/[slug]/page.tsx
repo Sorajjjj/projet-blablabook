@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 
 
@@ -10,6 +10,7 @@ import Header from "@/components/blablabook/Header";
 import Styles from "./details.module.css";
 import Image from "next/image";
 import { TealRoundedButton } from "@/components/blablabook/buttons";
+import { CirclePlus } from 'lucide-react';
 
 interface iBookDetail {
 	bookId: string;
@@ -24,11 +25,32 @@ interface iBookDetail {
 }
 
 
+
 export default function BookDetailPage() {
 
 	const { slug } = useParams();
 	const [book, setBook] = useState<iBookDetail | null>(null);
 	const [loading, setLoading] = useState(true);
+
+
+	const handleAddBook = async() => {
+
+	if (!book) return;
+
+	const response = await fetch("http://localhost:4000/api/libraries", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                credentials: "include",
+                body: JSON.stringify({
+                    bookId: book.bookId,
+                    status: "want_to_read" 
+                }),
+            });
+
+			console.log(response.status)
+
+}
+
 
 	useEffect(() => {
 		if (!slug) return;
@@ -72,7 +94,16 @@ export default function BookDetailPage() {
 					<div className={`${Styles["book-info"]} flex flex-col`}>
 						<div className={Styles["title-row"]}>
 							<h1 className=" text-blabla-dark">{book.title}</h1>
-							<span className={Styles["heart"]}>❤️</span>
+
+							{/* ajouter un book */}
+							<button 
+							onClick={handleAddBook} 
+							title="Ajouter à ma bibliothèque"
+							className="hover:scale-110 transition-transform cursor-pointer">
+							<CirclePlus size={32} className="text-teal-600" />
+							</button>
+							{/* <span className={Styles["heart"]}>❤️</span> */}
+
 						</div>
 						<p className={Styles["author"]}>
 							{book.author?.fullName || "Auteur inconnu"}

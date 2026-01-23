@@ -120,7 +120,7 @@ export default function ParametrePage() {
 
   return (
     <div className={styles.pageContainer}>
-      <Header showSearchBar={false} user={null} />
+      <Header showSearchBar={false} />
       <br />
       <br />
       <div className={styles.container}>

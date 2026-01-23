@@ -5,12 +5,12 @@ Cookie: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4OWRjOTl
 
 ### Add to my library
 POST http://localhost:4000/api/libraries/
-Cookie: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4OWRjOTlhOC1mMDUyLTQzYWYtOGJjMi00MWExNGMxMzU2YjAiLCJpYXQiOjE3Njg4MzcyNTQsImV4cCI6MTc2ODg0MDg1NH0.vPLHzQeIte0c2kJl0SPKYw5QipKHFznUajAO8b5Nwr4
+Cookie: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzMjM5YWEyMi1iNzZhLTQ5MjAtODlkZS1iMzUwZDYyYTVkMTAiLCJpYXQiOjE3NjkwODc3NTMsImV4cCI6MTc2OTA5MTM1M30.fxDUVvXlDV4cBUZufk2vKQy4jtkvzjxeNXx4g802wkY
 Content-Type: application/json
 
 {
-  "bookId": "6f9ccea3-8b0e-4631-8b3d-8b6670256854",
-  "title": "Murder on the Orient Express",
+  "bookId": "3262aab4-489e-4b30-862c-2af889a87fea",
+  "title": "Sherlock Holmes: A Study in Scarlet",
   "releaseDate": null,
   "isbn": null,
   "summary": "A young wizard discovers his magical heritage.",

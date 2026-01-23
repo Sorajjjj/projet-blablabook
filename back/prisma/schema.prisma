@@ -78,7 +78,7 @@ model BookGenre {
 model UserLibrary {
   userId    String   @map("user_id") @db.Uuid
   bookId    String   @map("book_id") @db.Uuid
-  status    String   @default("want_to_read") @db.VarChar(20)
+  status    String   @default("A lire") @db.VarChar(20)
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 

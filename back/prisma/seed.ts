@@ -286,9 +286,9 @@ async function main() {
   // On prend les 3 premiers livres de la liste
   await prisma.userLibrary.createMany({
     data: [
-      { userId: user.userId, bookId: createdBooks[0].bookId, status: "want_to_read" },
-      { userId: user.userId, bookId: createdBooks[1].bookId, status: "reading" },
-      { userId: user.userId, bookId: createdBooks[5].bookId, status: "read" },
+      { userId: user.userId, bookId: createdBooks[0].bookId, status: "A lire" },
+      { userId: user.userId, bookId: createdBooks[1].bookId, status: "En cours" },
+      { userId: user.userId, bookId: createdBooks[5].bookId, status: "Lu" },
     ],
   });
 

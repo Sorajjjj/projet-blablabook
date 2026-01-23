@@ -1,23 +1,22 @@
 "use client";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { z } from "zod";
+import { email, z } from "zod";
+import { useAuth } from "@/context/AuthContext";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
-
 import { LightBlueOutlineButton, OrangeSolidButton } from "./buttons";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/ui/password-input";
-
 import { loginFormSchema } from "@/lib/validation-schemas";
 
 const formSchema = loginFormSchema;
 
 export default function LoginPreview() {
 
+	const { login } = useAuth();
 	const router = useRouter();
 
 	const form = useForm<z.infer<typeof formSchema>>({
@@ -41,6 +40,7 @@ export default function LoginPreview() {
     // Call the Express backend login endpoint
     const res = await fetch("http://localhost:4000/api/auth/login", {
       method: "POST",
+	  credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
@@ -48,10 +48,16 @@ export default function LoginPreview() {
     });
 
 	// Read backend response
-    const data = await res.json();
+    const responseData = await res.json() as {
+		message: string;
+		data: {
+			username: string;
+			email: string;
+			userId: string;
+		};
+	};
 
-    
-    console.log("OK Réponse backend :", data);
+
 
 	// If login is successful, redirect user
 	if (res.ok) {

@@ -1,13 +1,13 @@
 import express from 'express';
 import path from 'path';
 const app = express();
-const port = 3001;
+const port = 3000;
 
 // Absolute path to your HTML file
 const htmlFilePath = path.join(__dirname, 'Integration', 'Bibliotheque.html');
 const accueilFilePath = path.join(__dirname, 'Integration', 'Accueil.html');
 
-app.get('/Accueil', (req, res) => {
+app.get('/accueil', (req, res) => {
   res.sendFile(accueilFilePath, err => {
     if (err) {
       console.error(err);
@@ -20,5 +20,5 @@ app.get('/Accueil', (req, res) => {
 app.use('/Integration', express.static(path.join(__dirname, 'Integration')));
 
 app.listen(port, () => {
-  console.log(`Serveur lancé sur http://localhost:${port}`);
+  console.log(`Serveur lancé sur http://localhost:${port}/accueil`);
 });

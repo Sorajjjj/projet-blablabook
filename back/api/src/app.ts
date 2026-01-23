@@ -19,5 +19,5 @@ app.use("/api", apiRouter);
 app.use(globalErrorHandler);
 
 app.listen(PORT, () => {
-  console.log(`Serveur lancé sur http://localhost:${PORT}`);
+  console.log(`Serveur lancé sur http://localhost:${PORT}/api`);
 });

@@ -2,6 +2,7 @@ import z from "zod";
 
 export const newStatusSchema = z.object({
 
-  status: z.enum(["want_to_read", "reading", "read"]),
+  
+  status: z.enum(["A lire", "En cours", "Lus"]),
   
 });

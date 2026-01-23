@@ -43,7 +43,7 @@ export default function BookDetailPage() {
                 credentials: "include",
                 body: JSON.stringify({
                     bookId: book.bookId,
-                    status: "want_to_read" 
+                    status: "A lire" 
                 }),
             });
 

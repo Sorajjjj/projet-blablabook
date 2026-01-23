@@ -25,7 +25,7 @@ export default function BookCardLibrary({ book, status, addedAt, onDelete }: Boo
   const imageSource = book.imageUrl || "/couverture-livre-test.png";
 
   
-  const statusLabel = status === "want_to_read" ? "A lire" : status;
+  const statusLabel = status === "A lire" ? "A lire" : status;
 
   return (
     <Card className="flex flex-row items-center w-full max-w-2xl overflow-hidden border border-gray-100 shadow-sm bg-white rounded-2xl h-45 group">

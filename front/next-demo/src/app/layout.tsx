@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
+import { AuthProvider } from "@/context/AuthContext";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,8 +16,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-sans">  {/* Applique directement Basic comme police par défaut */}
-        {children}
-        <Toaster />
+        <AuthProvider>{children}
+          <Toaster />
+        </AuthProvider>
       </body>
     </html>
   );

@@ -14,7 +14,7 @@ Content-Type: application/json
 
 {
   "email": "anas@anas.com",
-  "password": "testtest"
+  "password": "anastest"
 }
 
 ### Logout user (cookie is cleared)

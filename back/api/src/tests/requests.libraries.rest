@@ -5,12 +5,12 @@ Cookie: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4OWRjOTl
 
 ### Add to my library
 POST http://localhost:4000/api/libraries/
-Cookie: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI0MDNjOGZlYS01ODgzLTQ2NTAtYjg1Yy1hZWQ3ZTc3Mjk5YjAiLCJpYXQiOjE3NjkwODYwODMsImV4cCI6MTc2OTA4OTY4M30.qIO2ai9c4weSZcCwIG2gNH6MNnuZzxTKyRIXvzAjl2E
+Cookie: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzMjM5YWEyMi1iNzZhLTQ5MjAtODlkZS1iMzUwZDYyYTVkMTAiLCJpYXQiOjE3NjkwODc3NTMsImV4cCI6MTc2OTA5MTM1M30.fxDUVvXlDV4cBUZufk2vKQy4jtkvzjxeNXx4g802wkY
 Content-Type: application/json
 
 {
-  "bookId": "0b698a47-80e8-49d0-919c-25572e5d9bd0",
-  "title": "War and Peace",
+  "bookId": "3262aab4-489e-4b30-862c-2af889a87fea",
+  "title": "Sherlock Holmes: A Study in Scarlet",
   "releaseDate": null,
   "isbn": null,
   "summary": "A young wizard discovers his magical heritage.",

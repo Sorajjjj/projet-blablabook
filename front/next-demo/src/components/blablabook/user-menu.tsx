@@ -24,12 +24,22 @@ export default function UserMenu({ user, onLogout }: UserMenuProps) {
   const router = useRouter();
 
   const handleLogout = () => {
-    if (onLogout) {
-      onLogout();
-    } else {
-      // Logique de déconnexion par défaut
-      console.log("Déconnexion");
-    }
+    if (onLogout) onLogout();
+  };
+
+  /**
+   * 1. Check if user and user.name exist.
+   * 2. If not, return a default character (like 'U' for User).
+   */
+  const getInitials = () => {
+    // Checking if user and user.name are defined
+    if (!user || !user.name) return "U"; // Safety fallback
+    
+    return user.name
+      .split(" ")
+      .map((n) => n[0])
+      .join("")
+      .toUpperCase();
   };
 
   return (
@@ -37,12 +47,9 @@ export default function UserMenu({ user, onLogout }: UserMenuProps) {
       <DropdownMenuTrigger asChild>
         <button className="flex items-center gap-2 cursor-pointer focus:outline-none border-">
           <Avatar>
-            <AvatarImage src={user.avatar} alt={user.name} />
+            <AvatarImage src={user?.avatar} alt={user?.name || "User"} />
             <AvatarFallback>
-              {user.name
-                .split(" ")
-                .map((n) => n[0])
-                .join("")}
+              {getInitials()}
             </AvatarFallback>
           </Avatar>
         </button>

@@ -1,11 +1,11 @@
 body {
-    margin: 0;
-    padding: 0;
-    color: #333;
+  margin: 0;
+  padding: 0;
+  color: #333;
 }
 
 .pagecontainer {
-    background-color: #FDFBF7;
+  background-color: #fdfbf7;
 }
 
 .container {
@@ -29,11 +29,11 @@ body {
 .settingsCard {
   /* background: var(--card-bg); */
   border-radius: var(--border-radius);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   margin-bottom: 30px;
   overflow: hidden;
   border: 1px solid #eee;
-  backgroun-color: #FFF;
+  background-color: #fff;
 }
 
 .settingsCard h2 {
@@ -91,7 +91,7 @@ body {
 
 /* Buttons */
 .btnOrange {
-  background-color: #E67141;
+  background-color: #e67141;
   color: white;
   border: none;
   padding: 10px 25px;
@@ -101,7 +101,7 @@ body {
 }
 
 .btnLargeOrange {
-  background-color: #E67141;
+  background-color: #e67141;
   color: white;
   border: none;
   padding: 12px;
@@ -129,8 +129,42 @@ body {
 }
 
 .toggleBtn.active {
-  background: rgb(1, 11, 43);   
+  background: rgb(1, 11, 43);
 
   color: white;
   border-color: rgb(1, 11, 43);
+}
+
+@media screen and (max-width: 375px) {
+  .container {
+    padding: 0 10px;
+  }
+
+  /* Place vertically */
+  .row {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .pageTitle {
+    font-size: 1.5rem;
+  }
+
+  .settingsCard h2 {
+    padding: 10px 14px;
+  }
+
+  .inputGroup {
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .inputGroup .btnOrange {
+    align-self: flex-end;
+    width: auto;
+  }
+
+  .btnLargeOrange {
+    width: 100%;
+  }
 }

@@ -1,46 +1,24 @@
 .cardContainer {
- 
     width: 100%;
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
-    
-
 }
 
 .contentWrapper {
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
-    padding: 1.5rem; 
+    justify-content: space-between;
+    padding: 1.5rem;
     flex: 1;
-    
-
 }
 
-@media (max-width: 640px) {
-    .cardContainer {
-        flex-direction: column; 
-        height: auto;           
-        align-items: flex-start;
-    }
-
-    .contentWrapper {
-        padding: 1rem;
-    }
-
-    .title {
-        font-size: 1rem; 
-    }
-}
-
-/* Le reste ne change pas */
 .title {
     font-weight: 900;
     color: black;
     font-size: 1.125rem;
     text-transform: uppercase;
     letter-spacing: -0.025em;
+    /* Coupe le texte s'il est trop long sur une ligne */
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
@@ -56,26 +34,16 @@
 }
 
 .infoGroup {
-    
     display: flex;
-    flex-wrap: wrap; /* Permet aux badges de passer à la ligne si besoin */
+    flex-wrap: wrap;
     align-items: center;
     gap: 0.75rem;
     margin-top: 1rem;
 }
 
-.badge {
-    padding: 0.25rem 1rem;
-    border: 1px solid #94a3b8;
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: #475569;
-}
-
 .date {
     font-size: 0.75rem;
-    color: #d1d5db;
+    color: #9e9e9e; 
 }
 
 .actionsContainer {
@@ -83,55 +51,63 @@
     flex-direction: column;
     justify-content: space-around;
     height: 100%;
-    gap: 1.5rem; /* gap-6 */
-    padding-right: 1.5rem; /* pr-6 */
+    padding-right: 1.5rem;
     flex-shrink: 0;
 }
 
 .buttonGroup {
     display: flex;
     align-items: center;
-    gap: 0.5rem; /* gap-2 */
-}
-
-.heartBtn {
-    color: #E76F51;
-    transition: transform 0.2s ease;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.heartBtn:hover {
-    transform: scale(1.1);
+    justify-content: flex-end; 
 }
 
 .deleteBtn {
-    color: #cbd5e1; /* text-slate-300 */
+    color: #cbd5e1;
     transition: color 0.2s ease;
     background: none;
     border: none;
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
 .deleteBtn:hover {
-    color: #ef4444; /* text-red-500 */
+    color: #ef4444;
 }
 
 .detailsLink {
     display: flex;
     align-items: center;
-    gap: 0.25rem; /* gap-1 */
-    color: #1e293b; /* text-slate-800 */
+    gap: 0.25rem;
+    color: #1e293b;
     font-weight: 700;
     text-decoration: none;
     transition: transform 0.2s ease;
 }
 
 .detailsLink:hover {
-    transform: translateX(4px); /* translate-x-1 */
+    transform: translateX(4px);
 }
 
 .detailsText {
-    font-size: 1.125rem; /* text-lg */
+    font-size: 1.125rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+    .cardContainer {
+        height: auto;
+    }
+
+    .contentWrapper {
+        padding: 1rem;
+    }
+
+    .title {
+        font-size: 1rem;
+    }
+    
+    .actionsContainer {
+        padding-right: 1rem;
+    }
 }

@@ -1,11 +1,9 @@
 .footer {
   background-color: #ffffff;
   border-top: 1px solid #e5e5e5;
-  /* margin-top: 80px;   <----- Ajoute une marge blanche inutile au dessus du footer*/
 }
 
 .container {
-  /* max-width: 1200px; <------ Réduit un peu trop la taille du conteneur */
   margin: 0 auto;
   padding: 30px 20px;
 }
@@ -75,10 +73,50 @@
   color: #9ca3af;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Responsive Mobile */
+@media (max-width: 767px) {
+  .container {
+    padding: 20px 16px;
+  }
+
   .grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 30px;
+    margin-left: 0;
+  }
+
+  .logo {
+    font-size: 18px;
+    justify-content: center;
+  }
+
+  .description {
+    margin-left: 0;
+    text-align: center;
+    font-size: 14px;
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: 16px;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  .list {
+    text-align: center;
+  }
+
+  .list li {
+    margin-bottom: 8px;
+  }
+
+  .list a {
+    font-size: 14px;
+  }
+
+  .bottom {
+    font-size: 12px;
+    padding: 14px;
   }
 }

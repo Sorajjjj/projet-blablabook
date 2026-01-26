@@ -25,7 +25,7 @@ body {
 
 .discovery {
     padding: 20px 5%;
-    position: relative; /* Needed to place the arrow button correctly */
+    position: relative;
 }
 
 .discovery h2 {
@@ -50,12 +50,55 @@ body {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .carouselContainer {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;     /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 /* Ensure each book card doesn't shrink */
 .bookWrapper {
-    min-width: 280px;  /* Fixed width for each card */
-    flex-shrink: 0;            /* Prevent cards from being crushed */
+    flex-shrink: 0;
+}
+
+/* ========================= */
+/*   MEDIA QUERIES MOBILE   */
+/* ========================= */
+
+@media (max-width: 767px) {
+    .hero {
+        padding: 16px 10px;
+        margin: 10px 2%;
+        border-radius: 8px;
+    }
+    
+    .hero h1 {
+        font-size: 1.2em;
+        margin-bottom: 6px;
+        line-height: 1.3;
+    }
+    
+    .hero p {
+        font-size: 0.85em;
+        color: #555;
+        line-height: 1.4;
+    }
+    
+    .discovery {
+        padding: 12px 2%;
+    }
+    
+    .discovery h2 {
+        font-size: 1em;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+    
+    .carouselContainer {
+        gap: 10px;
+        padding-bottom: 10px;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: -2%;
+        margin-right: -2%;
+        padding-left: 2%;
+    }
 }

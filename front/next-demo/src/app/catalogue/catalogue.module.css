@@ -54,3 +54,14 @@
   font-size: 0.9rem;
   color: #666;
 }
+
+@media screen and (max-width: 768px) {
+  .grid {
+    padding: 3px 60px;
+    gap: 2.5rem;
+  }
+
+  .image {
+    height: 220px;
+  }
+}

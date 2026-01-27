@@ -173,7 +173,7 @@ async function onSubmit(values: z.infer<typeof formSchema>) {
 					</Form>
 					<div className="text-center text-lg mt-10">
 						J&apos;ai déjà un compte !{" "}
-						<Link href="#" className="underline text-blabla-orange">
+						<Link href="/login" className="underline text-blabla-orange">
 							Se connecter
 						</Link>
 					</div>

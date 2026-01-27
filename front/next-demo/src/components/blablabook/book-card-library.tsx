@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { XCircle, ChevronRight } from "lucide-react";
 
-
 interface BookCardLibraryProps {
   book: {
     bookId: string;
@@ -14,7 +13,6 @@ interface BookCardLibraryProps {
       fullName: string;
     };
   };
-
   status: string;
   addedAt?: Date;
   onDelete: () => void;
@@ -23,6 +21,7 @@ interface BookCardLibraryProps {
 
 export default function BookCardLibrary({ book, status, addedAt, onDelete, onUpdateStatus }: BookCardLibraryProps) {
 
+  /* Updates book status via API and triggers parent state update */
   const handleStatusChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newStatus = e.target.value;
     try {
@@ -41,18 +40,22 @@ export default function BookCardLibrary({ book, status, addedAt, onDelete, onUpd
     }
   };
 
+  /* Fallback image logic */
   const imageSource = book.imageUrl || "/couverture-livre-test.png";
 
   return (
     <Card className="flex flex-row items-center w-full max-w-2xl overflow-hidden border border-gray-100 shadow-sm bg-white rounded-2xl h-44 group transition-all duration-500 hover:shadow-md hover:-translate-y-0.5">
-      <div className="relative bg-[#B2C3C9] h-full w-28 flex-shrink-0 flex items-center justify-center p-2">      <div className="relative w-full h-full shadow-lg">
-        <Image
-          src={imageSource}
-          alt={`Couverture de ${book.title}`}
-          fill
-          className="object-cover rounded-sm"
-        />
-      </div>
+      
+      {/* Book cover section */}
+      <div className="relative bg-[#B2C3C9] h-full w-28 flex-shrink-0 flex items-center justify-center p-2">      
+        <div className="relative w-full h-full shadow-lg">
+          <Image
+            src={imageSource}
+            alt={`Couverture de ${book.title}`}
+            fill
+            className="object-cover rounded-sm"
+          />
+        </div>
       </div>
 
       {/* Info Zone (Center) */}
@@ -89,7 +92,6 @@ export default function BookCardLibrary({ book, status, addedAt, onDelete, onUpd
 
         {/* Action Buttons */}
         <div className={styles.buttonGroup}>
-
           <button className={styles.deleteBtn} onClick={onDelete}>
             <XCircle size={28} strokeWidth={1.5} />
           </button>

@@ -272,10 +272,10 @@ export default function ParametrePage() {
           <div className={styles.row}>
             <div className={styles.labelCol}>
               <strong>Profil</strong>
-              <p>Modifiez votre identifiant</p>
+              <p>Modifiez votre pseudo</p>
             </div>
             <div className={styles.inputCol}>
-              <label className={styles.label}>Nouvel Identifiant</label>
+              <label className={styles.label}>Nouveau pseudo</label>
               <div className={styles.inputGroup}>
                 <input
                   className={styles.input}

@@ -45,9 +45,9 @@ export default function BookCardLibrary({ book, status, addedAt, onDelete, onUpd
 
   return (
     <Card className="flex flex-row items-center w-full max-w-2xl overflow-hidden border border-gray-100 shadow-sm bg-white rounded-2xl h-44 group transition-all duration-500 hover:shadow-md hover:-translate-y-0.5">
-      
+
       {/* Book cover section */}
-      <div className="relative bg-[#B2C3C9] h-full w-28 flex-shrink-0 flex items-center justify-center p-2">      
+      <div className="relative bg-[#B2C3C9] h-full w-28 flex-shrink-0 flex items-center justify-center p-2">
         <div className="relative w-full h-full shadow-lg">
           <Image
             src={imageSource}
@@ -80,7 +80,11 @@ export default function BookCardLibrary({ book, status, addedAt, onDelete, onUpd
             </select>
             {addedAt && (
               <span className={styles.date}>
-                Ajouté hier
+                Ajouté le {new Date(addedAt).toLocaleDateString("fr-FR", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric"
+                })}
               </span>
             )}
           </div>

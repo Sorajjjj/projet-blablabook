@@ -24,7 +24,7 @@ export default function Footer({ className, style }: FooterProps) {
               échanger et rapprocher les passionnés de lecture.
             </p>
           </div>
-          {/* Liens */}
+          {/* Links */}
           <div>
             <h3 className={styles.title}>Liens</h3>
             <ul className={styles.list}>

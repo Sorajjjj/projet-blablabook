@@ -41,7 +41,7 @@ export default function AccueilPage() {
 
 	const scrollRight = () => {
 		if (scrollContainerRef.current) {
-			// Adaptation du scroll : 250px sur mobile, 400px sur desktop
+			// Scroll adapted on mobile : 250px on mobile, 400px on desktop
 			const scrollAmount = window.innerWidth < 768 ? 250 : 400;
 			scrollContainerRef.current.scrollBy({
 				left: scrollAmount,
@@ -86,7 +86,7 @@ export default function AccueilPage() {
 					<h2>DÉCOUVREZ</h2>
 
 					<div className="relative">
-						{/* LEFT ARROW - Masquée sur mobile */}
+						{/* LEFT ARROW - Hidden on mobile */}
 						{showLeftArrow && (
 							<button
 								onClick={scrollLeft}
@@ -166,7 +166,7 @@ export default function AccueilPage() {
 							</div>
 						</div>
 
-						{/* RIGHT ARROW - Masquée sur mobile */}
+						{/* RIGHT ARROW - Hidden on mobile */}
 						{showRightArrow && (
 							<button
 								onClick={scrollRight}

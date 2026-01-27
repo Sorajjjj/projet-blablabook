@@ -18,7 +18,6 @@
     font-size: 1.125rem;
     text-transform: uppercase;
     letter-spacing: -0.025em;
-    /* Coupe le texte s'il est trop long sur une ligne */
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
@@ -93,7 +92,10 @@
     font-size: 1.125rem;
 }
 
-/* RESPONSIVE */
+/* ========================= */
+/*   MEDIA QUERIES MOBILE   */
+/* ========================= */
+
 @media (max-width: 640px) {
     .cardContainer {
         height: auto;

@@ -108,14 +108,11 @@ export default function Header({
 				</div>
 			</div>
 
-			{/* Menu Mobile Overlay - Seulement si non authentifié */}
+			{/* Menu Mobile Overlay - if unauthenticated */}
 			{isMobileMenuOpen && (
 				<div className={header.mobileMenu}>
 					<nav className={header.mobileNav}>
-						{/* --- NOUVEAU BLOC A AJOUTER ICI --- */}
-						{/* En-tête interne au menu pour pouvoir le fermer */}
 						<div className={header.mobileHeaderRow}>
-							{/* On rappelle le logo pour garder l'identité visuelle */}
 							<div className={header.logo}>
 								<Image
 									src="/logo/logo01.PNG"
@@ -125,7 +122,6 @@ export default function Header({
 								/>
 							</div>
 
-							{/* Le bouton Croix qui fonctionne car il est DANS le menu */}
 							<button onClick={closeMobileMenu}>
 								<X className="w-6 h-6 text-gray-700" />
 							</button>

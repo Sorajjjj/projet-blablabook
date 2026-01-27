@@ -11,20 +11,20 @@ type Book = {
 };
 
 export default function SearchBarTest() {
-  // Texte tapé
+  // Typed text
   const [query, setQuery] = useState("");
 
-  // Résultats reçus
+  // Received results
   const [results, setResults] = useState<Book[]>([]);
 
-  // Si moins de 2 caractères on sort
+  // if under 2 characters, clear results
   async function search(q: string) {
     if (q.trim().length < 2) {
       setResults([]);
       return;
     }
 
-    // encodeURIComponent évite de casser l’URL
+    // encodeURIComponent avoids breaking the URL
     const res = await fetch(
       `http://localhost:4000/api/books/search?q=${encodeURIComponent(q)}`
     );

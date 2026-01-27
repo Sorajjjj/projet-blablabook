@@ -68,8 +68,8 @@ body {
     :global(main) {
     display: flex !important;
     flex-direction: column;
-    justify-content: center; /* C'est cette ligne qui centre tout verticalement */
-    min-height: 75vh; /* Force une hauteur min pour garantir l'effet centré même s'il y a peu de contenu */
+    justify-content: center;
+    min-height: 75vh; 
     }
 
     .hero {

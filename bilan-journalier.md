@@ -4,53 +4,123 @@
 
 ### Jour 1
 
-**Amélia**
+_(à compléter)_
 
-**Anas**
+**Amélia** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
-**Inès**
+**Anas** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
-**Mathias**
+**Inès** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+**Mathias** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
 ### Jour 2
 
-**Amélia**
+_(à compléter)_
 
-**Anas**
+**Amélia** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
-**Inès**
+**Anas** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
-**Mathias**
+**Inès** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+**Mathias** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
 ### Jour 3
 
-**Amélia**
+_(à compléter)_
 
-**Anas**
+**Amélia** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
-**Inès**
+**Anas** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
-**Mathias**
+**Inès** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+**Mathias** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
 ### Jour 4
 
-**Amélia**
+_(à compléter)_
 
-**Anas**
+**Amélia** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
-**Inès**
+**Anas** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
-**Mathias**
+**Inès** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+**Mathias** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
 ### Jour 5
 
-**Amélia**
+_(à compléter)_
 
-**Anas**
+**Amélia** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
-**Inès**
+**Anas** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
-**Mathias**
+**Inès** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+**Mathias** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
 ## Sprint 1
 
@@ -58,75 +128,171 @@
 
 Gestion des tâches du sprint 1 et installation des dépendances nécessaires
 
-**Amélia**
+**Amélia** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
-**Anas**
+**Anas** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
-**Inès**
+**Inès** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
-**Mathias**
+**Mathias** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
 ### Jour 2
 
-**Amélia**
+_(à compléter)_
 
-**Anas**
+**Amélia** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
-**Inès**
+**Anas** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
-**Mathias**
+**Inès** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+**Mathias** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
 ### Jour 3
 
-**Amélia**
+_(à compléter)_
 
-**Anas**
+**Amélia** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
-**Inès**
+**Anas** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
-**Mathias**
+**Inès** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+**Mathias** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
 ### Jour 4
 
-**Amélia**
+_(à compléter)_
 
-**Anas**
+**Amélia** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
-**Inès**
+**Anas** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
-**Mathias**
+**Inès** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+**Mathias** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
 ### Jour 5
 
-**Amélia**
+_(à compléter)_
 
-**Anas**
+**Amélia** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
-**Inès**
+**Anas** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
-**Mathias**
+**Inès** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+**Mathias** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
 ## Sprint 2
 
 ### Jour 1
 
-**Amélia**
+_(à compléter)_
 
-**Anas**
+**Amélia** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
-**Inès**
+**Anas** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
-**Mathias**
+**Inès** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+**Mathias** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
 ### Jour 2
 
-**Amélia**
+_(à compléter)_
 
-**Anas**
+**Amélia** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
-**Inès**
+**Anas** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
-**Mathias**
+**Inès** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+**Mathias** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
 ### Jour 3
 
@@ -192,6 +358,131 @@ Quelques fonctionnalités sont encore à ajouter mais nous sommes assez satisfai
 Fonctionnalités username et e-mail opérationnelles avec affichage de messages d'erreur ou de succès d'enregistrement.
 -À faire ce jour-
 Réglages à faire, ciblés sur les placeholders, puis rendre opérationnelle la fonctionnalité password afin de pouvoir modifier le mot de passe et l'enregistrer dans la BDD.
+
+**Anas** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+**Inès** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+**Mathias** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+## Sprint 3
+
+### Jour 1
+
+Le MVP est globalement opérationnel.
+Il nous reste à peaufiner certaines fonctionnalités afin de les optimiser.
+Le responsive doit encore être mis en place.
+Nous devons aussi documenter notre code, effectuer les tests et travailler le déploiement.
+
+**Amélia** : -Fait la veille-
+Fonctionnalité password opérationnelle afin de pouvoir modifier le mot de passe et l'enregistrer dans la BDD.
+-À faire ce jour-
+Mise en place du responsive de la page des paramètres, traiter les finitions et documenter le code.
+
+**Anas** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+**Inès** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+**Mathias** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+### Jour 2
+
+_(à compléter)_
+
+**Amélia** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+**Anas** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+**Inès** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+**Mathias** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+### Jour 3
+
+_(à compléter)_
+
+**Amélia** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+**Anas** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+**Inès** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+**Mathias** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+### Jour 4
+
+_(à compléter)_
+
+**Amélia** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+**Anas** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+**Inès** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+**Mathias** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
+
+### Jour 5
+
+_(à compléter)_
+
+**Amélia** : -Fait la veille-
+_(à compléter)_
+-À faire ce jour-
+_(à compléter)_
 
 **Anas** : -Fait la veille-
 _(à compléter)_

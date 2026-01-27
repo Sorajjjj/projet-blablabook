@@ -43,12 +43,12 @@ export default function Header({
 					</Link>
 				</div>
 
-				{/* SearchBar - Hidden on mobile */}
+				{/* SearchBar Desktop */}
 				<div className={header.searchBarContainer}>
 					{showSearchBar && <SearchBar />}
 				</div>
 
-				{/* Desktop Navigation */}
+				{/* Navigation Desktop */}
 				<nav className={header.nav}>
 					<ul className={header.navList}>
 						{showLinks && (
@@ -88,7 +88,7 @@ export default function Header({
 					</ul>
 				</nav>
 
-				{/* Mobile Burger Menu */}
+				{/* Menu Burger Mobile */}
 				<div className={header.mobileMenuButton}>
 					{isAuthenticated ? (
 						<UserMenu user={user} onLogout={handleLogout} isMobile={true} />
@@ -108,10 +108,35 @@ export default function Header({
 				</div>
 			</div>
 
-			{/* Mobile Menu Overlay - Only if not authenticated */}
-			{!isAuthenticated && isMobileMenuOpen && (
+			{/* Menu Mobile Overlay - Seulement si non authentifié */}
+			{isMobileMenuOpen && (
 				<div className={header.mobileMenu}>
 					<nav className={header.mobileNav}>
+						{/* --- NOUVEAU BLOC A AJOUTER ICI --- */}
+						{/* En-tête interne au menu pour pouvoir le fermer */}
+						<div className={header.mobileHeaderRow}>
+							{/* On rappelle le logo pour garder l'identité visuelle */}
+							<div className={header.logo}>
+								<Image
+									src="/logo/logo01.PNG"
+									alt="Logo"
+									width={100}
+									height={40}
+								/>
+							</div>
+
+							{/* Le bouton Croix qui fonctionne car il est DANS le menu */}
+							<button onClick={closeMobileMenu}>
+								<X className="w-6 h-6 text-gray-700" />
+							</button>
+						</div>
+						{/* SearchBar Mobile */}
+						{showSearchBar && (
+							<div className={header.mobileSearchBar}>
+								<SearchBar />
+							</div>
+						)}
+
 						{showLinks && (
 							<>
 								<Link

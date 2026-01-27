@@ -64,6 +64,14 @@ body {
 /* ========================= */
 
 @media (max-width: 767px) {
+
+    :global(main) {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center; /* C'est cette ligne qui centre tout verticalement */
+    min-height: 75vh; /* Force une hauteur min pour garantir l'effet centré même s'il y a peu de contenu */
+    }
+
     .hero {
         padding: 16px 10px;
         margin: 10px 2%;
@@ -83,7 +91,13 @@ body {
     }
     
     .discovery {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: center;
         padding: 12px 2%;
+        padding-bottom: 0;
+        margin-bottom: 0;
     }
     
     .discovery h2 {
@@ -99,6 +113,7 @@ body {
         padding-right: 0;
         margin-left: -2%;
         margin-right: -2%;
+        margin-bottom:10px;
         padding-left: 2%;
     }
 }

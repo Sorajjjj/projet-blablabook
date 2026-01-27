@@ -26,7 +26,7 @@ export default function Footer({ className, style }: FooterProps) {
           </div>
           {/* Liens */}
           <div>
-            <h3 className={styles.title}>Lien</h3>
+            <h3 className={styles.title}>Liens</h3>
             <ul className={styles.list}>
               <li><Link href="/accueil">Accueil</Link></li>
               <li><Link href="/catalogue">Catalogue</Link></li>

@@ -67,3 +67,27 @@
 .button:hover {
   background-color: #ea580c;
 }
+
+/* ========================= */
+/*   MEDIA QUERIES MOBILE   */
+/* ========================= */
+
+@media (max-width: 768px) {
+  .searchForm {
+    width: 100%;
+    min-width: 0;
+  }
+
+.input {
+    width: 100%; 
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .resultsBox {
+    width: 100%;
+    max-width: 300px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

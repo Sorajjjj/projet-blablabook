@@ -140,9 +140,11 @@ export default function LoginPreview() {
 									Se connecter
 								</OrangeSolidButton>
 								<p className="text-center">Ou</p>
-								<LightBlueOutlineButton className="w-full text-xl py-6">
-									Créer un compte
-								</LightBlueOutlineButton>
+								<Link href="/inscription">
+									<LightBlueOutlineButton className="w-full text-xl py-6">
+										Créer un compte
+									</LightBlueOutlineButton>
+								</Link>
 							</div>
 						</form>
 					</Form>

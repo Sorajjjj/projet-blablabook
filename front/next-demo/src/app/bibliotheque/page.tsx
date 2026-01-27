@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import Footer from "@/components/blablabook/footer";
 import Header from "@/components/blablabook/Header";
@@ -9,6 +10,8 @@ import BookCardLibrary from "@/components/blablabook/book-card-library";
 import { CheckCheck, BookMarked, BookHeart, BookCopy } from 'lucide-react';
 
 export default function LibraryPage() {
+
+	const router = useRouter();
 
 	// State management for library data and UI
 	const [library, setLibrary] = useState<any[]>([]);
@@ -36,6 +39,13 @@ export default function LibraryPage() {
 					"Content-Type": "application/json",
 				}
 			});
+
+			if (!response.ok) {
+				if (response.status === 401) {
+					router.push("/login"); 
+					return;
+				}}
+
 			const result = await response.json();
 			setLibrary(result.data || []);
 		} catch (error) {

@@ -135,7 +135,7 @@ body {
   border-color: rgb(1, 11, 43);
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 620px) {
   .container {
     padding: 0 10px;
   }

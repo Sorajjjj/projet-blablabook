@@ -20,11 +20,8 @@ interface iBook {
 export default function AccueilPage() {
 	const [randomBook, setRandomBook] = useState<iBook[]>([]);
 	const [showLeftArrow, setShowLeftArrow] = useState(false);
-	const [showRightArrow, setShowRightArrow] = useState(true); // Visible by default
+	const [showRightArrow, setShowRightArrow] = useState(true);
 
-
-
-	// 1. Create a reference (the "laser pointer") to target the scrollable div
 	const scrollContainerRef = useRef<HTMLDivElement>(null);
 
 	// Fetch 15 random books from the backend
@@ -42,39 +39,33 @@ export default function AccueilPage() {
 		})();
 	}, []);
 
-	// 2. Functions to trigger the horizontal scroll
 	const scrollRight = () => {
-		// Check if the reference is pointing to a real element
 		if (scrollContainerRef.current) {
-			// Use the scrollBy method to move the scrollbar 350px to the right
+			// Scroll adapted on mobile : 250px on mobile, 400px on desktop
+			const scrollAmount = window.innerWidth < 768 ? 250 : 400;
 			scrollContainerRef.current.scrollBy({
-				left: 400,
-				behavior: "smooth", // Makes the movement fluid
+				left: scrollAmount,
+				behavior: "smooth",
 			});
 		}
 	};
 
 	const scrollLeft = () => {
 		if (scrollContainerRef.current) {
-			// We use a negative value to move back to the left
+			const scrollAmount = window.innerWidth < 768 ? 250 : 400;
 			scrollContainerRef.current.scrollBy({
-				left: -400,
+				left: -scrollAmount,
 				behavior: "smooth",
 			});
 		}
 	};
 
-	// Monitor scroll position to show/hide left arrow
 	const handleScroll = () => {
 		if (scrollContainerRef.current) {
 			const { scrollLeft, scrollWidth, clientWidth } =
 				scrollContainerRef.current;
 
-			// Show left arrow if we scrolled more than 10px
 			setShowLeftArrow(scrollLeft > 10);
-
-			// Show right arrow if we haven't reached the end
-			// We substract 10px to avoid precision issues with some browsers
 			setShowRightArrow(scrollLeft + clientWidth < scrollWidth - 10);
 		}
 	};
@@ -90,16 +81,16 @@ export default function AccueilPage() {
 					<p>Découvrez et gérez votre bibliothèque personnelle</p>
 				</section>
 
-				{/* DISCOVERY SECTION*/}
+				{/* DISCOVERY SECTION */}
 				<section className={Styles.discovery} aria-label="Section découverte">
 					<h2>DÉCOUVREZ</h2>
 
 					<div className="relative">
-						{/* LEFT ARROW: Only visible if showLeftArrow is true */}
+						{/* LEFT ARROW - Hidden on mobile */}
 						{showLeftArrow && (
 							<button
 								onClick={scrollLeft}
-								className="absolute -left-4 top-1/2 -translate-y-1/2 z-20 bg-white p-4 rounded-full shadow-lg border border-gray-100 hover:scale-110 transition-all md:flex hidden"
+								className="absolute -left-4 top-1/2 -translate-y-1/2 z-20 bg-white p-4 rounded-full shadow-lg border border-gray-100 hover:scale-110 transition-all hidden md:flex"
 								aria-label="Faire défiler vers la gauche"
 							>
 								<svg
@@ -127,13 +118,11 @@ export default function AccueilPage() {
 							role="region"
 							aria-label="Carrousel de livres aléatoires"
 						>
-							{/* TERNARY 1: Checking if we have books */}
 							{randomBook.length > 0 ? (
 								randomBook.map((book) => (
 									<div key={book.bookId} className={Styles.bookWrapper}>
 										<BookCard
 											title={book.title}
-											// TERNARY 2: Safe check for author
 											author={
 												book.author ? book.author.fullName : "Auteur inconnu"
 											}
@@ -143,26 +132,25 @@ export default function AccueilPage() {
 									</div>
 								))
 							) : (
-								<p>Chargement des livres...</p>
+								<p className="text-sm md:text-base px-2">
+									Chargement des livres...
+								</p>
 							)}
 
 							{/* SEE ALL BOOKS CARD */}
 							<div className={Styles.bookWrapper}>
 								<Link
 									href="/catalogue"
-									/* The 'group' class MUST be here, on the Link itself. 
-       This way, it only affects what is INSIDE this specific link. */
-									className="flex flex-col items-center justify-center w-70 h-83 bg-white rounded-xl border-2 border-dashed border-gray-300 hover:border-teal-500 hover:bg-teal-50 transition-all shadow-sm group"
+									className="flex flex-col items-center justify-center w-[145px] h-[260px] md:w-70 md:h-83 bg-white rounded-xl border-2 border-dashed border-gray-300 hover:border-teal-500 hover:bg-teal-50 transition-all shadow-sm group"
 								>
-									{/* Only this icon will scale when THIS link is hovered */}
-									<div className="w-12 h-12 rounded-full bg-teal-50 flex items-center justify-center mb-4 text-teal-600 shadow-inner transform group-hover:scale-110 transition-transform duration-300">
+									<div className="w-9 h-9 md:w-12 md:h-12 rounded-full bg-teal-50 flex items-center justify-center mb-2 md:mb-4 text-teal-600 shadow-inner transform group-hover:scale-110 transition-transform duration-300">
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
 											fill="none"
 											viewBox="0 0 24 24"
 											strokeWidth={2.5}
 											stroke="currentColor"
-											className="w-6 h-6"
+											className="w-4 h-4 md:w-6 md:h-6"
 										>
 											<path
 												strokeLinecap="round"
@@ -171,18 +159,18 @@ export default function AccueilPage() {
 											/>
 										</svg>
 									</div>
-									<span className="font-bold text-teal-700 uppercase text-xs tracking-widest">
+									<span className="font-bold text-teal-700 uppercase text-[9px] md:text-xs tracking-widest px-2 text-center">
 										Voir tout
 									</span>
 								</Link>
 							</div>
 						</div>
 
-						{/* RIGHT ARROW: Now wrapped in a condition */}
+						{/* RIGHT ARROW - Hidden on mobile */}
 						{showRightArrow && (
 							<button
 								onClick={scrollRight}
-								className="absolute -right-4 top-1/2 -translate-y-1/2 z-20 bg-white p-4 rounded-full shadow-lg border border-gray-100 hover:scale-110 md:flex hidden"
+								className="absolute -right-4 top-1/2 -translate-y-1/2 z-20 bg-white p-4 rounded-full shadow-lg border border-gray-100 hover:scale-110 transition-all hidden md:flex"
 								aria-label="Faire défiler vers la droite"
 							>
 								<svg

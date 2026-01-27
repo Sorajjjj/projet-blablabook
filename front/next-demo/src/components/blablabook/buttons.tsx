@@ -5,7 +5,7 @@ interface BlaBlaButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	children: React.ReactNode;
 }
 
-// Bouton orange outline
+// Orange outline button
 export const OrangeOutlineButton = forwardRef<
 	HTMLButtonElement,
 	BlaBlaButtonProps
@@ -21,7 +21,7 @@ export const OrangeOutlineButton = forwardRef<
 ));
 OrangeOutlineButton.displayName = "OrangeOutlineButton";
 
-// Bouton bleu clair outline
+// Light blue outline button
 export const LightBlueOutlineButton = forwardRef<
 	HTMLButtonElement,
 	BlaBlaButtonProps
@@ -37,7 +37,7 @@ export const LightBlueOutlineButton = forwardRef<
 ));
 LightBlueOutlineButton.displayName = "LightBlueOutlineButton";
 
-// Bouton orange plein
+// Orange solid button
 export const OrangeSolidButton = forwardRef<
 	HTMLButtonElement,
 	BlaBlaButtonProps
@@ -52,7 +52,7 @@ export const OrangeSolidButton = forwardRef<
 ));
 OrangeSolidButton.displayName = "OrangeSolidButton";
 
-// Bouton teal plein
+// Teal solid button
 export const TealSolidButton = forwardRef<HTMLButtonElement, BlaBlaButtonProps>(
 	({ children, className = "", ...props }, ref) => (
 		<Button
@@ -66,7 +66,7 @@ export const TealSolidButton = forwardRef<HTMLButtonElement, BlaBlaButtonProps>(
 );
 TealSolidButton.displayName = "TealSolidButton";
 
-// Bouton orange outline arrondi
+// Orange rounded outline button
 export const OrangeRoundedButton = forwardRef<
 	HTMLButtonElement,
 	BlaBlaButtonProps
@@ -82,7 +82,7 @@ export const OrangeRoundedButton = forwardRef<
 ));
 OrangeRoundedButton.displayName = "OrangeRoundedButton";
 
-// Bouton teal outline arrondi
+// Teal rounded outline button
 export const TealRoundedButton = forwardRef<
 	HTMLButtonElement,
 	BlaBlaButtonProps
@@ -98,7 +98,7 @@ export const TealRoundedButton = forwardRef<
 ));
 TealRoundedButton.displayName = "TealRoundedButton";
 
-// Bouton simple (ghost)
+// Simple button (ghost)
 export const SimpleButton = forwardRef<HTMLButtonElement, BlaBlaButtonProps>(
 	({ children, className = "", ...props }, ref) => (
 		<Button

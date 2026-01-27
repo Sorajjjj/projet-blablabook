@@ -102,8 +102,11 @@
     font-size: 1.125rem;
 }
 
-/* Mobile responsive adjustments */
-@media (max-width: 700) {
+/* ========================= */
+/*   MEDIA QUERIES MOBILE   */
+/* ========================= */
+
+@media (max-width: 640px) {
     .cardContainer {
         height: auto;
     }

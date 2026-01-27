@@ -58,7 +58,7 @@ export default function BookCardLibrary({ book, status, addedAt, onDelete, onUpd
         </div>
       </div>
 
-      {/* Book information and status selection */}
+      {/* Info Zone (Center) */}
       <div className={styles.cardContainer}>
         <div className={styles.contentWrapper}>
           <h3 className={styles.title}>
@@ -87,14 +87,17 @@ export default function BookCardLibrary({ book, status, addedAt, onDelete, onUpd
         </div>
       </div>
 
-      {/* Actions and navigation links */}
+      {/* Actions Zone (Right) */}
       <div className={styles.actionsContainer}>
+
+        {/* Action Buttons */}
         <div className={styles.buttonGroup}>
           <button className={styles.deleteBtn} onClick={onDelete}>
             <XCircle size={28} strokeWidth={1.5} />
           </button>
         </div>
 
+        {/* Details Link */}
         <Link
           href={`/detail-livre/${book.bookId}`}
           className={styles.detailsLink}

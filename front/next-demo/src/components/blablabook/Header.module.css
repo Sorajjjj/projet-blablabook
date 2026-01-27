@@ -1,15 +1,17 @@
 .header {
   background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 10;
 }
 
 .container {
-  /* max-width: 1200px; <-------- Réduit trop la taille du conteneur */
   margin: 0 auto;
   padding: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .logo {
@@ -71,4 +73,144 @@
   flex: 1;
   display: flex;
   justify-content: center;
+}
+
+/* Mobile burger button - hidden on desktop */
+.mobileMenuButton {
+  display: none;
+}
+
+/* Mobile menu overlay */
+.mobileMenu {
+  display: none;
+}
+
+/* ========================= */
+/*   MEDIA QUERIES MOBILE   */
+/* ========================= */
+
+@media (max-width: 767px) {
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  .logo {
+    margin-right: 8px; 
+  }
+
+  .logo img { 
+ 
+    width: auto;
+    height: 50px;
+    max-width: 100px; 
+  }
+
+ .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+  }
+
+  .logo {
+    flex-shrink: 0;
+  }
+
+ .searchBarContainer {
+    display: block;
+    flex: 1; 
+    margin: 0 10px;
+  }
+
+  /* Hidding navigation desktop on mobile */
+  .nav {
+    display: none;
+  }
+
+  /* Showing burger button on mobile */
+  .mobileMenuButton {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Mobile menu overlay */
+  .mobileMenu {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    animation: fadeIn 0.2s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .mobileNav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: #ffffff;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 12px 0 16px;
+    animation: slideDown 0.3s ease-out;
+    max-height: calc(100vh - 56px);
+    overflow-y: auto;
+  }
+
+  @keyframes slideDown {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* SearchBar in the mobile menu */
+  .mobileSearchBar {
+    padding: 0 12px 12px;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 8px;
+  }
+
+  .mobileNavLink {
+    display: block;
+    padding: 10px 20px;
+    color: #111827;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+    border-left: 3px solid transparent;
+  }
+
+  .mobileNavLink:hover,
+  .mobileNavLink:active {
+    background-color: #fff7ed;
+    border-left-color: #f97316;
+    color: #f97316;
+  }
+
+  .mobileHeaderRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px 20px 16px;
+  margin-bottom: 10px;
+}
 }

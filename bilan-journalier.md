@@ -405,12 +405,12 @@ _(à compléter)_
 
 ### Jour 2
 
-_(à compléter)_
+Le responsive a été mis en place sur la plupart des pages du site (excepté la page catalogue, accueil, ainsi que certains composants).
 
 **Amélia** : -Fait la veille-
-_(à compléter)_
+Mise en place du responsive de la page des paramètres.
 -À faire ce jour-
-_(à compléter)_
+Documenter le code de la page des paramètres et faire les finitions de la page de connexion (liens).
 
 **Anas** : -Fait la veille-
 _(à compléter)_

@@ -1,9 +1,11 @@
 "use client";
+// Styles, layout components, and React hooks
 import styles from "./parametre.module.css";
 import Header from "@/components/blablabook/Header";
 import Footer from "@/components/blablabook/footer";
 import { useEffect, useState } from "react";
 
+// Shape of user settings returned by backend API
 interface Settings {
   username: string;
   email: string;
@@ -12,62 +14,67 @@ interface Settings {
 }
 
 export default function ParametrePage() {
-  //   For a better UX otherwise, user sees empty page
+  // Used to avoid rendering page before user data is fetched
+
+  // Prevent empty UI while user data loading
   const [loading, setLoading] = useState(true);
-  // [GET SETTINGS PAGE WITH UPDATED DATA]
+  // Keep local copy of user settigns returned by API
   const [settings, setSettings] = useState<Settings | null>(null);
-  // [UPDATE USERNAME]
+  // Username update
   const [newUsername, setNewUsername] = useState("");
-  // [UPDATE EMAIL]
+  // Email update
   const [newEmail, setNewEmail] = useState("");
   const [confirmEmail, setConfirmEmail] = useState("");
-  // [UPDATE PASSWORD]
+  // Password update
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  // [MANAGE ERRORS]
+  // Error messages displayed to user
   const [pageError, setPageError] = useState<string | null>(null);
-  const [formError, setFormError] = useState<string | null>(null);
+  const [usernameError, setUsernameError] = useState<string | null>(null);
   const [emailError, setEmailError] = useState<string | null>(null);
   const [passwordError, setPasswordError] = useState<string | null>(null);
-  // [MANAGE SAVING PROCESS]
-  // In case of delay
-  const [saving, setSaving] = useState(false);
+  // Loading states used to disable buttons and show loaders while API requests in progress
+  const [usernameSaving, setUsernameSaving] = useState(false);
   const [emailSaving, setEmailSaving] = useState(false);
   const [passwordSaving, setPasswordSaving] = useState(false);
-  // [MANAGE SUCCESS]
+  // Success messages displayed to user after successful update
   const [success, setSuccess] = useState<string | null>(null);
   const [emailSuccess, setEmailSuccess] = useState<string | null>(null);
   const [passwordSuccess, setPasswordSuccess] = useState<string | null>(null);
 
   async function handleUsernameUpdate() {
     // Clear previous messages if exists
-    setFormError(null);
+    setUsernameError(null);
     setSuccess(null);
 
+    // Use trim to remove leading and trailing white space
+    // and line terminator characters from a string
     const trimmedUsername = newUsername.trim();
 
+    // Manage errors
     if (!trimmedUsername) {
-      setFormError("Veuillez entrer un nouvel identifiant");
+      setUsernameError("Veuillez entrer un nouvel identifiant");
       return;
     }
 
     if (trimmedUsername.length < 2) {
-      setFormError("Identifiant trop court (min. 2 caractères)");
+      setUsernameError("Identifiant trop court (min. 2 caractères)");
       return;
     }
 
     if (trimmedUsername.length > 50) {
-      setFormError("Identifiant trop long (max. 50 caractères)");
+      setUsernameError("Identifiant trop long (max. 50 caractères)");
       return;
     }
 
     try {
-      setSaving(true);
+      setUsernameSaving(true);
 
-      // simulate delay to show the loading button...
+      // simulate delay to show the loading button
       // await new Promise((resolve) => setTimeout(resolve, 1000));
 
+      // Use fetch to call API in backend
       const response = await fetch(
         "http://localhost:4000/api/settings/username",
         {
@@ -94,10 +101,10 @@ export default function ParametrePage() {
       setSuccess("Nouvel identifiant enregistré avec succès !");
     } catch (err) {
       if (err instanceof Error) {
-        setFormError(err.message);
+        setUsernameError(err.message);
       }
     } finally {
-      setSaving(false);
+      setUsernameSaving(false);
     }
   }
 
@@ -222,6 +229,7 @@ export default function ParametrePage() {
     }
   }
 
+  // Use useEffect to synchronise component with external system
   // useEffect(() => {SETUP}, [DEPENDENCIES?]);
   useEffect(() => {
     const fetchSettings = async () => {
@@ -283,19 +291,19 @@ export default function ParametrePage() {
                   value={newUsername}
                   onChange={(e) => {
                     setNewUsername(e.target.value);
-                    setFormError(null);
+                    setUsernameError(null);
                     setSuccess(null);
                   }}
                   placeholder={settings?.username}
                 />
-                {formError && <p>{formError}</p>}
+                {usernameError && <p>{usernameError}</p>}
                 {success && <p>{success}</p>}
                 <button
                   className={styles.btnOrange}
                   onClick={handleUsernameUpdate}
-                  disabled={saving}
+                  disabled={usernameSaving}
                 >
-                  {saving ? "Enregistrement..." : "Valider"}
+                  {usernameSaving ? "Enregistrement..." : "Valider"}
                 </button>
               </div>
             </div>

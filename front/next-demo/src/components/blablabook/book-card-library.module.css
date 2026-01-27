@@ -1,9 +1,11 @@
+/* Card container layout */
 .cardContainer {
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
+/* Wrapper for internal content */
 .contentWrapper {
     display: flex;
     flex-direction: column;
@@ -12,19 +14,20 @@
     flex: 1;
 }
 
+/* Book title styling with line clamping */
 .title {
     font-weight: 900;
     color: black;
     font-size: 1.125rem;
     text-transform: uppercase;
     letter-spacing: -0.025em;
-    /* Coupe le texte s'il est trop long sur une ligne */
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
+/* Author name styling */
 .author {
     font-size: 0.875rem;
     color: #4b5563;
@@ -33,6 +36,7 @@
     font-style: italic;
 }
 
+/* Grouping for tags or metadata */
 .infoGroup {
     display: flex;
     flex-wrap: wrap;
@@ -41,11 +45,13 @@
     margin-top: 1rem;
 }
 
+/* Date display */
 .date {
     font-size: 0.75rem;
     color: #9e9e9e; 
 }
 
+/* Sidebar actions container */
 .actionsContainer {
     display: flex;
     flex-direction: column;
@@ -55,12 +61,14 @@
     flex-shrink: 0;
 }
 
+/* Grouping for buttons */
 .buttonGroup {
     display: flex;
     align-items: center;
     justify-content: flex-end; 
 }
 
+/* Delete button styling and hover */
 .deleteBtn {
     color: #cbd5e1;
     transition: color 0.2s ease;
@@ -75,6 +83,7 @@
     color: #ef4444;
 }
 
+/* Navigation link styling */
 .detailsLink {
     display: flex;
     align-items: center;
@@ -93,8 +102,8 @@
     font-size: 1.125rem;
 }
 
-/* RESPONSIVE */
-@media (max-width: 640px) {
+/* Mobile responsive adjustments */
+@media (max-width: 700) {
     .cardContainer {
         height: auto;
     }

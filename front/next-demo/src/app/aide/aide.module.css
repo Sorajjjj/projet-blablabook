@@ -1,0 +1,76 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.h1 {
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  color: #333;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+}
+
+.h1 span {
+  color: #c74f18;
+}
+.faqItem {
+  background: #fff;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.faqItem:hover {
+  transform: translateY(-2px);
+}
+
+.faqItem summary {
+  padding: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #333;
+}
+
+.faqItem summary::after {
+  content: '＋';
+  color: #c74f18;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.faqItem details[open] summary::after {
+  content: '－';
+  transform: rotate(90deg);
+}
+
+.content {
+  padding: 0 20px 20px 20px;
+  border-top: 1px solid #eee;
+  font-size: 0.95rem;
+  color: #666;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.contactHint {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.contactHint a {
+  color: #c74f18;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.contactHint a:hover {
+  text-decoration: underline;
+}

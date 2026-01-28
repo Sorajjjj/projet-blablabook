@@ -6,24 +6,19 @@ body {
 }
 .container {
   max-width: 1100px;
-  margin: 60px auto;
+  margin: 90px auto;
   padding: 20px;
 }
 
-.contactWrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-}
+
 
 /* LEFT SIDE */
 .contactInfo {
   background: linear-gradient(135deg, var(--primary), #56ccf2);
   color: white;
   padding: 50px 40px;
+  border-radius: 12px;
+  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -62,51 +57,6 @@ body {
   margin-bottom: 18px;
 }
 
-.formGroup label {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: 500;
-  font-size: 14px;
-}
-
-.formGroup input,
-.formGroup textarea {
-  width: 100%;
-  padding: 12px 14px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  font-size: 14px;
-  transition: border 0.3s, box-shadow 0.3s;
-}
-
-.formGroup input:focus,
-.formGroup textarea:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(47, 128, 237, 0.15);
-  outline: none;
-}
-
-.formGroup textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
-.button {
-  display: inline-block;
-  background: #E67141;
-  color: white;
-  padding: 12px 220px;
-  border: none;
-  border-radius: 8px;
-  font-size: 15px;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
-}
-
-.btn:hover {
-  background: #1c64d1;
-  transform: translateY(-2px);
-}
 
 /* RESPONSIVE */
 /* ========== MOBILE (max-width: 768px) ========== */
@@ -118,10 +68,10 @@ body {
   }
 
   .contactWrapper {
-    grid-template-columns: 1fr; /* passe de 2 colonnes à 1 */
+    grid-template-columns: 1fr; 
   }
 
-  /* Bloc bleu en haut */
+
   .contactInfo {
     padding: 3px 50px;
     text-align: center;
@@ -139,37 +89,6 @@ body {
   .infoItem {
     margin-bottom: 15px;
     font-size: 14px;
-  }
-
-  /* Formulaire en dessous */
-  .contactForm {
-    padding: 30px 20px;
-  }
-
-  .contactForm h2 {
-    font-size: 20px;
-    text-align: center;
-  }
-
-  .formGroup label {
-    font-size: 13px;
-  }
-
-  .formGroup input,
-  .formGroup textarea {
-    font-size: 16px; /* évite le zoom auto iOS */
-    padding: 14px;
-  }
-
-  .formGroup textarea {
-    min-height: 110px;
-  }
-
-  /* Bouton full width */
-  .button {
-    width: 100%;
-    padding: 14px;
-    font-size: 16px;
   }
 }
 

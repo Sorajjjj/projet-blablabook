@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Ma Librairie en Ligne</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e67e22;
+            --bg-color: #f9f7f2;
+            --text-color: #444;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+
+        h1 span {
+            color: var(--accent-color);
+        }
+
+        /* --- Style de l'Accordéon --- */
+        .faq-item {
+            background: var(--white);
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Utilisation de détails/sommaire pour le côté interactif sans JS */
+        details summary {
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            outline: none;
+            color: var(--primary-color);
+        }
+
+        details summary::after {
+            content: '＋';
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        details[open] summary::after {
+            content: '－';
+            transform: rotate(90deg);
+        }
+
+        .content {
+            padding: 0 20px 20px 20px;
+            border-top: 1px solid #eee;
+            font-size: 0.95rem;
+            color: #666;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Footer / Contact --- */
+        .contact-hint {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+
+        .contact-hint a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Questions <span>Fréquentes</span></h1>
+
+        <div class="faq-item">
+            <details>
+                <summary>Comment puis-je suivre ma commande ?</summary>
+                <div class="content">
+                    Une fois votre commande expédiée, vous recevrez un email contenant un lien de suivi. Vous pouvez également consulter l'onglet "Mes Commandes" dans votre espace client.
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>Quels sont les délais de livraison ?</summary>
+                <div class="content">
+                    Pour la France métropolitaine, comptez 3 à 5 jours ouvrés. Pour les ebooks, la livraison est instantanée dans votre bibliothèque numérique après validation du paiement.
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>Puis-je retourner un livre papier ?</summary>
+                <div class="content">
+                    Oui, vous disposez de 14 jours après réception pour nous retourner un livre s'il est dans son état neuf. Les frais de retour sont à votre charge, sauf en cas de produit défectueux.
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>Sous quel format sont vos ebooks ?</summary>
+                <div class="content">
+                    Nos ebooks sont principalement disponibles au format <strong>EPUB</strong> et <strong>PDF</strong>. Ils sont compatibles avec la majorité des liseuses (Kindle, Kobo, Vivlio) et tablettes.
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>Proposez-vous des cartes cadeaux ?</summary>
+                <div class="content">
+                    Absolument ! Nos cartes cadeaux vont de 10€ à 100€ et sont valables un an sur l'ensemble du catalogue.
+                </div>
+            </details>
+        </div>
+
+        <div class="contact-hint">
+            <p>Vous n'avez pas trouvé votre réponse ? <a href="#">Contactez notre service client</a></p>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -265,7 +265,8 @@ export default function ParametrePage() {
   }
 
   return (
-    <div className={styles.pageContainer}>
+    // <div className={styles.pageContainer}>
+    <div className="bg-blabla-light-cream">
       <Header showSearchBar={false} />
       <br />
       <br />

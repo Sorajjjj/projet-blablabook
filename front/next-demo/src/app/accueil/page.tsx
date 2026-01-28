@@ -78,8 +78,10 @@ export default function AccueilPage() {
     "bg-blabla-teal",
   ];
 
+  //   Create an array of colors
   const colors: string[] = [];
 
+  //   random color for each book
   randomBook.forEach((_, index) => {
     if (index === 0) {
       colors.push(bgColors[Math.floor(Math.random() * bgColors.length)]);

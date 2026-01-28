@@ -59,6 +59,14 @@ export default function LibraryPage() {
 		fetchLibrary();
 	}, []);
 
+	if (loading) {
+		return (
+			<div className="flex flex-col items-center justify-center min-h-screen bg-blabla-light-cream">
+				<p className="text-gray-500 italic animate-pulse">Chargement de votre bibliothèque...</p>
+			</div>
+		);
+	}
+
 	// Handle book removal with API request and local state update
 	const handleDeleteBook = async (bookId: string) => {
 		if (!confirm("Voulez-vous vraiment retirer ce livre ?")) return;

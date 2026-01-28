@@ -5,6 +5,7 @@ import {
   getById,
   searchBook,
 } from "../controllers/books.controller.js";
+import { optionalAuth } from "../middlewares/autentification.middleware.js";
 
 const router = Router();
 
@@ -17,6 +18,6 @@ router.get("/", getAllBooks);
 router.get("/random", getRandomBooks);
 
 // Endpoint to get a book by id
-router.get("/:bookId", getById);
+router.get("/:bookId",optionalAuth , getById);
 
 export default router;

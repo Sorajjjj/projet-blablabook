@@ -39,3 +39,17 @@ export const requireAuth = (
     return res.status(401).json({ message: "Session invalide ou expirée" });
   }
 };
+
+export const optionalAuth = (req: Request, res: Response, next: NextFunction) => {
+  const token = req.cookies?.accessToken;
+  const secret = process.env.JWT_SECRET;
+
+  try {
+    if (token && secret) {
+      const validate = jwt.verify(token, secret) as { userId: string };
+      req.userId = validate.userId;
+    }
+  } catch (error) {
+  }
+  next();
+};

@@ -309,11 +309,11 @@ export default function ParametrePage() {
             </div>
           </div>
           <div className={styles.row}>
-            <div className={styles.labelCol}>
+            <div className={styles.theme}>
               <strong>Thème</strong>
               <p>Personnalisez votre interface</p>
             </div>
-            <div className={styles.inputCol}>
+            <div className={styles.theme}>
               <div className={styles.toggleGroup}>
                 <button className={styles.toggleBtn}>Clair</button>
                 <button className={`${styles.toggleBtn} ${styles.active}`}>
@@ -422,31 +422,6 @@ export default function ParametrePage() {
                 disabled={passwordSaving}
               >
                 {passwordSaving ? "Enregistrement..." : "Valider"}
-              </button>
-            </div>
-          </div>
-        </section>
-
-        <section className={styles.settingsCard}>
-          <h2>Gestion de compte</h2>
-          <div className={styles.row}>
-            <div className={styles.labelCol}>
-              <strong>Paramètres du compte</strong>
-              <p>Supprimez votre compte</p>
-            </div>
-            <div className={styles.inputCol}>
-              <button className={styles.btnLargeOrange}>
-                Supprimer définitivement
-              </button>
-            </div>
-          </div>
-          <div className={styles.row}>
-            <div className={styles.labelCol}>
-              <p>Désactivez votre compte</p>
-            </div>
-            <div className={styles.inputCol}>
-              <button className={styles.btnLargeOrange}>
-                Désactiver temporairement
               </button>
             </div>
           </div>

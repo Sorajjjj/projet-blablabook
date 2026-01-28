@@ -7,7 +7,7 @@ import cors from "cors";
 
 export const app = express();
 
-const PORT = process.env.PORT || 3000;
+// const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cookieParser());
@@ -18,6 +18,7 @@ app.use("/api", apiRouter);
 // Use global error handler
 app.use(globalErrorHandler);
 
-app.listen(PORT, () => {
-  console.log(`Serveur lancé sur http://localhost:${PORT}/api`);
-});
+// To launch some tests, better to separate listener in server.ts
+// app.listen(PORT, () => {
+//   console.log(`Serveur lancé sur http://localhost:${PORT}/api`);
+// });

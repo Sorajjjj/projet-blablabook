@@ -1,32 +1,21 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   reactCompiler: true,
   images: {
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'covers.openlibrary.org',
-        pathname: '/b/id/**',
+        pathname: '/b/**', // Allow /b/id and /b/isbn
       },
       {
         protocol: 'https',
         hostname: 'upload.wikimedia.org',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: "https",
-        hostname: "covers.openlibrary.org",
-      },
-      {
-        protocol: "https",
-        hostname: "upload.wikimedia.org",
+        pathname: '/**', 
       }
     ],
   },
 };
-
 
 export default nextConfig;

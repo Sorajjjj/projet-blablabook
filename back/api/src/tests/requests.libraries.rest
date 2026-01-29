@@ -1,0 +1,32 @@
+
+### Get my library (authenticated)
+GET http://localhost:4000/api/libraries/
+Cookie: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4OWRjOTlhOC1mMDUyLTQzYWYtOGJjMi00MWExNGMxMzU2YjAiLCJpYXQiOjE3Njg4MzcyNTQsImV4cCI6MTc2ODg0MDg1NH0.vPLHzQeIte0c2kJl0SPKYw5QipKHFznUajAO8b5Nwr4
+
+### Add to my library
+POST http://localhost:4000/api/libraries/
+Cookie: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzMjM5YWEyMi1iNzZhLTQ5MjAtODlkZS1iMzUwZDYyYTVkMTAiLCJpYXQiOjE3NjkwODc3NTMsImV4cCI6MTc2OTA5MTM1M30.fxDUVvXlDV4cBUZufk2vKQy4jtkvzjxeNXx4g802wkY
+Content-Type: application/json
+
+{
+  "bookId": "3262aab4-489e-4b30-862c-2af889a87fea",
+  "title": "Sherlock Holmes: A Study in Scarlet",
+  "releaseDate": null,
+  "isbn": null,
+  "summary": "A young wizard discovers his magical heritage.",
+  "authorId": "d7a4f3c1-2222-4b1d-9c10-bbbbbbbbbbbb",
+  "status": "A lire"
+}
+
+### Delete book on my library
+DELETE http://localhost:4000/api/libraries/6f9ccea3-8b0e-4631-8b3d-8b6670256854
+Cookie: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4OWRjOTlhOC1mMDUyLTQzYWYtOGJjMi00MWExNGMxMzU2YjAiLCJpYXQiOjE3Njg1MjQwMjksImV4cCI6MTc2ODUyNzYyOX0.xBnbcoDEbST45E577TaWoCfPL_C7o_gpdfr8yBblmFE
+
+### Patch book on my library
+PATCH http://localhost:4000/api/libraries/6f9ccea3-8b0e-4631-8b3d-8b6670256854/status
+Cookie: accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4OWRjOTlhOC1mMDUyLTQzYWYtOGJjMi00MWExNGMxMzU2YjAiLCJpYXQiOjE3Njg4MzcyNTQsImV4cCI6MTc2ODg0MDg1NH0.vPLHzQeIte0c2kJl0SPKYw5QipKHFznUajAO8b5Nwr4
+Content-Type: application/json
+
+{
+  "status": "Lu"
+}

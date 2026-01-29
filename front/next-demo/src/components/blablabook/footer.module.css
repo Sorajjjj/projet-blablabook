@@ -1,0 +1,134 @@
+.footer {
+  background-color: #ffffff;
+  border-top: 1px solid #e5e5e5;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  margin-left: 60px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.star {
+  color: #f97316;
+}
+
+.orange {
+  color: #f97316;
+}
+
+.description {
+  margin-top: 16px;
+  margin-left: 25px;
+  color: #6b7280;
+  line-height: 1.6;
+  max-width: 380px;
+}
+
+.title {
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #111827;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list li {
+  margin-bottom: 10px;
+}
+
+.list a {
+  text-decoration: none;
+  color: #6b7280;
+  transition: color 0.2s ease;
+}
+
+.list a:hover {
+  color: #111827;
+}
+
+.bottom {
+  border-top: 1px solid #e5e5e5;
+  text-align: center;
+  padding: 16px;
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+/* ========================= */
+/*   MEDIA QUERIES MOBILE   */
+/* ========================= */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 16px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px 10px; 
+    margin-left: 0;
+    text-align: left;
+  }
+
+  /* --- 1. first div (logo zone) --- */
+  .grid > div:first-child {
+    grid-column: 1 / -1; 
+    text-align: center;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f3f4f6;
+  }
+
+  .logo {
+    justify-content: center;
+    font-size: 20px;
+  }
+
+  /* --- 2. Hide the long description to save space --- */
+  .description {
+    display: none; 
+  }
+
+  /* --- 3. Adjust titles and lists --- */
+  .title {
+    font-size: 14px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    color: #9ca3af;
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+
+  .list li {
+    margin-bottom: 6px;
+    font-size: 13px; 
+  }
+
+  /* --- 4. The bottom of the footer --- */
+  .bottom {
+    padding: 10px;
+    font-size: 11px;
+    margin-top: 10px;
+    color: #9ca3af;
+  }
+}

@@ -1,0 +1,80 @@
+/* [project]/next-demo/src/components/footer.module.css [app-client] (css) */
+.footer-module__IgfvDW__footer {
+  background-color: #fff;
+  border-top: 1px solid #e5e5e5;
+}
+
+.footer-module__IgfvDW__container {
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.footer-module__IgfvDW__grid {
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  margin-left: 60px;
+  display: grid;
+}
+
+.footer-module__IgfvDW__logo {
+  align-items: center;
+  gap: 4px;
+  font-size: 22px;
+  font-weight: bold;
+  display: flex;
+}
+
+.footer-module__IgfvDW__star, .footer-module__IgfvDW__orange {
+  color: #f97316;
+}
+
+.footer-module__IgfvDW__description {
+  color: #6b7280;
+  max-width: 380px;
+  margin-top: 16px;
+  margin-left: 25px;
+  line-height: 1.6;
+}
+
+.footer-module__IgfvDW__title {
+  color: #111827;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.footer-module__IgfvDW__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-module__IgfvDW__list li {
+  margin-bottom: 10px;
+}
+
+.footer-module__IgfvDW__list a {
+  color: #6b7280;
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.footer-module__IgfvDW__list a:hover {
+  color: #111827;
+}
+
+.footer-module__IgfvDW__bottom {
+  text-align: center;
+  color: #9ca3af;
+  border-top: 1px solid #e5e5e5;
+  padding: 16px;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .footer-module__IgfvDW__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+/*# sourceMappingURL=next-demo_src_components_footer_module_css_bad6b30c._.single.css.map*/

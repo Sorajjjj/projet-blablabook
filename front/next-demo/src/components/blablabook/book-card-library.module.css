@@ -1,0 +1,124 @@
+/* Card container layout */
+.cardContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Wrapper for internal content */
+.contentWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.5rem;
+    flex: 1;
+}
+
+/* Book title styling with line clamping */
+.title {
+    font-weight: 900;
+    color: black;
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    letter-spacing: -0.025em;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Author name styling */
+.author {
+    font-size: 0.875rem;
+    color: #4b5563;
+    font-weight: 500;
+    font-style: italic;
+}
+
+/* Grouping for tags or metadata */
+.infoGroup {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+/* Date display */
+.date {
+    font-size: 0.75rem;
+    color: #9e9e9e; 
+}
+
+/* Sidebar actions container */
+.actionsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    padding-right: 1.5rem;
+    flex-shrink: 0;
+}
+
+/* Grouping for buttons */
+.buttonGroup {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+}
+
+/* Delete button styling and hover */
+.deleteBtn {
+    color: #cbd5e1;
+    transition: color 0.2s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.deleteBtn:hover {
+    color: #ef4444;
+}
+
+/* Navigation link styling */
+.detailsLink {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: #1e293b;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.detailsLink:hover {
+    transform: translateX(4px);
+}
+
+.detailsText {
+    font-size: 1.125rem;
+}
+
+/* ========================= */
+/*   MEDIA QUERIES MOBILE   */
+/* ========================= */
+
+@media (max-width: 640px) {
+    .cardContainer {
+        height: auto;
+    }
+
+    .contentWrapper {
+        padding: 1rem;
+    }
+
+    .title {
+        font-size: 1rem;
+    }
+    
+    .actionsContainer {
+        padding-right: 1rem;
+    }
+}

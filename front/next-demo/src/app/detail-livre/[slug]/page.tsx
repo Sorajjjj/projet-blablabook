@@ -125,7 +125,7 @@ export default function BookDetailPage() {
       <Header showSearchBar={false} />
       <main className="flex-1 container mx-auto p-8">
         <p className={Styles["breadcrumb"]}>
-          Bibliothèque / détails d’un livre
+          `détails d’un livre / {book.title}`
         </p>
 
         {/* BOOK CARD */}

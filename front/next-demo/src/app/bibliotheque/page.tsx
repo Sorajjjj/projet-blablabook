@@ -16,7 +16,7 @@ export default function LibraryPage() {
 	// State management for library data and UI
 	const [library, setLibrary] = useState<any[]>([]);
 	const [loading, setLoading] = useState(true);
-	const [activeTab, setActiveTab] = useState("all");
+	const [activeTab, setActiveTab] = useState("Tous");
 
 	// Logic to filter books based on the selected category
 	const filteredLibrary = library.filter((item) => {

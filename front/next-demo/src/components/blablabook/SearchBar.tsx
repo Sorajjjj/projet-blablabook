@@ -36,7 +36,7 @@ export default function SearchBarTest() {
 return (
   <form className={styles.searchForm}>
     <input
-      placeholder="Chercher un livre..."
+      placeholder="Cherchez un livre..."
       value={query}
       onChange={(e) => {
         const value = e.target.value;

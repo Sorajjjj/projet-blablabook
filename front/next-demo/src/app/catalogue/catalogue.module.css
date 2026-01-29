@@ -15,7 +15,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 2.8rem;
-  
 }
 
 /* CARD */
@@ -55,7 +54,7 @@
   color: #666;
 }
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
   .grid {
     padding: 3px 60px;
     gap: 2.5rem;
@@ -63,5 +62,28 @@
 
   .image {
     height: 220px;
+  }
+} */
+
+/* UPDATE */
+@media screen and (max-width: 620px) {
+  .container {
+    padding: 10px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    margin-left: 0.7rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    justify-items: center;
+  }
+
+  .image {
+    height: 180px;
   }
 }

@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import Header from "@/components/blablabook/Header";    
+import Header from "@/components/blablabook/Header";
 import Footer from "@/components/blablabook/footer";
 import React, { useEffect, useState } from "react";
 import Styles from "./catalogue.module.css";
@@ -32,7 +32,8 @@ export default function CataloguePage() {
   }, []);
 
   return (
-    <div>
+    // <div>
+    <div className="bg-blabla-light-cream">
       <Header showSearchBar={true} user={null} />
 
       <div className={Styles.container}>
@@ -49,7 +50,6 @@ export default function CataloguePage() {
             />
           ))}
         </div>
-
       </div>
 
       <Footer />

@@ -46,6 +46,8 @@ services:
       dockerfile: Dockerfile
       args:
       - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
+    env_file:
+      - .env
     container_name: blablabook-front
     restart: unless-stopped
     environment:

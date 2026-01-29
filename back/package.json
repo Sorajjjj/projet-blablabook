@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "scripts": {
+"scripts": {
     "dev": "tsx watch api/server.ts",
     "build": "tsc",
-    "start": "node dist/app.js",
+    "start": "node dist/api/server.js",
     "migrate": "prisma migrate dev",
     "migrate:init": "prisma migrate dev --name init",
     "seed": "tsx prisma/seed.ts",

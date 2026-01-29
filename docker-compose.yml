@@ -7,20 +7,26 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=${POSTGRES_DB}
+      - PGDATA=/var/lib/postgresql/data/pgdata
     ports:
       - "5433:5432"
     volumes:
-      - blablabook-db-data:/var/lib/postgresql/data
+      - blablabook-db-data:/var/lib/postgresql
     networks:
       - blablabook-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   back:
     build:
       context: ./back
       dockerfile: Dockerfile
     container_name: blablabook-back
-    command: sh -c "npx prisma db push && npm start"
     restart: unless-stopped
+    command: sh -c "npx prisma migrate deploy && npx tsx prisma/seed.ts && node dist/api/server.js"
     environment:
       - PORT=${PORT}
       - JWT_SECRET=${JWT_SECRET}
@@ -28,14 +34,18 @@ services:
     ports:
       - "4000:4000"
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     networks:
       - blablabook-network
+    
 
   front:
     build:
       context: ./front/next-demo 
       dockerfile: Dockerfile
+      args:
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
     container_name: blablabook-front
     restart: unless-stopped
     environment:

@@ -8,8 +8,8 @@
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-     "esModuleInterop": true
+    "esModuleInterop": true
   },
-    "include": ["api/src", "prisma"],
-    "exclude": ["node_modules", "dist"]
+  "include": ["api/**/*", "prisma/**/*"], 
+  "exclude": ["node_modules", "dist"]
 }

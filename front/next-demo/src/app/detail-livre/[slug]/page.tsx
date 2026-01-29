@@ -24,6 +24,7 @@ interface iBookDetail {
   imageUrl?: string;
   isInLibrary: boolean;
   isLogged: boolean;
+  bookStatus: string | null;
 }
 
 export default function BookDetailPage() {
@@ -82,7 +83,15 @@ export default function BookDetailPage() {
         if (!response.ok) throw new Error("Error fetching book data");
 
         const data = await response.json();
-        setBook(data);
+
+        const finalBookData = {
+          ...data,
+          bookStatus: Array.isArray(data.libraries) && data.libraries.length > 0 
+            ? data.libraries[0].status 
+            : null
+        };
+
+        setBook(finalBookData);
 
         setIsAdded(data.isInLibrary);
 
@@ -145,7 +154,7 @@ export default function BookDetailPage() {
                   {isAdded ? (
                     <div className="flex items-center gap-2 text-teal-600 animate-in zoom-in duration-300">
                       <span className="text-xs font-bold uppercase">Dans ma pile</span>
-                      <CircleCheck size={32} />
+                      <CircleCheck size={32} color="#0d9488"/>
                     </div>
                   ) : (
                     <button
@@ -153,7 +162,7 @@ export default function BookDetailPage() {
                       title="Ajouter à ma bibliothèque"
                       className="hover:scale-110 transition-transform cursor-pointer"
                     >
-                      <CirclePlus size={32} className="text-teal-600" />
+                      <CirclePlus size={32} className="text-teal-600" color="#0b867cff"/>
                     </button>
                   )}
                 </>
@@ -167,12 +176,29 @@ export default function BookDetailPage() {
                 Sorti le : {new Date(book.releaseDate).toLocaleDateString()}
               </span>
             )}
-            <div className={Styles["rating"]}>
-              ⭐⭐⭐⭐☆ <span>4.0 / 5</span>
-            </div>
-            <div className="actions mt-auto flex items-center gap-4">
-              <TealRoundedButton>Marquer comme lu</TealRoundedButton>
-              <span className={Styles["added"]}>Ajouté hier</span>
+            
+            <div className={Styles["actions-container"]}>
+              {/* On vérifie si l'utilisateur est connecté */}
+              {book.isLogged ? (
+                <div className="flex items-center gap-4">
+                  {/* Si le livre n'est pas encore ajouté, on montre le bouton d'ajout */}
+                  {!isAdded ? (
+                    <TealRoundedButton onClick={handleAddBook} color="#0d9488">
+                      Ajouter à ma pile
+                    </TealRoundedButton>
+                  ) : (
+                    /* Si déjà ajouté, on affiche son statut */
+                    <div className="flex items-center gap-2 px-4 py-2 bg-blabla-teal text-white rounded-full font-medium">
+                      <span>{book.bookStatus || "À lire"}</span>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                /* Optionnel : Message pour les non-connectés */
+                <p className="text-sm italic text-gray-500">
+                  Connectez-vous pour ajouter ce livre à votre bibliothèque.
+                </p>
+              )}
             </div>
           </div>
         </section>
@@ -186,9 +212,9 @@ export default function BookDetailPage() {
       <Footer />
       {showPopUp && (
         <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-[100] animate-in fade-in slide-in-from-bottom-5">
-          <div className="bg-teal-600 text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 border border-teal-500">
-            <div className="bg-white rounded-full p-1">
-              <CirclePlus size={18} className="text-teal-600" />
+          <div className="bg-blabla-teal text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 border border-teal-500">
+            <div className="bg-blabla-teal rounded-full p-1">
+            
             </div>
             <span className="font-medium">Livre ajouté à votre bibliothèque !</span>
           </div>

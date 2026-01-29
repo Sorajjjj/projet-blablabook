@@ -7,6 +7,20 @@ import z, { includes } from "zod";
 import { NotFoundError } from "../lib/errors.js";
 import { bookSearchSchema } from "../schemas/seachSchema.js";
 
+interface BookWithRelations {
+  bookId: string;
+  title: string;
+  // ... autres champs
+  author?: {
+    fullName: string;
+  };
+  libraries?: Array<{
+    userId: string;
+    bookId: string;
+    status: string;
+  }> | false; 
+}
+
 // Retrieve all books from the database
 export const getAllBooks = async (req: Request, res: Response) => {
   try {
@@ -70,13 +84,15 @@ export async function getById(req: Request, res: Response, next: NextFunction) {
         // Only fetch library data if userId exists, otherwise returns false
         libraries: userId ? { where: { userId } } : false
       }
-    });
+    }) as BookWithRelations;
 
     // If book does not exists, send 404
     if (!book) {
       throw new NotFoundError("Ce livre n'existe pas");
     }
 
+    const userLibraryEntry = Array.isArray(book.libraries) ? book.libraries[0] : null;
+    
     // Prepare response with a safety check
     const bookResponse = {
       ...book,
@@ -84,7 +100,8 @@ export async function getById(req: Request, res: Response, next: NextFunction) {
       isLogged: !!userId,
       // Check if libraries exists as an array before checking its length
       // This prevents crashes for unauthenticated users
-      isInLibrary: Array.isArray((book as any).libraries) && (book as any).libraries.length > 0
+      isInLibrary: Array.isArray((book as any).libraries) && (book as any).libraries.length > 0,
+      bookStatus: userLibraryEntry ? userLibraryEntry.status : null
     };
 
     res.status(200).json(bookResponse);

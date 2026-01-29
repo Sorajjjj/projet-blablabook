@@ -14,9 +14,11 @@ import { useState } from "react";
 export default function Header({
 	showSearchBar = false,
 	showLinks = false,
+	user: initialUser = null
 }: {
 	showSearchBar?: boolean;
 	showLinks?: boolean;
+	user?: any;
 }) {
 	const router = useRouter();
 	const { user, logout, isHydrated } = useAuth();

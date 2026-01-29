@@ -32,7 +32,7 @@ export default function LibraryPage() {
 	// API call to fetch all books in the library
 	const fetchLibrary = async () => {
 		try {
-			const response = await fetch("http://localhost:4000/api/libraries", {
+			const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/libraries`, {
 				method: "GET",
 				credentials: "include",
 				headers: {
@@ -73,7 +73,7 @@ export default function LibraryPage() {
 		if (!confirm("Voulez-vous vraiment retirer ce livre ?")) return;
 
 		try {
-			const response = await fetch(`http://localhost:4000/api/libraries/${bookId}`, {
+			const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/libraries/${bookId}`, {
 				method: "DELETE",
 				credentials: "include",
 			});

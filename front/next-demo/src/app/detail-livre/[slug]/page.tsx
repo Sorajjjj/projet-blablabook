@@ -45,7 +45,7 @@ export default function BookDetailPage() {
   const handleAddBook = async () => {
     if (!book) return;
 
-    const response = await fetch("http://localhost:4000/api/libraries", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/libraries`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
@@ -74,7 +74,7 @@ export default function BookDetailPage() {
 
     (async () => {
       try {
-        const response = await fetch(`http://localhost:4000/api/books/${slug}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/books/${slug}`, {
           credentials: "include",
         });
 

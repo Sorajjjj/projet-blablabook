@@ -21,7 +21,7 @@ export default function CataloguePage() {
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/books");
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/books`);
         if (!response.ok) throw new Error("Erreur API");
         const data = await response.json();
         setBooks(data);

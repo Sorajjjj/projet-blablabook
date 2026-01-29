@@ -25,7 +25,7 @@ export default function BookCardLibrary({ book, status, addedAt, onDelete, onUpd
   const handleStatusChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newStatus = e.target.value;
     try {
-      const response = await fetch(`http://localhost:4000/api/libraries/${book.bookId}/status`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/libraries/${book.bookId}/status`, {
         method: "PATCH",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

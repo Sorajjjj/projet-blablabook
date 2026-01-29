@@ -26,7 +26,7 @@ export default function SearchBarTest() {
 
     // encodeURIComponent avoids breaking the URL
     const res = await fetch(
-      `http://localhost:4000/api/books/search?q=${encodeURIComponent(q)}`
+      `${process.env.NEXT_PUBLIC_API_URL}/api/books/search?q=${encodeURIComponent(q)}`
     );
 
     const data = await res.json();

@@ -42,7 +42,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
 	const logout = async () => {
 		try {
-			await fetch("http://localhost:4000/api/auth/logout", {
+			await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/logout`, {
 				method: "POST",
 				credentials: "include",
 			});
@@ -60,7 +60,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
 		const checkSessionValidity = async () => {
 			try {
-				const response = await fetch("http://localhost:4000/api/settings", {
+				const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/settings`, {
 					method: "GET",
 					credentials: "include",
 				});

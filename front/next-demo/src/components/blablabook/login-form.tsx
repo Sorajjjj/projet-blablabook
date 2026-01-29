@@ -38,7 +38,7 @@ export default function LoginPreview() {
     };
 
     // Call the Express backend login endpoint
-    const res = await fetch("http://localhost:4000/api/auth/login", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`, {
       method: "POST",
 	  	credentials: "include",
       headers: {

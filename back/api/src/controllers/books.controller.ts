@@ -7,6 +7,20 @@ import z, { includes } from "zod";
 import { NotFoundError } from "../lib/errors.js";
 import { bookSearchSchema } from "../schemas/seachSchema.js";
 
+interface BookWithRelations {
+  bookId: string;
+  title: string;
+  // ... autres champs
+  author?: {
+    fullName: string;
+  };
+  libraries?: Array<{
+    userId: string;
+    bookId: string;
+    status: string;
+  }> | false; 
+}
+
 // Retrieve all books from the database
 export const getAllBooks = async (req: Request, res: Response) => {
   try {
@@ -47,11 +61,12 @@ export const getRandomBooks = async (req: Request, res: Response) => {
   }
 };
 
-// Get a book by id
 export async function getById(req: Request, res: Response, next: NextFunction) {
   try {
     // Get id from request params
     const { bookId } = req.params;
+
+    const userId = req.userId;
 
     // Validate UUID
     const uuidValidation = z.string().uuid().safeParse(bookId);
@@ -63,20 +78,33 @@ export async function getById(req: Request, res: Response, next: NextFunction) {
 
     // Use id to get book
     const book = await prisma.book.findUnique({
-      where: {
-        bookId,
-      },
+      where: { bookId },
       include: {
-        author: true
+        author: true,
+        // Only fetch library data if userId exists, otherwise returns false
+        libraries: userId ? { where: { userId } } : false
       }
-    });
+    }) as BookWithRelations;
 
     // If book does not exists, send 404
     if (!book) {
       throw new NotFoundError("Ce livre n'existe pas");
     }
 
-    res.status(200).json(book);
+    const userLibraryEntry = Array.isArray(book.libraries) ? book.libraries[0] : null;
+    
+    // Prepare response with a safety check
+    const bookResponse = {
+      ...book,
+      // true if token was valid and userId found
+      isLogged: !!userId,
+      // Check if libraries exists as an array before checking its length
+      // This prevents crashes for unauthenticated users
+      isInLibrary: Array.isArray((book as any).libraries) && (book as any).libraries.length > 0,
+      bookStatus: userLibraryEntry ? userLibraryEntry.status : null
+    };
+
+    res.status(200).json(bookResponse);
   } catch (error) {
     next(error);
   }
@@ -84,32 +112,32 @@ export async function getById(req: Request, res: Response, next: NextFunction) {
 
 export async function searchBook(req: Request, res: Response) {
 
-    const search = req.query.q
-    
-    const q = typeof search === "string" ? search : "";
+  const search = req.query.q
 
-    const searchValid = bookSearchSchema.safeParse({q})
+  const q = typeof search === "string" ? search : "";
 
-    if (!searchValid.success) {
-      return res.status(200).json([])
-    }
+  const searchValid = bookSearchSchema.safeParse({ q })
 
-    const qValidated = searchValid.data.q
+  if (!searchValid.success) {
+    return res.status(200).json([])
+  }
 
-    const booksSearched = await prisma.book.findMany({
-      where: {
-        title: {
-          contains: qValidated,
-          mode: "insensitive",
-        },
+  const qValidated = searchValid.data.q
+
+  const booksSearched = await prisma.book.findMany({
+    where: {
+      title: {
+        contains: qValidated,
+        mode: "insensitive",
       },
-      take: 5,
-      select: {
-        bookId: true,
-        title: true
-      },
-    });
+    },
+    take: 5,
+    select: {
+      bookId: true,
+      title: true
+    },
+  });
 
-   return res.status(200).json(booksSearched);
+  return res.status(200).json(booksSearched);
 }
 

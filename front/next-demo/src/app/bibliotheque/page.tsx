@@ -42,9 +42,10 @@ export default function LibraryPage() {
 
 			if (!response.ok) {
 				if (response.status === 401) {
-					router.push("/login"); 
+					router.push("/login");
 					return;
-				}}
+				}
+			}
 
 			const result = await response.json();
 			setLibrary(result.data || []);

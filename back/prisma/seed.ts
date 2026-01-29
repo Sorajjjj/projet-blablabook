@@ -206,7 +206,17 @@ async function main() {
   const createdBooks: Book[] = [];
 
   for (const bookInfo of allBooksData) {
-    const imageUrl = bookInfo.img || `https://covers.openlibrary.org/b/isbn/${bookInfo.isbn}-L.jpg`;
+    // NOTE: OpenLibrary API Behavior Handling
+    // --------------------------------------
+    // PROBLEM: By default, when a book cover is missing, OpenLibrary returns a 1x1px transparent pixel
+    // with a "200 OK" status instead of a "404 Not Found". This is a "silent failure": 
+    // the Next/Image component thinks the image loaded successfully, so the 'onError' event never fires,
+    // leaving the user with an invisible image.
+    //
+    // SOLUTION: Appending '?default=false' explicitly instructs the API to return a strict HTTP 404 error 
+    // if the image does not exist. This allows our frontend to correctly detect the failure 
+    // and switch to the local fallback image.
+    const imageUrl = bookInfo.img || `https://covers.openlibrary.org/b/isbn/${bookInfo.isbn}-L.jpg?default=false`;
 
     const newBook = await prisma.book.create({
       data: {

@@ -1,4 +1,5 @@
 "use client";
+
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -18,7 +19,7 @@ export default function Header({
 	showLinks?: boolean;
 }) {
 	const router = useRouter();
-	const { user, logout } = useAuth();
+	const { user, logout, isHydrated } = useAuth();
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
 	const isAuthenticated = user !== null;
@@ -36,83 +37,105 @@ export default function Header({
 	return (
 		<header className={header.header}>
 			<div className={header.container}>
-				{/* Logo */}
+				{/* --- LOGO --- */}
 				<div className={header.logo}>
 					<Link href="/accueil" onClick={closeMobileMenu}>
-						<Image src="/logo/logo01.PNG" alt="Logo" width={100} height={40} />
+						<Image
+							src="/logo/logo01.PNG"
+							alt="Logo"
+							width={100}
+							height={40}
+							priority
+						/>
 					</Link>
 				</div>
 
-				{/* SearchBar Desktop */}
+				{/* --- SEARCH BAR (DESKTOP) --- */}
 				<div className={header.searchBarContainer}>
 					{showSearchBar && <SearchBar />}
 				</div>
 
-				{/* Navigation Desktop */}
-				<nav className={header.nav}>
-					<ul className={header.navList}>
-						{showLinks && (
-							<>
+				{/* --- DESKTOP NAVIGATION (Medium screens and up) --- */}
+				<div className="hidden md:flex items-center gap-6">
+					<nav className={header.nav}>
+						<ul className={header.navList}>
+							{/* ACCUEIL: Only show if showLinks is true AND user is NOT logged in.
+								If logged in, 'Accueil' is inside the Avatar Dropdown. 
+							*/}
+							{isHydrated && !isAuthenticated && showLinks && (
 								<li>
-									<Link href="/">Accueil</Link>
+									<Link href="/accueil">Accueil</Link>
 								</li>
-								<li>
-									<Link href="/bibliotheque">Bibliothèque</Link>
-								</li>
-							</>
-						)}
-						<li>
-							<Link href="/catalogue">Catalogue</Link>
-						</li>
+							)}
 
-						{isAuthenticated ? (
+							{/* CATALOGUE: Always visible on desktop */}
 							<li>
-								<UserMenu user={user} onLogout={handleLogout} />
+								<Link href="/catalogue">Catalogue</Link>
 							</li>
-						) : (
-							<>
-								<li>
+						</ul>
+					</nav>
+
+					{/* User Actions (Desktop) */}
+					<div className="flex items-center gap-3">
+						{/* Wait for hydration to avoid HTML mismatch errors */}
+						{isHydrated ? (
+							isAuthenticated ? (
+								// Connected: Show Avatar (UserMenu)
+								<UserMenu user={user} onLogout={handleLogout} />
+							) : (
+								// Guest: Show Login/Register buttons
+								<>
 									<OrangeSolidButton onClick={() => router.push("/login")}>
 										Connexion
 									</OrangeSolidButton>
-								</li>
-								<li>
 									<OrangeOutlineButton
 										onClick={() => router.push("/inscription")}
 									>
 										Inscription
 									</OrangeOutlineButton>
-								</li>
-							</>
+								</>
+							)
+						) : (
+							// Placeholder while hydrating to maintain layout stability
+							<div className="w-20" />
 						)}
-					</ul>
-				</nav>
+					</div>
+				</div>
 
-				{/* Menu Burger Mobile */}
-				<div className={header.mobileMenuButton}>
-					{isAuthenticated ? (
-						<UserMenu user={user} onLogout={handleLogout} isMobile={true} />
+				{/* --- MOBILE ACTIONS (Small screens) --- */}
+				<div className="md:hidden flex items-center gap-4">
+					{isHydrated ? (
+						isAuthenticated ? (
+							// CASE 1: LOGGED IN -> Show Avatar (UserMenu)
+							<UserMenu user={user} onLogout={handleLogout} isMobile={true} />
+						) : (
+							// CASE 2: USER IS GUEST -> Show Burger Menu button
+							<button
+								onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+								className="p-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+								aria-label="Toggle menu"
+							>
+								{isMobileMenuOpen ? (
+									<X className="w-6 h-6" />
+								) : (
+									<Menu className="w-6 h-6" />
+								)}
+							</button>
+						)
 					) : (
-						<button
-							onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-							className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
-							aria-label="Menu"
-						>
-							{isMobileMenuOpen ? (
-								<X className="w-6 h-6 text-gray-700" />
-							) : (
-								<Menu className="w-6 h-6 text-gray-700" />
-							)}
-						</button>
+						<div className="w-10 h-10" />
 					)}
 				</div>
 			</div>
 
-			{/* Menu Mobile Overlay - if unauthenticated */}
-			{isMobileMenuOpen && (
+			{/* ============================== */}
+			{/* MOBILE MENU OVERLAY (GUEST ONLY) */}
+			{/* ============================== */}
+			{isHydrated && !isAuthenticated && isMobileMenuOpen && (
 				<div className={header.mobileMenu}>
-					<nav className={header.mobileNav}>
-						<div className={header.mobileHeaderRow}>
+					<div className={header.mobileNav}>
+						{/* Header (Logo + Close) */}
+						<div className="flex justify-between items-center px-4 pb-4 border-b border-gray-100 mb-4">
 							<div className={header.logo}>
 								<Image
 									src="/logo/logo01.PNG"
@@ -121,51 +144,46 @@ export default function Header({
 									height={40}
 								/>
 							</div>
-
-							<button onClick={closeMobileMenu}>
+							<button onClick={closeMobileMenu} aria-label="Close menu">
 								<X className="w-6 h-6 text-gray-700" />
 							</button>
 						</div>
-						{/* SearchBar Mobile */}
+
+						{/* Mobile SearchBar */}
 						{showSearchBar && (
 							<div className={header.mobileSearchBar}>
 								<SearchBar />
 							</div>
 						)}
 
-						{showLinks && (
-							<>
+						{/* Guest Navigation Links */}
+						<div className="flex flex-col px-4 gap-4 mt-2">
+							{showLinks && (
 								<Link
-									href="/"
+									href="/accueil"
 									onClick={closeMobileMenu}
 									className={header.mobileNavLink}
 								>
 									Accueil
 								</Link>
-								<Link
-									href="/bibliotheque"
-									onClick={closeMobileMenu}
-									className={header.mobileNavLink}
-								>
-									Bibliothèque
-								</Link>
-							</>
-						)}
-						<Link
-							href="/catalogue"
-							onClick={closeMobileMenu}
-							className={header.mobileNavLink}
-						>
-							Catalogue
-						</Link>
+							)}
+							<Link
+								href="/catalogue"
+								onClick={closeMobileMenu}
+								className={header.mobileNavLink}
+							>
+								Catalogue
+							</Link>
+						</div>
 
-						<div className="flex flex-col gap-3 mt-4 px-4">
+						{/* Guest Auth Buttons */}
+						<div className="flex flex-col gap-3 mt-6 px-4 border-t border-gray-100 pt-6">
 							<OrangeSolidButton
 								onClick={() => {
 									closeMobileMenu();
 									router.push("/login");
 								}}
-								className="w-full"
+								className="w-full justify-center"
 							>
 								Connexion
 							</OrangeSolidButton>
@@ -174,12 +192,12 @@ export default function Header({
 									closeMobileMenu();
 									router.push("/inscription");
 								}}
-								className="w-full"
+								className="w-full justify-center"
 							>
 								Inscription
 							</OrangeOutlineButton>
 						</div>
-					</nav>
+					</div>
 				</div>
 			)}
 		</header>

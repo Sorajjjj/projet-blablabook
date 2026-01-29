@@ -28,7 +28,7 @@ services:
     restart: unless-stopped
     command: sh -c "npx prisma migrate deploy && npx tsx prisma/seed.ts && node dist/api/server.js"
     environment:
-      - PORT=${PORT}
+      - PORT=4000
       - JWT_SECRET=${JWT_SECRET}
       - DATABASE_URL=${DATABASE_URL}
     ports:
@@ -51,6 +51,7 @@ services:
     container_name: blablabook-front
     restart: unless-stopped
     environment:
+      - PORT=3000
       - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
     ports:
       - "3000:3000"

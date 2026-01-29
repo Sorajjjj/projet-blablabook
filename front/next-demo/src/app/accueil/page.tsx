@@ -28,7 +28,9 @@ export default function AccueilPage() {
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/books/random`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/books/random`, {
+          credentials: "include"
+        } );
 
         if (!response.ok) throw new Error("Erreur API");
         const data = await response.json();

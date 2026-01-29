@@ -25,8 +25,8 @@ app.use(
         "default-src": ["'self'"],
         "script-src": ["'self'", "'unsafe-inline'"],
         "style-src": ["'self'", "'unsafe-inline'"],
-        "img-src": ["'self'", "data:", "http://localhost:4000"], 
-        "connect-src": ["'self'", "http://localhost:4000"],
+        "img-src": ["'self'", "data:", "http://localhost:4000", "http://172.18.0.4:4000", "http://localhost:4000"], 
+        "connect-src": ["'self'", "http://localhost:4000", "http://172.18.0.4:4000", "http://localhost:4000"],
       },
     },
   })

@@ -12,8 +12,19 @@ export const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
+// app.use(cors({
+//   origin: ["http://localhost:3000", "http://172.18.0.4:4000", "http://localhost:4000"], 
+//   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+//   credentials: true 
+// }));
+
 app.use(cors({
-  origin: ["http://localhost:3000", "http://172.18.0.4:4000", "http://localhost:4000"], 
+  // Autorise ton localhost pour le dev ET ton futur domaine Railway
+  origin: [
+    "http://localhost:3000", 
+    "http://localhost:4000",
+    /\.railway\.app$/ // Autorise tous les sous-domaines Railway
+  ],
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   credentials: true 
 }));

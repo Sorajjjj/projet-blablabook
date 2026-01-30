@@ -76,7 +76,7 @@ export default function ParametrePage() {
 
       // Use fetch to call API in backend
       const response = await fetch(
-        "http://localhost:4000/api/settings/username",
+        `${process.env.NEXT_PUBLIC_API_URL}/api/settings/username`,
         {
           method: "PUT",
           headers: {
@@ -131,7 +131,7 @@ export default function ParametrePage() {
       // simulate delay to show the loading button...
       // await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      const response = await fetch("http://localhost:4000/api/settings/email", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/settings/email`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -194,7 +194,7 @@ export default function ParametrePage() {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       const response = await fetch(
-        "http://localhost:4000/api/settings/password",
+        `${process.env.NEXT_PUBLIC_API_URL}/api/settings/password`,
         {
           method: "PUT",
           headers: {
@@ -234,7 +234,7 @@ export default function ParametrePage() {
   useEffect(() => {
     const fetchSettings = async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/settings", {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/settings`, {
           // Need credentials include because backend auth uses cookies
           credentials: "include",
         });
